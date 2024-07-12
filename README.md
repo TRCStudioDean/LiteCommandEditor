@@ -1,3 +1,6 @@
+该项目将于正式版发布后进行开源，当前为快照版。
+This project will be open sourced after the official release, currently it is a snapshot version.
+
 # What is LiteCommandEditor
 LiteCommandEditor is a plugin used for managing commands, freely creating and editing commands. It can be easily used without requiring you to have a certain understanding of programming languages, and the editing difficulty is equivalent to editing a GUI for a menu plugin. You can freely create a simple command based on the comments in the plugin's configuration file or the help in the wiki.
 You can set the name, usage permissions, executor functions, TAB completion function, and other functions of this command in a command configuration file. Command executors support infinite nested functions, function triggering conditions, etc; The basic functions include: sending messages, broadcasting, executing other commands, playing sounds, playing title messages, giving items, etc. 
