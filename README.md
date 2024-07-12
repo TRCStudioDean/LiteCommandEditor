@@ -8,6 +8,12 @@ In addition to the main function of "custom commands", plugin also include other
 - Runtime environment for Java8 or above.
 - PlaceholderAPI (Optional)
 
+---
+
+### Create a new custom command: [**Click here to start**](https://github.com/TRCStudioDean/LiteCommandEditor/wiki/Basic-Settings-Document)
+
+---
+
 ## Features
 
 ### Custom Command (Major Function)
@@ -39,7 +45,7 @@ In addition to the main function of "custom commands", plugin also include other
 	  - Has permission: `Permission`
 	  - Has placeholder: `HasPlaceholder`
 	  - Player attributes: `Player` (More player attributes provided by some BukkitAPI)
-	  - Player attributes: `World` (More world attributes provided by some BukkitAPI)
+	  - World attributes: `World` (More world attributes provided by some BukkitAPI)
 - **TAB Completer** (Functions can be infinitely nested)
   - *After executing all functions, the merged results of all recipes will be returned as the automatic filling content for this time*
   - **Functions**:
@@ -60,7 +66,7 @@ In addition to the main function of "custom commands", plugin also include other
 	  - Has permission: `Permission`
 	  - Has placeholder: `HasPlaceholder`
 	  - Player attributes: `Player` (More player attributes provided by some BukkitAPI)
-	  - Player attributes: `World` (More world attributes provided by some BukkitAPI)
+	  - World attributes: `World` (More world attributes provided by some BukkitAPI)
 - JSON Components (You can edit JSON component placeholders directly here to distinguish them from other commands.)
 > JSON component is a functional text that acts on the chat bar, such as a window displayed when the mouse hovers over text, clicking on text to execute commands, and so on.
 - Item Collection (You can use commands to add item in hand to collection, or simply customize an item to collection.)
@@ -74,7 +80,6 @@ In addition to the main function of "custom commands", plugin also include other
 - Debug mode (Track and record the running status of custom command functions, and provide feedback to the operator)
 - Hot load and unload custom command configuration files
 - Item Collection (Serialize and save the item in hand to the configuration file for easy use of NBT and other data of the item in the custom command configuration file)
-- Support Folia
 - *And more...*
 ---
 
