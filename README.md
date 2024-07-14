@@ -29,6 +29,7 @@ In addition to the main function of "custom commands", plugin also include other
     - Execute other commands: `Commands`
     - Reward items: `Reward-Items`
     - Take items: `Take-Items`
+    - Server teleport: `Server-Teleport` (Need BungeCord or Velocity)
     - Send titles: `Titles` (Can only be used by players)
     - Send action-bars: `Action-Bars` (Can only be used by players)
     - Play sounds: `Sounds` (Can only be used by players)
