@@ -1,4 +1,4 @@
-该项目将于正式版发布后进行开源，当前为快照版。
+该项目将于正式版发布后进行开源，当前为快照版。  
 This project will be open sourced after the official release, currently it is a snapshot version.
 
 # What is LiteCommandEditor
