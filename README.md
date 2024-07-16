@@ -2,9 +2,9 @@
 This project will be open sourced after the official release, currently it is a snapshot version.
 
 # What is LiteCommandEditor
-LiteCommandEditor is a plugin used for managing commands, freely creating and editing commands. It can be easily used without requiring you to have a certain understanding of programming languages, and the editing difficulty is equivalent to editing a GUI for a menu plugin. You can freely create a simple command based on the comments in the plugin's configuration file or the help in the wiki.
-You can set the name, usage permissions, executor functions, TAB completion function, and other functions of this command in a command configuration file. Command executors support infinite nested functions, function triggering conditions, etc; The basic functions include: sending messages, broadcasting, executing other commands, playing sounds, playing title messages, giving items, etc. 
-By the way, the plugin also presets some player functions and world functions through the Bukkit API for more advanced editing.
+LiteCommandEditor is a plugin used for managing commands, freely creating and editing commands. It can be easily used without requiring you to have a certain understanding of programming languages, and the editing difficulty is equivalent to editing a GUI for a menu plugin. You can freely create a simple command based on the comments in the plugin's configuration file or the help in the wiki.  
+You can set the name, usage permissions, executor functions, TAB completion function, and other functions of this command in a command configuration file. Command executors support infinite nested functions, function triggering conditions, etc; The basic functions include: sending messages, broadcasting, executing other commands, playing sounds, playing title messages, giving items, etc.  
+By the way, the plugin also presets some player functions and world functions through the Bukkit API for more advanced editing.  
 In addition to the main function of "custom commands", plugin also include other command management functions. For example, disabled command (Delete a command from this server), redirect command (similar to EasyCommand, directing command input to another command), and so on.
 
 ## Dependencies
