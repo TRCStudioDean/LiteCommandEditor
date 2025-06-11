@@ -3,6 +3,8 @@ Since I started developing MineCraft server plugins and was exposed to the opera
 I cannot find any plugins that meet the functional requirements (or they are difficult to use), making them unfriendly to some new server owners. Therefore, I have decided to write a simple command management plugin that comes with some common function functions and can be edited directly in YAML file. That is **LiteCommandEditor**.  
 Although the functionality of such a "pseudo script" plugin is limited, the upper limit of the functionality depends on your level of thinking and logical thinking, and the lower limit is as low as you can use it as long as you can edit the configuration file.  
 
+Download link: https://www.spigotmc.org/resources/117987/
+
 # What is LiteCommandEditor
 LiteCommandEditor is a plugin used for managing commands, freely creating and editing commands. It can be easily used without requiring you to have a certain understanding of programming languages, and the editing difficulty is equivalent to editing a GUI for a menu plugin. You can freely create a simple command based on the comments in the plugin's configuration file or the help in the wiki.  
 You can set the name, usage permissions, executor functions, TAB completion function, and other functions of this command in a command configuration file. Command executors support infinite nested functions, function triggering conditions, etc; The basic functions include: sending messages, broadcasting, executing other commands, playing sounds, playing title messages, giving items, etc.   
