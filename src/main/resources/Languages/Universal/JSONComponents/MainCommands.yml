@@ -1,0 +1,366 @@
+Simplified-Chinese:
+    'Help':
+        Placeholder: '%litecommandeditor_command_help%'
+        Text: '&a/litecommandeditor &6help'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor help'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看插件帮助'
+            - '&b使用方法 &a/litecommandeditor &6help'
+    'Reload':
+        Placeholder: '%litecommandeditor_command_reload%'
+        Text: '&a/litecommandeditor &6reload'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor reload'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b重载插件配置'
+            - '&b使用方法 &a/litecommandeditor &6reload'
+    'Info':
+        Placeholder: '%litecommandeditor_command_info%'
+        Text: '&a/litecommandeditor &6info &c[命令]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor info '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看某个命令的信息'
+            - '&b使用方法 &a/litecommandeditor &6info &c[命令]'
+    'ItemCollection':
+        Placeholder: '%litecommandeditor_command_itemcollection%'
+        Text: '&a/litecommandeditor &6itemcollection'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b管理命令配置文件的物品收藏夹'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection'
+    'Debug':
+        Placeholder: '%litecommandeditor_command_debug%'
+        Text: '&a/litecommandeditor &6debug'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b调试模式综合命令'
+            - '&b使用方法 &a/litecommandeditor &6debug'
+    'Load':
+        Placeholder: '%litecommandeditor_command_load%'
+        Text: '&a/litecommandeditor &6load &c[命令]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b加载某个命令配置文件'
+            - '&b使用方法 &a/litecommandeditor &6load'
+    'Unload':
+        Placeholder: '%litecommandeditor_command_unload%'
+        Text: '&a/litecommandeditor &6unload &c[命令]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor unload '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b卸载某个命令配置文件'
+            - '&b使用方法 &a/litecommandeditor &6unload &c[命令]'
+    'Delete':
+        Placeholder: '%litecommandeditor_command_delete%'
+        Text: '&a/litecommandeditor &6delete &c[命令]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b删除某个命令'
+            - '&b使用方法 &a/litecommandeditor &6delete &c[命令]'
+    'List':
+        Placeholder: '%litecommandeditor_command_list%'
+        Text: '&a/litecommandeditor &6list &7[页数]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出所有由本插件加载的命令'
+            - '&b使用方法 &a/litecommandeditor &6list &7[页数]'
+    'ListAll':
+        Placeholder: '%litecommandeditor_command_listall%'
+        Text: '&a/litecommandeditor &6listall &7[页数]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出本服务器所有已启用的命令'
+            - '&b使用方法 &a/litecommandeditor &6listall &7[页数]'
+    'Tools':
+        Placeholder: '%litecommandeditor_command_tools%'
+        Text: '&a/litecommandeditor &6tools'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b插件的工具命令'
+            - '&b使用方法 &a/litecommandeditor &6tools'
+Traditional-Chinese:
+    'Help':
+        Placeholder: '%litecommandeditor_command_help%'
+        Text: '&a/litecommandeditor &6help'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor help'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看插件幫助'
+            - '&b使用方法 &a/litecommandeditor &6help'
+    'Reload':
+        Placeholder: '%litecommandeditor_command_reload%'
+        Text: '&a/litecommandeditor &6reload'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor reload'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b重載插件配置'
+            - '&b使用方法 &a/litecommandeditor &6reload'
+    'Info':
+        Placeholder: '%litecommandeditor_command_info%'
+        Text: '&a/litecommandeditor &6info &c[命令]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor info '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看某個命令的訊息'
+            - '&b使用方法 &a/litecommandeditor &6info &c[命令]'
+    'ItemCollection':
+        Placeholder: '%litecommandeditor_command_itemcollection%'
+        Text: '&a/litecommandeditor &6itemcollection'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b管理命令配置文件的物品收藏夾'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection'
+    'Debug':
+        Placeholder: '%litecommandeditor_command_debug%'
+        Text: '&a/litecommandeditor &6debug'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b調試模式綜合命令'
+            - '&b使用方法 &a/litecommandeditor &6debug'
+    'Load':
+        Placeholder: '%litecommandeditor_command_load%'
+        Text: '&a/litecommandeditor &6load &c[命令]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b加載某個命令配置文件'
+            - '&b使用方法 &a/litecommandeditor &6load &c[命令]'
+    'Unload':
+        Placeholder: '%litecommandeditor_command_unload%'
+        Text: '&a/litecommandeditor &6unload &c[命令]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor unload '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b卸載某個命令配置文件'
+            - '&b使用方法 &a/litecommandeditor &6unload &c[命令]'
+    'Delete':
+        Placeholder: '%litecommandeditor_command_delete%'
+        Text: '&a/litecommandeditor &6delete &c[命令]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b刪除某個命令'
+            - '&b使用方法 &a/litecommandeditor &6delete &c[命令]'
+    'List':
+        Placeholder: '%litecommandeditor_command_list%'
+        Text: '&a/litecommandeditor &6list &7[頁數]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出所有由本插件加載的命令'
+            - '&b使用方法 &a/litecommandeditor &6list &7[頁數]'
+    'ListAll':
+        Placeholder: '%litecommandeditor_command_listall%'
+        Text: '&a/litecommandeditor &6listall &7[頁數]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出本服務器所有已啟用的命令'
+            - '&b使用方法 &a/litecommandeditor &6listall &7[頁數]'
+    'Tools':
+        Placeholder: '%litecommandeditor_command_tools%'
+        Text: '&a/litecommandeditor &6tools'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b插件的工具命令'
+            - '&b使用方法 &a/litecommandeditor &6tools'
+English:
+    'Help':
+        Placeholder: '%litecommandeditor_command_help%'
+        Text: '&a/litecommandeditor &6help'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor help'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bView plugin help'
+            - '&bUsage: &a/litecommandeditor &6help'
+    'Reload':
+        Placeholder: '%litecommandeditor_command_reload%'
+        Text: '&a/litecommandeditor &6reload'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor reload'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bReload all settings'
+            - '&bUsage: &a/litecommandeditor &6reload'
+    'Info':
+        Placeholder: '%litecommandeditor_command_info%'
+        Text: '&a/litecommandeditor &6info &c[Command]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor info '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bView command''s info'
+            - '&bUsage: &a/litecommandeditor &6info &c[Command]'
+    'ItemCollection':
+        Placeholder: '%litecommandeditor_command_itemcollection%'
+        Text: '&a/litecommandeditor &6itemcollection'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bManage item collection for command configuration'
+            - '&bUsage: &a/litecommandeditor &6itemcollection'
+    'Debug':
+        Placeholder: '%litecommandeditor_command_debug%'
+        Text: '&a/litecommandeditor &6debug'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bDebugging Mode Comprehensive Command'
+            - '&bUsage: &a/litecommandeditor &6debug'
+    'Load':
+        Placeholder: '%litecommandeditor_command_load%'
+        Text: '&a/litecommandeditor &6load &c[Command]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bLoad a command configuration'
+            - '&bUsage: &a/litecommandeditor &6load &c[Command]'
+    'Unload':
+        Placeholder: '%litecommandeditor_command_unload%'
+        Text: '&a/litecommandeditor &6unload &c[Command]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor unload '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bUnload a command configuration'
+            - '&bUsage: &a/litecommandeditor &6unload &c[Command]'
+    'Delete':
+        Placeholder: '%litecommandeditor_command_delete%'
+        Text: '&a/litecommandeditor &6delete &c[Command]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bDelete a command'
+            - '&bUsage: &a/litecommandeditor &6delete &c[Command]'
+    'List':
+        Placeholder: '%litecommandeditor_command_list%'
+        Text: '&a/litecommandeditor &6list &7[Page]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList all loaded command configurations'
+            - '&bUsage: &a/litecommandeditor &6list &7[Page]'
+    'ListAll':
+        Placeholder: '%litecommandeditor_command_listall%'
+        Text: '&a/litecommandeditor &6listall &7[Page]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList all commands'
+            - '&bUsage: &a/litecommandeditor &6listall &7[Page]'
+    'Tools':
+        Placeholder: '%litecommandeditor_command_tools%'
+        Text: '&a/litecommandeditor &6tools'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bPlugin''s tool commands'
+            - '&bUages: &a/litecommandeditor &6tools'

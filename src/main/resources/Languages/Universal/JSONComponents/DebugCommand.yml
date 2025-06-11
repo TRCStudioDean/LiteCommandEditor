@@ -1,0 +1,204 @@
+Simplified-Chinese:
+    'Debug Switch':
+        Placeholder: '%litecommandeditor_command_debug_switch%'
+        Text: '&a/litecommandeditor &6debug &cswitch'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug switch'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b开关调试模式'
+            - '&b使用方法 &a/litecommandeditor &6debug &cswitch'
+    'Debug View':
+        Placeholder: '%litecommandeditor_command_debug_view%'
+        Text: '&a/litecommandeditor &6debug &cview [调试记录]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug view '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看调试记录的详细信息'
+            - '&b使用方法 &a/litecommandeditor &6debug &cview [调试记录]'
+    'Debug View Track':
+        Placeholder: '%litecommandeditor_command_debug_view_track%'
+        Text: '&8&l[&b&l点击查看&8&l]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug view {record}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击查看 &e{record} &5的调试记录'
+    'Debug List':
+        Placeholder: '%litecommandeditor_command_debug_list%'
+        Text: '&a/litecommandeditor &6debug &clist &7[页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出当前所有的调试记录'
+            - '&b使用方法 &a/litecommandeditor &6debug &clist &7[页数]'
+    'Debug List nextPage':
+        Placeholder: '%litecommandeditor_command_debug_list_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'Debug List previousPage':
+        Placeholder: '%litecommandeditor_command_debug_list_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+Traditional-Chinese:
+    'Debug Switch':
+        Placeholder: '%litecommandeditor_command_debug_switch%'
+        Text: '&a/litecommandeditor &6debug &cswitch'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug switch'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b開關調試模式'
+            - '&b使用方法 &a/litecommandeditor &6debug &cswitch'
+    'Debug View':
+        Placeholder: '%litecommandeditor_command_debug_view%'
+        Text: '&a/litecommandeditor &6debug &cview [調試記錄]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug view '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看調試記錄的詳細信息'
+            - '&b使用方法 &a/litecommandeditor &6debug &cview [調試記錄]'
+    'Debug View Track':
+        Placeholder: '%litecommandeditor_command_debug_view_track%'
+        Text: '&8&l[&b&l點擊查看&8&l]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug view {record}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊查看 &e{record} &5的調試記錄'
+    'Debug List':
+        Placeholder: '%litecommandeditor_command_debug_list%'
+        Text: '&a/litecommandeditor &6debug &clist &7[頁數]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出當前所有的調試記錄'
+            - '&b使用方法 &a/litecommandeditor &6debug &clist &7[頁數]'
+    'Debug List nextPage':
+        Placeholder: '%litecommandeditor_command_debug_list_next%'
+        Text: '&b&l下一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到下一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7下一頁: &e{nextPage}'
+    'Debug List previousPage':
+        Placeholder: '%litecommandeditor_command_debug_list_previous%'
+        Text: '&b&l上一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到上一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7上一頁: &e{previousPage}'
+English:
+    'Debug Switch':
+        Placeholder: '%litecommandeditor_command_debug_switch%'
+        Text: '&a/litecommandeditor &6debug &cswitch'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug switch'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bSwitch debug mode.'
+            - '&bUsage: &a/litecommandeditor &6debug &cswitch'
+    'Debug View':
+        Placeholder: '%litecommandeditor_command_debug_view%'
+        Text: '&a/litecommandeditor &6debug &cview [Record]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug view '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bView tracking records'
+            - '&bUsage: &a/litecommandeditor &6debug &cview [Record]'
+    'Debug View Track':
+        Placeholder: '%litecommandeditor_command_debug_view_track%'
+        Text: '&8&l[&b&lClick Here&8&l]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug view {record}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to view &e{record} &5''s track.'
+    'Debug List':
+        Placeholder: '%litecommandeditor_command_debug_list%'
+        Text: '&a/litecommandeditor &6debug &clist &7[Page]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor debug list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList all debug records.'
+            - '&bUsage: &a/litecommandeditor &6debug &clist &7[Page]'
+    'Debug List nextPage':
+        Placeholder: '%litecommandeditor_command_debug_list_next%'
+        Text: '&b&lNext Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to next page'
+            - '&7Now page: &e{page}'
+            - '&7Next page: &e{nextPage}'
+    'Debug List previousPage':
+        Placeholder: '%litecommandeditor_command_debug_list_previous%'
+        Text: '&b&lPrevious Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor debug list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to previous page'
+            - '&7Now page: &e{page}'
+            - '&7Previous page: &e{previousPage}'

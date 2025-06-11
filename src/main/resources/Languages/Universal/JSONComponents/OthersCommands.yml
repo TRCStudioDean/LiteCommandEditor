@@ -1,0 +1,207 @@
+Simplified-Chinese:
+    'List NextPage':
+        Placeholder: '%litecommandeditor_command_list_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'List PreviousPage':
+        Placeholder: '%litecommandeditor_command_list_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'ListAll NextPage':
+        Placeholder: '%litecommandeditor_command_listall_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'ListAll PreviousPage':
+        Placeholder: '%litecommandeditor_command_listall_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'Info Click':
+        Placeholder: '%litecommandeditor_command_info_click%'
+        Text: '&8[&b&l点击填充&8]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/{command}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击填充命令 &e{command}'
+    'List CommandInfo':
+        Placeholder: '%litecommandeditor_command_list_commandInfo%'
+        Text: '&8[&d查看详情&8]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor info {command}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击查看命令 &e{command} &5的详细信息'
+Traditional-Chinese:
+    'List NextPage':
+        Placeholder: '%litecommandeditor_command_list_next%'
+        Text: '&b&l下一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到下一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7下一頁: &e{nextPage}'
+    'List PreviousPage':
+        Placeholder: '%litecommandeditor_command_list_previous%'
+        Text: '&b&l上一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到上一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7上一頁: &e{previousPage}'
+    'ListAll NextPage':
+        Placeholder: '%litecommandeditor_command_listall_next%'
+        Text: '&b&l下一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到下一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7下一頁: &e{nextPage}'
+    'ListAll PreviousPage':
+        Placeholder: '%litecommandeditor_command_listall_previous%'
+        Text: '&b&l上一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到上一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7上一頁: &e{previousPage}'
+    'Info Click':
+        Placeholder: '%litecommandeditor_command_info_click%'
+        Text: '&8[&b&l點擊填充&8]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/{command}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊填充命令 &e{command}'
+    'List CommandInfo':
+        Placeholder: '%litecommandeditor_command_list_commandInfo%'
+        Text: '&8[&d查看詳情&8]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor info {command}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊查看命令 &e{command} &5的詳細訊息'
+English:
+    'List NextPage':
+        Placeholder: '%litecommandeditor_command_list_next%'
+        Text: '&b&lNext Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to next page'
+            - '&7Now page: &e{page}'
+            - '&7Next page: &e{nextPage}'
+    'List PreviousPage':
+        Placeholder: '%litecommandeditor_command_list_previous%'
+        Text: '&b&lPrevious Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to previous page'
+            - '&7Now page: &e{page}'
+            - '&7Previous page: &e{previousPage}'
+    'ListAll NextPage':
+        Placeholder: '%litecommandeditor_command_listall_next%'
+        Text: '&b&lNext Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to next page'
+            - '&7Now page: &e{page}'
+            - '&7Next page: &e{nextPage}'
+    'ListAll PreviousPage':
+        Placeholder: '%litecommandeditor_command_listall_previous%'
+        Text: '&b&lPrevious Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor listall {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to previous page'
+            - '&7Now page: &e{page}'
+            - '&7Previous page: &e{previousPage}'
+    'Info Click':
+        Placeholder: '%litecommandeditor_command_info_click%'
+        Text: '&8[&b&lClick to fill&8]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/{command}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to fill command: &e{command}'
+    'List CommandInfo':
+        Placeholder: '%litecommandeditor_command_list_commandInfo%'
+        Text: '&8[&dInformation&8]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor info {command}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to see command &e{command}&5''s information'

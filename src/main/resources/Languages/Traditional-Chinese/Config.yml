@@ -1,0 +1,71 @@
+#插件語言
+#可用語言: Traditional-Chinese(繁體中文)、Simplified-Chinese(简体中文)、English
+Language: Traditional-Chinese
+
+#物品顯示語言的路徑
+#此選項用於設定Items.yml中所使用的物品清單的路徑名稱（建議使用語言名稱對路徑命名）
+#物品顯示名指的是插件目錄下在Items.yml中所保存的目前版本伺服端中所有原始物品的對應語言顯示名稱，
+#使用指令 /litecommandeditor tools updateItemDisplayName 即可更新對應語言並儲存至Items.yml。
+#注意: 除了美式英語(en_us)外，其他語言均為透過MineCraft官方API下載遊戲資源檔案以獲得準確的翻譯名稱（因此你需要確保插件能夠連結網路）
+#參考語文代碼縮寫: 美式英文 -> en_us, 簡體中文 -> zh_cn, 繁體中文 -> zh_tw
+Item-Display-Language-Path: Traditional-Chinese
+
+#禁用的命令
+#禁用後，命令將無法使用（命令將不存在），直到下次重啟伺服器才會重新判斷。
+#注意：禁用其他插件的命令可能會發生嚴重的後果，謹慎使用！
+#格式：[命令前綴]:[命令名]
+#示例：bukkit:plugins 即可禁用/plugins命令
+#如果想要知道命令的前綴，可以使用 /litecommandeditor info [命令] 查看。
+Disabled-Commands: []
+
+#執行命令的冷卻（單位：秒）
+#在這裡寫上需要添加冷卻的子命令，可以防止玩家頻繁執行命令
+#注意，本功能的判斷邏輯是：當玩家輸入的指令以列表中的某個指令為開頭，就會被添加冷卻
+#此設定中的命令，其主命令的源頭的所有命令別名（包括帶有前綴的命令）均會添加冷卻。
+#例如: 為"lce"命令設定冷卻時間時，將使 "litecommandeditor:lce", "litecommandeditor:litecommandeditor" 等本插件的所有命令別名都添加相同的冷卻時間
+#此選項對其他插件的命令也能夠生效
+Commands-Cooldown:
+    Enabled: true
+    #命令列表，格式為：“[命令]:[冷卻時間]”
+    List:
+    - 'examplecommand compound': 1.0 #即玩家輸入 "/examplecommand compound ..." 時就會觸發1秒冷卻
+    
+#非同步線程的設定
+#若不清楚這什麼是非同步線程，請不要修改這個選項！
+Async-Thread-Settings: 
+    #每一刻的延遲（單位是秒，可以有小數）
+    #例：0.1為每秒執行10次，0.05為每秒執行20次，即 20 TPS
+    Tick-Delay: 0.1
+    #是否自動移除重複的延時任務（延時任務是指包含Delay設定並且在執行緒池上執行的任務）
+    #啟用此選項後，以下任務將在重複運行時將移除目前未完成的延時任務:
+    #1. ActionBar 動作列訊息（文字動畫）
+    #2. Title 標題訊息（文字動畫）
+    #3. ClientSound 播放聲音（播放樂譜）
+    #4. CompoundFunction 複合函數（函數的執行）
+    Remove-Duplicate-Delayed-Tasks: true
+        
+#計算保留的小數位數
+Retaining-Decimal-Places: 2
+
+#PlaceholderAPI設定
+PlaceholderAPI:
+    #是否使用
+    Enabled: true
+    #佔位符緩存更新的延遲（秒）
+    Cache-Update-Delay: -1
+    #例外的佔位符（不進行緩存的）
+    Exceptions: []
+
+#是否自動更新物品顯示名字
+#啟用後，當使用物品顯示名時如果Items.yml檔案內不包含目前選定的語言時，將自動從MojangAPI下載對應的語言。
+#此功能依附於指令 /lce tools updateItemDisplayName，詳見指令的使用協助。
+Auto-Update-Item-Display-Name: true
+
+#是否檢查更新
+##每天一次，將自動檢測插件的最新版本及信息，並彙報給控制台及有擁有對應權限的玩家
+#此功能並不會造成伺服器產生過多流量（每次檢測產生約不到1kb網路流量）
+Updater: true
+
+#是否啟用Metrics
+#詳見https://bstats.org/plugin/bukkit/LiteCommandEditor/
+Metrics: true

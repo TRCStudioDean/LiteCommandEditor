@@ -1,0 +1,10 @@
+name: LiteCommandEditor
+version: 1.0.0.0
+author: TRCStudio
+main: studio.trc.bukkit.litecommandeditor.Main
+api-version: 1.13
+folia-supported: true
+commands:
+    litecommandeditor:
+        description: Main command of LiteCommandEditor
+        aliases: [lce, commandeditor, cmdeditor]

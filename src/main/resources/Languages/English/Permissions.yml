@@ -1,0 +1,77 @@
+#All permission can be customized, please set or change according to the following format:
+#  Default: Default is available for all players, if set to true means all players have this permission
+#  Permission: You know :D
+
+#Bypass command cooling's permission
+Command-Cooldown-Bypass:
+    Default: false
+    Permission: litecommandeditor.commandcooldownbypass
+
+#Commands permissions
+Commands:
+    Help:
+        Default: true
+        Permission: litecommandeditor.command.help
+    Reload:
+        Default: false
+        Permission: litecommandeditor.command.reload
+    Info:
+        Default: false
+        Permission: litecommandeditor.command.info
+    Load:
+        Default: false
+        Permission: litecommandeditor.command.load
+    Unload:
+        Default: false
+        Permission: litecommandeditor.command.unload
+    Delete:
+        Default: false
+        Permission: litecommandeditor.command.delete
+    Debug:
+        Default: false
+        Permission: litecommandeditor.command.debug
+        Switch:
+            Default: false
+            Permission: litecommandeditor.command.debug.switch
+        View:
+            Default: false
+            Permission: litecommandeditor.command.debug.view
+        List:
+            Default: false
+            Permission: litecommandeditor.command.debug.list
+    Item-Collection:
+        Default: false
+        Permission: litecommandeditor.command.itemcollection
+        Create:
+            Default: false
+            Permission: litecommandeditor.command.itemcollection.create
+        Delete:
+            Default: false
+            Permission: litecommandeditor.command.itemcollection.delete
+        List:
+            Default: false
+            Permission: litecommandeditor.command.itemcollection.list
+        Give:
+            Default: false
+            Permission: litecommandeditor.command.itemcollection.give
+    Tools:
+        Default: false
+        Permission: litecommandeditor.command.tools
+        Placeholder:
+            Default: false
+            Permission: litecommandeditor.command.tools.placeholder
+        Configurator:
+            Default: false
+            Permission: litecommandeditor.command.tools.configurator
+        List-Names:
+            Default: false
+            Permission: litecommandeditor.command.tools.listnames
+        Update-Item-Display-Name:
+            Default: false
+            Permission: litecommandeditor.command.tools.updateitemdisplayname
+    List:
+        Default: false
+        Permission: litecommandeditor.command.list
+    List-All:
+        Default: false
+        Permission: litecommandeditor.command.listall

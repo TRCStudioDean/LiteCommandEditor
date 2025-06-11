@@ -1,0 +1,1392 @@
+Simplified-Chinese:
+    'Tools UpdateItemDisplayName':
+        Placeholder: '%litecommandeditor_command_tools_updateItemDisplayName%'
+        Text: '&a/litecommandeditor &6tools &cupdateItemDisplayName [语言代码] [路径]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools updateItemDisplayName '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b更新所有物品的显示名'
+            - '&b使用方法 &a/litecommandeditor &6tools &cupdateItemDisplayName [语言代码] [路径]'
+    'Tools UpdateItemDisplayName Confirm':
+        Placeholder: '%litecommandeditor_command_tools_updateItemDisplayName_confirm%'
+        Text: '&a/litecommandeditor &6tools &cupdateItemDisplayName {arguments}'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools updateItemDisplayName {arguments}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击填充命令'
+    'Tools ListNames':
+        Placeholder: '%litecommandeditor_command_tools_listNames%'
+        Text: '&a/litecommandeditor &6tools &clistNames [类型] &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询某个类型(例如声音)的枚举常量名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames [类型] &7[关键词]'
+    'Tools ListNames Result':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result%'
+        Text: '&2result &7[页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames result '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看上一次查询的结果'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames result &7[页数]'
+    'Tools ListNames Sound':
+        Placeholder: '%litecommandeditor_command_tools_listNames_sound%'
+        Text: '&2sound &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames sound '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询声音名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames sound &7[关键词]'
+    'Tools ListNames TreeType':
+        Placeholder: '%litecommandeditor_command_tools_listNames_treetype%'
+        Text: '&2treetype &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames treetype '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询树的类型名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames treetype &7[关键词]'
+    'Tools ListNames Effect':
+        Placeholder: '%litecommandeditor_command_tools_listNames_effect%'
+        Text: '&2effect &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames effect '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询效果名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames effect &7[关键词]'
+    'Tools ListNames Biome':
+        Placeholder: '%litecommandeditor_command_tools_listNames_biome%'
+        Text: '&2biome &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames biome '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询生物群系名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames biome &7[关键词]'
+    'Tools ListNames GameRule':
+        Placeholder: '%litecommandeditor_command_tools_listNames_gamerule%'
+        Text: '&2gamerule &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames gamerule '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询游戏规则名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames gamerule &7[关键词]'
+    'Tools ListNames EntityType':
+        Placeholder: '%litecommandeditor_command_tools_listNames_entitytype%'
+        Text: '&2entitytype &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames entitytype '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询实体类型名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames entitytype &7[关键词]'
+    'Tools ListNames Particle':
+        Placeholder: '%litecommandeditor_command_tools_listNames_particle%'
+        Text: '&2particle &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames particle '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询粒子效果名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames particle &7[关键词]'
+    'Tools ListNames Item':
+        Placeholder: '%litecommandeditor_command_tools_listNames_item%'
+        Text: '&2item &7[关键词]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames item '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查询物品名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames item &7[关键词]'
+    'Tools ListNames Result Line':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_line%'
+        Text: '{name} &7[&e&n点击复制&7]'
+        ClickEvent:
+            Action: COPY_TO_CLIPBOARD
+            Value: '{element}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击复制: &e{element}'
+    'Tools ListNames Result NextPage':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools listNames result {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'Tools ListNames Result PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools listNames result {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'Tools Placeholder':
+        Placeholder: '%litecommandeditor_command_tools_placeholder%'
+        Text: '&a/litecommandeditor &6tools &cplaceholder'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b管理占位符(包括全局占位符)'
+    'Tools Placeholder List':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list%'
+        Text: '&2list &7[页数]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出所有全局占位符'
+            - '&b使用方法 &a/litecommandeditor &6tools &cplaceholder &2list &7[页数]'
+    'Tools Placeholder Add':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_add%'
+        Text: '&2add [占位符] [值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools placeholder add '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b添加新的全局占位符'
+            - '&b使用方法 &a/litecommandeditor &6tools &cplaceholder &2add [占位符] [值]'
+    'Tools Placeholder Remove':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_remove%'
+        Text: '&2remove [占位符]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools placeholder remove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b移除全局占位符'
+            - '&b使用方法 &a/litecommandeditor &6tools &cplaceholder &2remove [占位符]'
+    'Tools Placeholder List NextPage':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'Tools Placeholder List PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'Tools Configurator':
+        Placeholder: '%litecommandeditor_command_tools_configurator%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b配置器操作(包括管理配置表等功能)'
+    'Tools Configurator Create':
+        Placeholder: '%litecommandeditor_command_tools_configurator_create%'
+        Text: '&2create [配置表名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator create '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b创建新的配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2create [配置表名字]'
+    'Tools Configurator Use':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use%'
+        Text: '&2use [配置表] [操作]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b使用(操作)配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] [操作]'
+    'Tools Configurator Use Set':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_set%'
+        Text: '&2set [路径] [值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] set '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b在指定路径存入一个值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] set [路径] [值]'
+    'Tools Configurator Use Remove':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_remove%'
+        Text: '&2remove [路径]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] remove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b删除指定路径的值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] remove [路径]'
+    'Tools Configurator Use ListAdd':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listadd%'
+        Text: '&2listadd [路径] [值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] listadd '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b向指定路径的列表中添加一个值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] listadd [路径] [值]'
+    'Tools Configurator Use ListSet':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listset%'
+        Text: '&2listset [路径] [索引] [值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] listset '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b修改指定路径中的列表中第N个元素的值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] listset [路径] [索引] [值]'
+    'Tools Configurator Use ListRemove':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listremove%'
+        Text: '&2listremove [路径] [索引]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] listremove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b删除指定路径中的列表中第N个元素的值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] listremove [路径] [索引]'
+    'Tools Configurator Use ListClear':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listclear%'
+        Text: '&2listclear [路径]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] listclear '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b清空指定路径中的列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] listclear [路径]'
+    'Tools Configurator Delete':
+        Placeholder: '%litecommandeditor_command_tools_configurator_delete%'
+        Text: '&2delete [配置表]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b删除指定的配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2delete [配置表]'
+    'Tools Configurator Load':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load%'
+        Text: '&2load [类型] [配置表] [参数值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b加载配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2load [类型] [配置表] [参数值]'
+    'Tools Configurator Load Text':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load_text%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator &2load text [配置表] [JSON文本]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load text '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b加载指定文本的配置表'
+    'Tools Configurator Load File':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load_file%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator &2load file [配置表] [文件路径]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load file '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b从本地文件加载配置表'
+    'Tools Configurator Save':
+        Placeholder: '%litecommandeditor_command_tools_configurator_save%'
+        Text: '&2save [配置表] [YAML/JSON] [文件路径]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b保存配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2save [配置表] [YAML/JSON] [文件路径]'
+    'Tools Configurator List':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list%'
+        Text: '&2list [页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出所有配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2list [页数]'
+    'Tools Configurator List NextPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'Tools Configurator List PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'Tools Configurator List View':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_view%'
+        Text: '&7[&c点击查看视图&7]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {tableName}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击查看配置表 &e{tableName} &5的视图'
+    'Tools Configurator View':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view%'
+        Text: '&2view [配置表] [页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator view '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看一个配置表的视图'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2view [配置表] [页数]'
+    'Tools Configurator View NextPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'Tools Configurator View PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+Traditional-Chinese:
+    'Tools UpdateItemDisplayName':
+        Placeholder: '%litecommandeditor_command_tools_updateItemDisplayName%'
+        Text: '&a/litecommandeditor &6tools &cupdateItemDisplayName [語言程式碼] [路徑]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools updateItemDisplayName '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b更新所有物品的顯示名'
+            - '&b使用方法 &a/litecommandeditor &6tools &cupdateItemDisplayName [語言程式碼] [路徑]'
+    'Tools UpdateItemDisplayName Confirm':
+        Placeholder: '%litecommandeditor_command_tools_updateItemDisplayName_confirm%'
+        Text: '&a/litecommandeditor &6tools &cupdateItemDisplayName {arguments}'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools updateItemDisplayName {arguments}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點選填充命令'
+    'Tools ListNames':
+        Placeholder: '%litecommandeditor_command_tools_listNames%'
+        Text: '&a/litecommandeditor &6tools &clistNames [型別] &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values:
+            - '&b列出或查詢某個型別(例如聲音)的枚舉常數名字清單'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames [類型] &7[關鍵字]'
+    'Tools ListNames Result':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result%'
+        Text: '&2result &7[頁數]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames result '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看上一次查詢的結果'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames result &7[頁數]'
+    'Tools ListNames Sound':
+        Placeholder: '%litecommandeditor_command_tools_listNames_sound%'
+        Text: '&2sound &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames sound '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查詢聲音名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames sound &7[關鍵字]'
+    'Tools ListNames TreeType':
+        Placeholder: '%litecommandeditor_command_tools_listNames_treetype%'
+        Text: '&2treetype &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames treetype '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查詢樹的類型名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames treetype &7[關鍵字]'
+    'Tools ListNames Effect':
+        Placeholder: '%litecommandeditor_command_tools_listNames_effect%'
+        Text: '&2effect &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames effect '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查詢效果名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames effect &7[關鍵字]'
+    'Tools ListNames Biome':
+        Placeholder: '%litecommandeditor_command_tools_listNames_biome%'
+        Text: '&2biome &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames biome '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查詢生物群系名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames biome &7[關鍵字]'
+    'Tools ListNames GameRule':
+        Placeholder: '%litecommandeditor_command_tools_listNames_gamerule%'
+        Text: '&2gamerule &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames gamerule '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查詢遊戲規則名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames gamerule &7[關鍵字]'
+    'Tools ListNames EntityType':
+        Placeholder: '%litecommandeditor_command_tools_listNames_entitytype%'
+        Text: '&2entitytype &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames entitytype '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查詢實體類型名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames entitytype &7[關鍵字]'
+    'Tools ListNames Particle':
+        Placeholder: '%litecommandeditor_command_tools_listNames_particle%'
+        Text: '&2particle &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames particle '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查詢粒子效果名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames particle &7[關鍵字]'
+    'Tools ListNames Item':
+        Placeholder: '%litecommandeditor_command_tools_listNames_item%'
+        Text: '&2item &7[關鍵字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames item '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出或查詢物品名字列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &clistNames item &7[關鍵字]'
+    'Tools ListNames Result Line':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_line%'
+        Text: '{name} &7[&e&n点击复制&7]'
+        ClickEvent:
+            Action: COPY_TO_CLIPBOARD
+            Value: '{element}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點選複製: &e{element}'
+    'Tools ListNames Result NextPage':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_next%'
+        Text: '&b&l下一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools listNames result {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values:
+            - '&5點選前往下一頁'
+            - '&7目前頁數: &e{page}'
+            - '&7下一頁: &e{nextPage}'
+    'Tools ListNames Result PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_previous%'
+        Text: '&b&l上一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools listNames result {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點選前往上一頁'
+            - '&7目前頁數: &e{page}'
+            - '&7上一頁: &e{previousPage}'
+    'Tools Placeholder':
+        Placeholder: '%litecommandeditor_command_tools_placeholder%'
+        Text: '&a/litecommandeditor &6tools &cplaceholder'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b管理佔位符(包括全域佔位符)'
+    'Tools Placeholder List':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list%'
+        Text: '&2list &7[頁數]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出所有全域佔位符'
+            - '&b使用方法 &a/litecommandeditor &6tools &cplaceholder &2list &7[頁數]'
+    'Tools Placeholder Add':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_add%'
+        Text: '&2add [佔位符] [值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools placeholder add '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b添加新的全域佔位符'
+            - '&b使用方法 &a/litecommandeditor &6tools &cplaceholder &2add [佔位符] [值]'
+    'Tools Placeholder Remove':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_remove%'
+        Text: '&2remove [佔位符]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools placeholder remove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b移除全域佔位符'
+            - '&b使用方法 &a/litecommandeditor &6tools &cplaceholder &2remove [佔位符]'
+    'Tools Placeholder List NextPage':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list_next%'
+        Text: '&b&l下一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到下一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7下一頁: &e{nextPage}'
+    'Tools Placeholder List PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list_previous%'
+        Text: '&b&l上一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到上一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7上一頁: &e{previousPage}'
+    'Tools Configurator':
+        Placeholder: '%litecommandeditor_command_tools_configurator%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b配置器操作(包括管理配置表等功能)'
+    'Tools Configurator Create':
+        Placeholder: '%litecommandeditor_command_tools_configurator_create%'
+        Text: '&2create [配置表名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator create '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b創建新的配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2create [配置表名字]'
+    'Tools Configurator Use':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use%'
+        Text: '&2use [配置表] [操作]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b使用(操作)配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] [操作]'
+    'Tools Configurator Use Set':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_set%'
+        Text: '&2set [路徑] [值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] set '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b在指定路徑存入一個值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] set [路徑] [值]'
+    'Tools Configurator Use Remove':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_remove%'
+        Text: '&2remove [路徑]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] remove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b刪除指定路徑的值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] remove [路徑]'
+    'Tools Configurator Use ListAdd':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listadd%'
+        Text: '&2listadd [路徑] [值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] listadd '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b向指定路徑的列表中添加一個值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] listadd [路徑] [值]'
+    'Tools Configurator Use ListSet':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listset%'
+        Text: '&2listset [路徑] [索引] [值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] listset '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b修改指定路徑中的列表中第N個元素的值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] listset [路徑] [索引] [值]'
+    'Tools Configurator Use ListRemove':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listremove%'
+        Text: '&2listremove [路徑] [索引]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] listremove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b刪除指定路徑中的列表中第N個元素的值'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] listremove [路徑] [索引]'
+    'Tools Configurator Use ListClear':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listclear%'
+        Text: '&2listclear [路徑]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [配置表] listclear '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b清空指定路徑中的列表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2use [配置表] listclear [路徑]'
+    'Tools Configurator Delete':
+        Placeholder: '%litecommandeditor_command_tools_configurator_delete%'
+        Text: '&2delete [配置表]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b刪除指定的配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2delete [配置表]'
+    'Tools Configurator Load':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load%'
+        Text: '&2load [類型] [配置表] [參數值]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b加載配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2load [類型] [配置表] [參數值]'
+    'Tools Configurator Load Text':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load_text%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator &2load text [配置表] [JSON文本]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load text '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b加載指定文本的配置表'
+    'Tools Configurator Load File':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load_file%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator &2load file [配置表] [文件路徑]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load file '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b從本地文件加載配置表'
+    'Tools Configurator Save':
+        Placeholder: '%litecommandeditor_command_tools_configurator_save%'
+        Text: '&2save [配置表] [YAML/JSON] [文件路徑]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b保存配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2save [配置表] [YAML/JSON] [文件路徑]'
+    'Tools Configurator List':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list%'
+        Text: '&2list [頁數]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出所有配置表'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2list [頁數]'
+    'Tools Configurator List NextPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_next%'
+        Text: '&b&l下一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到下一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7下一頁: &e{nextPage}'
+    'Tools Configurator List PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_previous%'
+        Text: '&b&l上一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到上一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7上一頁: &e{previousPage}'
+    'Tools Configurator List View':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_view%'
+        Text: '&7[&c點擊查看視圖&7]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {tableName}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊查看配置表 &e{tableName} &5的視圖'
+    'Tools Configurator View':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view%'
+        Text: '&2view [配置表] [頁數]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator view '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看一個配置表的視圖'
+            - '&b使用方法 &a/litecommandeditor &6tools &cconfigurator &2view [配置表] [頁數]'
+    'Tools Configurator View NextPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view_next%'
+        Text: '&b&l下一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到下一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7下一頁: &e{nextPage}'
+    'Tools Configurator View PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view_previous%'
+        Text: '&b&l上一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到上一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7上一頁: &e{previousPage}'
+English:
+    'Tools UpdateItemDisplayName':
+        Placeholder: '%litecommandeditor_command_tools_updateItemDisplayName%'
+        Text: '&a/litecommandeditor &6tools &cupdateItemDisplayName [LanguageCode] [Path]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools updateItemDisplayName '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bUpdate the display names of all items'
+            - '&bUsage: &a/litecommandeditor &6tools &cupdateItemDisplayName [LanguageCode] [Path]'
+    'Tools UpdateItemDisplayName Confirm':
+        Placeholder: '%litecommandeditor_command_tools_updateItemDisplayName_confirm%'
+        Text: '&a/litecommandeditor &6tools &cupdateItemDisplayName {arguments}'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools updateItemDisplayName {arguments}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to fill'
+    'Tools ListNames':
+        Placeholder: '%litecommandeditor_command_tools_listNames%'
+        Text: '&a/litecommandeditor &6tools &clistNames [Type] &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query a list of enumerated constant names for a certain type (such as sound)'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames [Type] &7[Keyword]'
+    'Tools ListNames Result':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result%'
+        Text: '&2result &7[Page]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames result '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bView the results of the previous query'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames result &7[Page]'
+    'Tools ListNames Sound':
+        Placeholder: '%litecommandeditor_command_tools_listNames_sound%'
+        Text: '&2sound &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames sound '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query a list of sound names'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames sound &7[Keyword]'
+    'Tools ListNames TreeType':
+        Placeholder: '%litecommandeditor_command_tools_listNames_treetype%'
+        Text: '&2treetype &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames treetype '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query a list of tree type names'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames treetype &7[Keyword]'
+    'Tools ListNames Effect':
+        Placeholder: '%litecommandeditor_command_tools_listNames_effect%'
+        Text: '&2effect &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames effect '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query the list of effect names'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames effect &7[Keyword]'
+    'Tools ListNames Biome':
+        Placeholder: '%litecommandeditor_command_tools_listNames_biome%'
+        Text: '&2biome &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames biome '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query a list of biome names'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames biome &7[Keyword]'
+    'Tools ListNames GameRule':
+        Placeholder: '%litecommandeditor_command_tools_listNames_gamerule%'
+        Text: '&2gamerule &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames gamerule '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query the name list of game rules'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames gamerule &7[Keyword]'
+    'Tools ListNames EntityType':
+        Placeholder: '%litecommandeditor_command_tools_listNames_entitytype%'
+        Text: '&2entitytype &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames entitytype '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query entity type name list'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames entitytype &7[Keyword]'
+    'Tools ListNames Particle':
+        Placeholder: '%litecommandeditor_command_tools_listNames_particle%'
+        Text: '&2particle &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames particle '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query a list of particle effect names'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames particle &7[Keyword]'
+    'Tools ListNames Item':
+        Placeholder: '%litecommandeditor_command_tools_listNames_item%'
+        Text: '&2item &7[Keyword]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools listNames item '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList or query a list of item names'
+            - '&bUsage: &a/litecommandeditor &6tools &clistNames item &7[Keyword]'
+    'Tools ListNames Result Line':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_line%'
+        Text: '{name} &7[&e&nCOPY&7]'
+        ClickEvent:
+            Action: COPY_TO_CLIPBOARD
+            Value: '{element}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to copy to clipboard: &e{element}'
+    'Tools ListNames Result NextPage':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_next%'
+        Text: '&b&lNext Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools listNames result {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to next page'
+            - '&7Now page: &e{page}'
+            - '&7Next page: &e{nextPage}'
+    'Tools ListNames Result PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_listNames_result_previous%'
+        Text: '&b&lPrevious Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools listNames result {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to previous page'
+            - '&7Now page: &e{page}'
+            - '&7Previous page: &e{previousPage}'
+    'Tools Placeholder':
+        Placeholder: '%litecommandeditor_command_tools_placeholder%'
+        Text: '&a/litecommandeditor &6tools &cplaceholder'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bManage placeholders'
+    'Tools Placeholder List':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list%'
+        Text: '&2list &7[Page]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList all global placeholders'
+            - '&bUsage &a/litecommandeditor &6tools &cplaceholder &2list &7[Page]'
+    'Tools Placeholder Add':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_add%'
+        Text: '&2add [Placeholder] [Value]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools placeholder add '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bAdd new global placeholder'
+            - '&bUsage &a/litecommandeditor &6tools &cplaceholder &2add [Placeholder] [Value]'
+    'Tools Placeholder Remove':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_remove%'
+        Text: '&2remove [Placeholder]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools placeholder remove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bRemove global placeholder'
+            - '&bUsage &a/litecommandeditor &6tools &cplaceholder &2remove [Placeholder]'
+    'Tools Placeholder List NextPage':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list_next%'
+        Text: '&b&lNext Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to next page'
+            - '&7Current page: &e{page}'
+            - '&7Next page: &e{nextPage}'
+    'Tools Placeholder List PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_placeholder_list_previous%'
+        Text: '&b&lPrevious Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools placeholder list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to previous page'
+            - '&7Current page: &e{page}'
+            - '&7Previous page: &e{previousPage}'
+    'Tools Configurator':
+        Placeholder: '%litecommandeditor_command_tools_configurator%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bConfigurator operations (including configuration table management)'
+    'Tools Configurator Create':
+        Placeholder: '%litecommandeditor_command_tools_configurator_create%'
+        Text: '&2create [TableName]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator create '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bCreate new configuration table'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2create [TableName]'
+    'Tools Configurator Use':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use%'
+        Text: '&2use [TableName] [Operation]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bUse (operate) configuration table'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2use [TableName] [Operation]'
+    'Tools Configurator Use Set':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_set%'
+        Text: '&2set [Path] [Value]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [TableName] set '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bSet a value at specified path'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2use [TableName] set [Path] [Value]'
+    'Tools Configurator Use Remove':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_remove%'
+        Text: '&2remove [Path]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [TableName] remove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bRemove value at specified path'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2use [TableName] remove [Path]'
+    'Tools Configurator Use ListAdd':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listadd%'
+        Text: '&2listadd [Path] [Value]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [TableName] listadd '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bAdd a value to list at specified path'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2use [TableName] listadd [Path] [Value]'
+    'Tools Configurator Use ListSet':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listset%'
+        Text: '&2listset [Path] [Index] [Value]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [TableName] listset '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bModify the Nth element in list at specified path'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2use [TableName] listset [Path] [Index] [Value]'
+    'Tools Configurator Use ListRemove':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listremove%'
+        Text: '&2listremove [Path] [Index]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [TableName] listremove '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bRemove the Nth element in list at specified path'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2use [TableName] listremove [Path] [Index]'
+    'Tools Configurator Use ListClear':
+        Placeholder: '%litecommandeditor_command_tools_configurator_use_listclear%'
+        Text: '&2listclear [Path]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator use [TableName] listclear '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bClear list at specified path'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2use [TableName] listclear [Path]'
+    'Tools Configurator Delete':
+        Placeholder: '%litecommandeditor_command_tools_configurator_delete%'
+        Text: '&2delete [TableName]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bDelete specified configuration table'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2delete [TableName]'
+    'Tools Configurator Load':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load%'
+        Text: '&2load [Type] [TableName] [Parameter]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bLoad configuration table'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2load [Type] [TableName] [Parameter]'
+    'Tools Configurator Load Text':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load_text%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator &2load text [TableName] [JSON text]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load text '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bLoad configuration table from specified text'
+    'Tools Configurator Load File':
+        Placeholder: '%litecommandeditor_command_tools_configurator_load_file%'
+        Text: '&a/litecommandeditor &6tools &cconfigurator &2load file [TableName] [File]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load file '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bLoad configuration table from local file'
+    'Tools Configurator Save':
+        Placeholder: '%litecommandeditor_command_tools_configurator_save%'
+        Text: '&2save [TableName] [YAML/JSON] [File]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator load '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bSave configuration table'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2save [TableName] [YAML/JSON] [File]'
+    'Tools Configurator List':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list%'
+        Text: '&2list [Page]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList all configuration tables'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2list [Page]'
+    'Tools Configurator List NextPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_next%'
+        Text: '&b&lNext Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to next page'
+            - '&7Current page: &e{page}'
+            - '&7Next page: &e{nextPage}'
+    'Tools Configurator List PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_previous%'
+        Text: '&b&lPrevious Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to previous page'
+            - '&7Current page: &e{page}'
+            - '&7Previous page: &e{previousPage}'
+    'Tools Configurator List View':
+        Placeholder: '%litecommandeditor_command_tools_configurator_list_view%'
+        Text: '&7[&cView&7]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {tableName}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to view configuration table &e{tableName}'
+    'Tools Configurator View':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view%'
+        Text: '&2view [TableName] [Page]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor tools configurator view '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bView configuration table'
+            - '&bUsage &a/litecommandeditor &6tools &cconfigurator &2view [TableName] [Page]'
+    'Tools Configurator View NextPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view_next%'
+        Text: '&b&lNext Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to next page'
+            - '&7Current page: &e{page}'
+            - '&7Next page: &e{nextPage}'
+    'Tools Configurator View PreviousPage':
+        Placeholder: '%litecommandeditor_command_tools_configurator_view_previous%'
+        Text: '&b&lPrevious Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor tools configurator view {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to previous page'
+            - '&7Current page: &e{page}'
+            - '&7Previous page: &e{previousPage}'

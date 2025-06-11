@@ -1,0 +1,21 @@
+#Command aliases
+#This option can be used to enable the use of aliases for some commands
+#Format: 
+#   [Alias]: [Original]
+#   [Prefix]:[Alias]: [Original]
+#If no prefix is filled in, the default prefix is "litecommandeditor".
+#You can freely add new command aliases in this format
+#Note: It is recommended to restart the server after changing the settings
+Aliases:
+    #/litecommandeditor reload -> /lcereload
+    "lcereload": "litecommandeditor reload"
+    #/litecommandeditor info -> /lceinfo
+    "lceinfo": "litecommandeditor info"
+    #/litecommandeditor load -> /lceload
+    "lceload": "litecommandeditor load"
+    #/litecommandeditor unload -> /lceunload
+    "lceunload": "litecommandeditor unload"
+    #/litecommandeditor list -> /lcelist
+    "lcelist": "litecommandeditor list"
+    #/litecommandeditor listall -> /lcelistall
+    "lcelistall": "litecommandeditor listall"

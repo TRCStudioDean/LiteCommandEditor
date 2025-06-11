@@ -1,0 +1,1189 @@
+Simplified-Chinese:
+    Prefix: '&b轻量&3命令&9编辑器 &f&l>>> '
+    Language-Name: '简体中文'
+    No-Permission: '{prefix}&c你没有这么做的权限!'
+    Player-Only: '{prefix}&c控制台不能使用这个命令.'
+    Not-A-Number: '{prefix}&c参数 &e{number} &c不是一个&l有效的&c数字， 请检查你的命令参数或数字是否符合操作执行的&l需求&c！'
+    Player-Not-Exist: '{prefix}&c玩家 &e{player} &c不存在！'
+    Repaired-Config-Section: '{prefix}&c插件无法获取配置文件 &e{config} &c路径 &7{path}&c, 已通过获取默认配置文件进行修复.'
+    Cooldown-Of-Command: '{prefix}&c请等待 &e{second} &c秒后再使用这个命令。'
+    No-Permission-For-Alias-Command: '{prefix}&e无法使用这个命令别名 &7(&aLiteCommandEditor &7-> &a命令别名功能 &7-> &c目标命令&7) &e缺少相关权限: &6{permission}'
+    No-Item-Display-List:Language-Code-Exist: '{prefix}&e当前语言没有可用的物品显示名列表，你可以使用命令进行下载: %litecommandeditor_command_tools_updateItemDisplayName_confirm% &7<---点击填充'
+    No-Item-Display-List:Language-Code-Not-Exist: '{prefix}&e当前语言没有可用的物品显示名列表，你可以使用命令选择你需要的语言进行下载: %litecommandeditor_command_tools_updateItemDisplayName% &7<---点击填充'
+    Debug-Record-Format:
+        Command: 'command:{sender}:{record}'
+        Tab: 'tab:{sender}:{record}'
+    Information-Type:
+        'Yes': '&a&l是'
+        'No': '&c&l否'
+        'None': '&d&l无'
+        Unknown: '未知'
+    Function-Messages:
+        Functions-Type:
+            Player: '玩家函数'
+            World: '世界函数'
+            Server: '服务器函数'
+            Configurator: '配置器函数'
+        Unknown-Function: '{prefix}&c未知的{functionType}名称: &e{functionName}。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Unknown-Player-Name: '{prefix}&c找不到玩家 &e{playerName} &c。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Unknown-World-Name: '{prefix}&c找不到世界 &e{worldName} &c。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Unknown-Table-Name: '{prefix}&c找不到配置表 &e{tableName} &c。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Unknown-File-Name: '{prefix}&c找不到文件 &e{fileName} &c。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Incorrect-Format:Text: '{prefix}&c无法加载文本 &6{text} &c到配置表中，格式不正确。&7（需要为JSON格式） &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Incorrect-Format:File: '{prefix}&c无法加载文件 &6{file} &c到配置表中，格式不正确。&7（需要为JSON或YAML格式） &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Incorrect-Parameters: '{prefix}&c{functionType}的参数 &e{functionName}:&6&n{parameters}&c 不正确。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+    Condition-Messages:
+        Conditions-Type:
+            Item: '物品'
+            Permission: '权限'
+            Player: '玩家'
+            World: '世界'
+            Server: '服务器'
+            Number: '数字'
+            Regular-Expression: '正则'
+        Unknown-Condition: '{prefix}&c未知的{conditionType}条件: &e{expression}。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Unknown-Player-Name: '{prefix}&c找不到玩家 &e{playerName} &c。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Unknown-World-Name: '{prefix}&c找不到世界 &e{worldName} &c。 &c请检查配置文件设置: &b{fileName} &e-> &b{configPath} &7(如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置)'
+        Incorrect-Parameters: '{prefix}&c{conditionType}条件表达式有误: &e{expression}:&6&n{parameters}&c , 配置文件路径: &b{fileName} &e-> &b{configPath}. &c请检查条件设置中是否存在&e多余的冒号 &7（如果希望关闭此提示，请在这个函数的配置文件路径下添加“No-Function-Reminder: true”设置；如果是表达式中使用了冒号，请使用反斜杠进行转义，像这样 \: ）'
+    Command-Messages:
+        Unknown-Command: '{prefix}&c未知命令, 使用 %litecommandeditor_command_help% &c查看帮助'
+        Help:
+        - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        - '  &f&l▶ %litecommandeditor_command_help% &b&l| &c查看插件帮助'
+        - '  &f&l▶ %litecommandeditor_command_reload% &b&l| &c重载插件设置'
+        - '  &f&l▶ %litecommandeditor_command_info% &b&l| &c查看某个命令的信息'
+        - '  &f&l▶ %litecommandeditor_command_load% &b&l| &c加载某个命令配置文件'
+        - '  &f&l▶ %litecommandeditor_command_unload% &b&l| &c卸载某个命令配置文件'
+        - '  &f&l▶ %litecommandeditor_command_delete% &b&l| &c删除某个命令'
+        - '  &f&l▶ %litecommandeditor_command_itemcollection% &b&l| &c管理命令配置文件的物品收藏夹'
+        - '  &f&l▶ %litecommandeditor_command_debug% &b&l| &c调试模式综合命令'
+        - '  &f&l▶ %litecommandeditor_command_list% &b&l| &c列出所有由本插件加载的命令'
+        - '  &f&l▶ %litecommandeditor_command_listall% &b&l| &c列出本服务器所有已启用的命令'
+        - '  &f&l▶ %litecommandeditor_command_tools% &b&l| &c插件的工具命令'
+        - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        Reload: '{prefix}&a已重载配置文件。'
+        Info:
+            Usage: '{prefix}&c使用方法: %litecommandeditor_command_info%'
+            Unknown: '{prefix}&c你所指定的命令 &e{command} &c不存在， 请使用 %litecommandeditor_command_list% &c查看所有命令。'
+            Informations:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &c# &a命令名字: &6{command}'
+            - '  &c# &a命令来源: &9{source}'
+            - '  &c# &a命令前缀: &3{prefix}'
+            - '  &c# &a配置文件: &2{fileName}'
+            - '  &c# &a命令权限: &c{permission}'
+            - '  &c# &a命令说明: &7{description}'
+            - '  &c# &a使用方法: &f{usage}'
+            - '  &c# &a命令填充: %litecommandeditor_command_info_click%'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        Load:
+            Usage: '{prefix}&c使用方法: %litecommandeditor_command_load%'
+            Not-Exist: '{prefix}&c你所指定的命令配置文件 &e{command} &c不存在于LiteCommandEditor/Commands文件夹中！'
+            Loading-Failed: '{prefix}&c你所指定的命令配置文件 &e{command} &c无法加载， 存在YAML文件格式错误， 请进行排查！'
+            Missing-Required-Options: '{prefix}&c你所指定的命令配置文件 &e{command} &c无法加载， 缺少必要选项: &aName: [命令名字]'
+            Successful: '{prefix}&a成功加载命令配置文件: &b{fileName}'
+        Unload:
+            Usage: '{prefix}&c使用方法: %litecommandeditor_command_unload%'
+            Not-Exist: '{prefix}&c你所指定的命令配置文件 &e{command} &c不存在/未加载。'
+            Successful: '{prefix}&a成功卸载命令配置文件: &b{fileName}'
+        Delete:
+            Usage: 
+            - '{prefix}&c使用方法: %litecommandeditor_command_delete%'
+            - '&c&l注意: &f删除后，命令将无法使用（命令将不存在），直到下次重启服务器才会重新判断。删除其他插件的命令可能会发生严重的后果，谨慎使用！'
+            Not-Exist: '{prefix}&c你所指定的命令 &e{command} &c不存在。'
+            Successful: '{prefix}&a成功删除命令: &b{command}'
+        Item-Collection:
+            Not-Exist: '{prefix}&c你所指定的命令配置文件 &e{command} &c不存在/未加载。'
+            Help: 
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_list% &b&l| &c列出某个命令的物品收藏夹'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_create% &b&l| &c将手上的物品添加到指定的收藏夹'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_delete% &b&l| &c删除指定的收藏夹中的物品'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_give% &b&l| &c将指定的收藏夹物品给予玩家'
+                - ''
+                - '  &c&l说明: &f物品收藏夹功能能够将一些包含复杂的NBT的物品序列化并添加至配置文件中，'
+                - '  &f你可以在配置文件中涉及到物品相关的设置里通过物品在收藏夹中的名字直接引用。'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            List:
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_itemcollection_list%'
+                Empty: '{prefix}&a命令配置文件 &e{command} &a的物品收藏夹是空的。'
+                Number-Of-Single-Page: 9
+                List:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &a收藏夹物品 &e&l{total} &a个 &c&l| &a当前页数 &6&l{page}&7/&6&l{maxPage} &a页'
+                - '  &c# &8&l[&a&l{number}&8&l]&r %item% &6&l- %litecommandeditor_command_itemcollection_list_give% !list!'
+                - '  &a<<< %litecommandeditor_command_itemcollection_list_previous% &c&l| %litecommandeditor_command_itemcollection_list_next% &a>>>'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Create:
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_itemcollection_create%'
+                Doesnt-Have-Item-In-Hand: '{prefix}&c你需要将需要执行操作的物品拿在手上!'
+                Successfully: '{prefix}&a成功将你手上的物品 &r%item% &a名字: &e{name} &a添加到命令 &d{command} &a的物品收藏夹中.'
+                Already-Exist: '{prefix}&c命令 &d{command} &c的收藏夹中名字为 &e{name} &c的物品已存在!'
+            Delete:
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_itemcollection_delete%'
+                Successfully: '{prefix}&a成功将收藏夹物品: &e{name}&f(%item%)  &a从命令 &d{command} &a的物品收藏夹中删除.'
+                Not-Exist: '{prefix}&c命令 &d{command} &c的收藏夹中名字为 &e{name} &c的物品不存在! 请使用 %litecommandeditor_command_itemcollection_list% &c列出所有收藏夹物品！'
+            Give:
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_itemcollection_give%'
+                Gave-Self: '{prefix}&a已将物品 &r%item% &a名字: &e{name} &a给予自己。'
+                Gave-Others: '{prefix}&a已将物品 &r%item% &a名字: &e{name} &a给予玩家 &c{player} &a.'
+                Not-Exist: '{prefix}&c命令 &d{command} &c的收藏夹中名字为 &e{name} &c的物品不存在! 请使用 %litecommandeditor_command_itemcollection_list% &c列出所有收藏夹物品！'
+        Debug:
+            Help:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &f&l▶ %litecommandeditor_command_debug_switch% &b&l| &c切换调试模式'
+            - '  &f&l▶ %litecommandeditor_command_debug_view% &b&l| &c查看跟踪信息'
+            - '  &f&l▶ %litecommandeditor_command_debug_list% &b&l| &c列出当前所有调试信息'
+            - ''
+            - '  &c&l说明: &f启用调试模式后，所有自定义命令的函数执行将被取消，并在使用时对函数运行进行记录，'
+            - '  若使用命令的人有相关权限，将为其自动发送调试结果，反之仅作记录等待其他管理员进行查看。'
+            - '  &c&l注意: &f调试记录将在重载插件或重启服务器时被删除！'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Switch:
+                Switch-On: '{prefix}&e调试模式已&a开启&e，所有函数运行结果将被跟踪并记录，使用 %litecommandeditor_command_debug_list% &e以列出当前所有跟踪记录。'
+                Switch-Off: '{prefix}&e调试模式已&c关闭&e，所有函数已恢复正常运行。'
+            View:
+                Conditions-Type:
+                    Comparison: '比较'
+                    Item: '拥有物品'
+                    Permission: '拥有权限'
+                    Placeholder: '存在占位符'
+                    Player: '玩家属性'
+                    World: '世界属性'
+                    Server: '服务器属性'
+                    Number: '数字属性'
+                    Regular-Expression: '正则匹配'
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_debug_view%'
+                Not-Exist: '{prefix}&c你所指定的调试记录 &e{record} &c不存在，使用 %litecommandeditor_command_debug_list% &c以列出当前所有跟踪记录。'
+                Command-Executor-Report: '{prefix}&d{sender} &a执行了命令 &e{command} &a，使用 &c/litecommandeditor &6debug &2view {record} &a或 %litecommandeditor_command_debug_view_track% &a查看详细跟踪信息。'
+                Tab-Completer-Report: '{prefix}&d{sender} &a触发了命令 &e{command} &a的TAB填充，使用 &c/litecommandeditor &6debug &2view {record} &a或 %litecommandeditor_command_debug_view_track% &a查看详细跟踪信息。'
+                Command-Executor-Track: 
+                - '&c[Debug] &a执行函数: &9{fileName}: &b{configPath}'
+                - '        &f&l▶ &7条件 &6{type}:&2{condition} &7是否通过 {pass} !conditions!'
+                - '        &f&l▶ &7当前占位符列表: &e%placeholders%'
+                Tab-Completer-Track: 
+                - '&c[Debug] &a触发TAB补充: &9{fileName}: &b{configPath}'
+                - '        &f&l▶ &7条件 &6{type}:&2{condition} &7是否通过 {pass} !conditions!'
+                - '        &f&l▶ &7当前占位符列表: &e%placeholders%'
+            List:
+                Empty: '{prefix}&a当前没有任何记录。'
+                Number-Of-Single-Page: 9
+                List:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &a调试记录 &e&l{total} &c&l| &a当前页数 &6&l{page}&7/&6&l{maxPage} &a页'
+                - '  &c# &8&l[&a&l{number}&8&l]&r &6{record} &6&l- %litecommandeditor_command_debug_view_track% !list!'
+                - '  &a<<< %litecommandeditor_command_debug_list_previous% &c&l| %litecommandeditor_command_debug_list_next% &a>>>'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        List:
+            Empty: '{prefix}&a目前没有加载任何命令配置文件。'
+            Number-Of-Single-Page: 9
+            List:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &a已加载命令 &e&l{total} &a个 &c&l| &a当前页数 &6&l{page}&7/&6&l{maxPage} &a页'
+            - '  &c# &8&l[&a&l{number}&8&l]&r &6{command} &6&l- %litecommandeditor_command_list_commandInfo% !list!'
+            - '  &a<<< %litecommandeditor_command_list_previous% &c&l| %litecommandeditor_command_list_next% &a>>>'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        List-All:
+            Number-Of-Single-Page: 9
+            List: 
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &a命令总数 &e&l{total} &a个 &c&l| &a当前页数 &6&l{page}&7/&6&l{maxPage} &a页'
+            - '  &c# &8&l[&9&l{number}&8&l]&r &6{command}&8(&7{plugin}&8) &6&l- %litecommandeditor_command_list_commandInfo% !list!'
+            - '  &a<<< %litecommandeditor_command_listall_previous% &c&l| %litecommandeditor_command_listall_next% &a>>>'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        Tools:
+            Help:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &f&l▶ %litecommandeditor_command_tools_updateItemDisplayName% &b&l| &c更新所有物品的显示名'
+            - '  &f&l▶ %litecommandeditor_command_tools_listNames% &b&l| &c列出或查询某个类型(例如声音)的枚举常量名字列表'
+            - '  &f&l▶ %litecommandeditor_command_tools_placeholder% &b&l| &c管理占位符(包括全局占位符)'
+            - '  &f&l▶ %litecommandeditor_command_tools_configurator% &b&l| &c配置器操作(包括管理配置表等功能)'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Placeholder:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &c命令 &6/litecommandeditor tools placeholder &c使用帮助'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_list% &b&l| &c列出所有全局占位符'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_add% &b&l| &c添加新的全局占位符'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_remove% &b&l| &c移除全局占位符'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                List:
+                    Empty: '{prefix}&a当前没有任何全局占位符。'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &a全局占位符 &e&l{total} &a个 &c&l| &a当前页数 &6&l{page}&7/&6&l{maxPage} &a页'
+                    - '  &c# &8&l[&a&l{number}&8&l]&r &e{placeholder} &7-> &6{value} !list!'
+                    - '  &a<<< %litecommandeditor_command_tools_placeholder_list_previous% &c&l| %litecommandeditor_command_tools_placeholder_list_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Add:
+                    Usage: '{prefix}&c使用方法: %litecommandeditor_command_tools_placeholder_add%'
+                    Successfully: '{prefix}&a成功将 &b{placeholder} &7-> &e{value} &a添加到全局占位符列表中.'
+                    Already-Exist: '{prefix}&c名为 &b{placeholder} &c的占位符已存在！'
+                    Equivalent: '{prefix}&c占位符的名字不能和占位符的值相同！'
+                Remove:
+                    Usage: '{prefix}&c使用方法: %litecommandeditor_command_tools_placeholder_remove%'
+                    Successfully: '{prefix}&a成功将 &b{placeholder} &7-> &e{value} &a占位符从全局占位符中移除.'
+                    Not-Exist: '{prefix}&c名为 &b{placeholder} &c的占位符不存在！'
+            Configurator:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &c命令 &6/litecommandeditor tools configurator &c使用帮助'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_create% &b&l| &c创建新的配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_use% &b&l| &c使用(操作)配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_delete% &b&l| &c删除指定的配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_load% &b&l| &c加载配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_save% &b&l| &c保存配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_list% &b&l| &c列出所有配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_view% &b&l| &c查看一个配置表的视图'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Create:
+                    Usage: '{prefix}&c使用方法: %litecommandeditor_command_tools_configurator_create%'
+                    Successfully: '{prefix}&a成功创建了名为 &e{tableName} &a的配置表，你可以在命令配置文件中或者使用命令 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_use% &a来使用它了!'
+                    Already-Exist: '{prefix}&c名为 &e{tableName} &c的配置表已存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c来列出所有配置表.'
+                Use:
+                    Usage: 
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &c命令 &6/litecommandeditor tools configurator use &a[配置表名字] &c使用帮助'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_set% &b&l| &c在指定路径存入一个值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_remove% &b&l| &c删除指定路径的值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listadd% &b&l| &c向指定路径的列表中添加一个值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listset% &b&l| &c修改指定路径中的列表中第N个元素的值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listremove% &b&l| &c删除指定路径中的列表中第N个元素的值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listclear% &b&l| &c清空指定路径中的列表'
+                    - ''
+                    - '  &c&l说明: &f向配置表中存入 &2[值] &f时，可以包含占位符；'
+                    - '  &f默认为“文本”格式，如果是数字，则默认为“数字”格式。'
+                    - '  &f进行&a列表操作&f时，如果指定路径不是一个列表或不存在时，则将其变为一个列表。'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    Set:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_set%'
+                        Successfully: '{prefix}&a在配置表 &e{tableName} &a的 &b{path} &a路径下设置了一个值 &6{value} &a.'
+                    Remove:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_remove%'
+                        Successfully: '{prefix}&a成功移除了配置表 &e{tableName} &a的 &b{path} &a路径.'
+                    ListAdd:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listadd%'
+                        Successfully: '{prefix}&a在配置表 &e{tableName} &a的 &b{path} &a路径下的列表中添加了一个值 &6{value} &a.'
+                    ListSet:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listset%'
+                        Successfully: '{prefix}&a在配置表 &e{tableName} &a的 &b{path} &a路径下的列表中的第&e{index}&a个位置设置了一个值 &6{value} &a.'
+                    ListRemove:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listremove%'
+                        Successfully: '{prefix}&a成功移除了配置表 &e{tableName} &a的 &b{path} &a路径下的列表中的第&e{index}&a个位置的值&a.'
+                    ListClear:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listremove%'
+                        Successfully: '{prefix}&a成功清空了配置表 &e{tableName} &a的 &b{path} &a路径下的列表.'
+                    Not-Exist: '{prefix}&c名为 &e{tableName} &c的配置表不存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c来列出所有配置表.'
+                Delete:
+                    Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_delete%'
+                    Successfully: '{prefix}&a成功删除了名为 &e{tableName} &a的配置表。'
+                    Not-Exist: '{prefix}&c名为 &e{tableName} &c的配置表不存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c来列出所有配置表.'
+                Load:
+                    Usage: 
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_load_text% &b&l| &c加载指定文本的配置表'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_load_file% &b&l| &c从本地文件加载配置表'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    Successfully: '{prefix}&a成功加载了名为 &e{tableName} &a的配置表，使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_view% &a查看其视图'
+                    Failed:Text: '{prefix}&c无法加载配置表 &e{tableName} &c，提供的配置表文本中存在格式错误(必须为JSON格式): &7{text}'
+                    Failed:File: '{prefix}&c无法加载配置表 &e{tableName} &c，指定的文件 &6{file} &c不存在或无法被加载。'
+                    Failed:File-Format: '{prefix}&c无法加载配置表 &e{tableName} &c，指定的文件 &6{file} &c中的格式不正确。'
+                Save:
+                    Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_save%'
+                    Successfully: '{prefix}&a成功保存了名为 &e{tableName} &a的配置表到本地文件 &6{file} &a。'
+                    Failed: '{prefix}&c无法保存配置表 &e{tableName} &c，文件名、目录名或卷标语法不正确。'
+                    Not-Exist: '{prefix}&c名为 &e{tableName} &c的配置表不存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c来列出所有配置表.'
+                List:
+                    Empty: '{prefix}&a当前没有任何配置表。'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &a配置表 &9{total} &a个 &c&l| &a当前页数 &6&l{page}&7/&6&l{maxPage} &a页'
+                    - '  &c# &8&l[&a&l{number}&8&l]&r &e{tableName} &7- %litecommandeditor_command_tools_configurator_list_view% !list!'
+                    - '  &a<<< %litecommandeditor_command_tools_configurator_list_previous% &c&l| %litecommandeditor_command_tools_configurator_list_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                View:
+                    Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_view%'
+                    Empty: '{prefix}&a这个表是一个空表。'
+                    Not-Exist: '{prefix}&c名为 &e{tableName} &c的配置表不存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c来列出所有配置表.'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &a配置表 &9{tableName} &c&l| &a节点数 &e&l{total} &a个 &c&l| &a当前页数 &6&l{page}&7/&6&l{maxPage} &a页'
+                    - '  &c# &8&l[&a&l{number}&8&l]&r &e{path}&7: &6{value} !view!'
+                    - '  &a<<< %litecommandeditor_command_tools_configurator_view_previous% &c&l| %litecommandeditor_command_tools_configurator_view_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            List-Names:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &c命令 &6/litecommandeditor tools listNames &c使用帮助'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_result% &b&l| &9查看上一次查询的结果'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_sound% &b&l| &9列出或查询声音名字列表'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_treetype% &b&l| &9列出或查询树的类型名字列表'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_effect% &b&l| &9列出或查询效果名字列表'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_biome% &b&l| &9列出或查询生物群系名字列表'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_gamerule% &b&l| &9列出或查询游戏规则名字列表'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_entitytype% &b&l| &9列出或查询实体类型名字列表'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_particle% &b&l| &9列出或查询粒子效果名字列表'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_item% &b&l| &9列出或查询物品名字列表'
+                - ''
+                - '  &c&l说明： &7此命令用于列出与查询某个类型的枚举常量名字列表，'
+                - '  &7并支持复制到剪贴板，以辅助编辑自定义命令配置文件中的特殊选项。'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Not-Available: '{prefix}&c你所指定的{type}类型不存在，请使用 %litecommandeditor_command_tools_listNames% &c查看可用的类型。'
+                Not-Found: '{prefix}&c无法在{type}类型中找到任何匹配的枚举常量名字， 更换参数试试看？'
+                #关键词高亮
+                Keyword-Highlight:
+                    Enabled: true
+                    #关键词颜色
+                    Keyword-Color: '&6&n'
+                    #其它部分颜色
+                    Other-Color: '&6'
+                Types:
+                    Sound: '声音'
+                    TreeType: '树的类型'
+                    Effect: '效果'
+                    Biome: '生物群系'
+                    GameRule: '游戏规则'
+                    EntityType: '实体类型'
+                    Particle: '粒子效果'
+                    Item: '物品'
+                Result:
+                    No-Result: '{prefix}&c当前没有有效的搜索结果。'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &9类型 &d&l{type} &c&l| &a总数 &e&l{total} &c&l| &a当前页数 &6&l{page}&7/&6&l{maxPage} &a页'
+                    - '  &f&l▶ &8&l[&a&l{number}&8&l]&r %litecommandeditor_command_tools_listNames_result_line% !list!'
+                    - '  &a<<< %litecommandeditor_command_tools_listNames_result_previous% &c&l| %litecommandeditor_command_tools_listNames_result_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Update-Item-Display-Name:
+                Usage: 
+                - '{prefix}&a使用方法: %litecommandeditor_command_tools_updateItemDisplayName%'
+                - '若不填写语言代码，则将默认为当前插件所使用的语言所对应的语言代码 &7(仅限插件自带的语言有效，详见Config.yml的Language选项注释)'
+                - '参考语言代码缩写: &d美式英语 &7-> &een_us&7, &d简体中文 &7-> &ezh_cn&7, &d繁体中文 &7-> &ezh_tw'
+                - ''
+                - '&c&l说明&f: 物品显示名指的是插件目录下在&eItems.yml&f中所保存的当前版本服务端中所有原版物品的对应语言显示名称。'
+                - '&f本命令将会自动更新所有当前版本中的物品的显示名称，除了&d英语 (美国)&7(en_us)&f外，其他语言均为通过&aMineCraft官方API&f下载游戏资源文件以获得准确的翻译名称（因此你需要确保插件能够访问互联网）'
+                - '&c&l注意&f: 此操作不可逆，一般此命令只需在第一次安装本插件时使用一次即可，整个过程需要使用大约几MB的流量，根据不同语言而定。'
+                Confirming: '{prefix}&b你正在尝试更新所有物品的显示名，请使用此命令确认你的操作: %litecommandeditor_command_tools_updateItemDisplayName_confirm% &7<---点击填充'
+                Starting: '{prefix}&a开始下载 &e{languageCode} &a语言的物品显示名列表，将在下载完成时保存至&dItems.yml -> {path}&a路径下。 '
+                Executions:
+                    Downloading-Versions: '&c[LiteCommandEditor-Pool] &a正在下载游戏版本列表...'
+                    Downloaded-Versions: '&c[LiteCommandEditor-Pool] &a成功从 &6{manifestLink} &a处下载了游戏版本列表。'
+                    Downloading-URL: '&c[LiteCommandEditor-Pool] &a正在获取游戏资源下载地址，版本: &9{version} &a...'
+                    Downloaded-URL: '&c[LiteCommandEditor-Pool] &a成功从 &6{resourceLink} &a处获取了游戏资源下载地址。'
+                    Downloading-Asset-Index: '&c[LiteCommandEditor-Pool] &a正在下载游戏资源索引...'
+                    Downloaded-Asset-Index: '&c[LiteCommandEditor-Pool] &a成功从 &6{assetIndexLink} &a处下载了游戏资源索引。'
+                    Downloading-Language-Resource: '&c[LiteCommandEditor-Pool] &a正在解析游戏资源 &7(hash=&5{hash}&7)，语言代码: &e{languageCode}'
+                    Downloaded-Language-Resource: '&c[LiteCommandEditor-Pool] &a成功从 &6{hashLink} &a处解析游戏资源，操作即将完成。'
+                    Version-Not-Found: '{prefix}&c无法获取游戏版本 &e{version} &c的资源，原因未知。 &7（也许是服务端核心问题？）'
+                    Language-Code-Not-Found: '{prefix}&c无法获取语言代码 &e{languageCode} &c对应的语言文件，该语言文件不存在。'
+                    Operation-in-Progress: '{prefix}&c操作正在进行中，请稍后...'
+                Failed: '{prefix}&c无法下载 &e{languageCode} &c语言的游戏资源，发生错误: {exception}'
+                Successfully: '{prefix}&a成功下载 &e{languageCode} &a语言的物品展示名&7({loaded}/{total})&a并保存至&dItems.yml -> {path}&a路径下。更改&6Config.yml&a中的&6Item-Display-Language-Path&a选项至&d{path}&a即可生效。'
+    Initialization:
+    - '{prefix}&6配置文件加载完成，启用语言 &a{language}'
+    - '{prefix}&6加载了 &b{components} &6个JSON消息元件'
+    - '{prefix}&6加载了 &b{commands} &6个命令配置文件'
+    - '{prefix}&6插件初始化完毕， 当前版本 &av{version}'
+    Updater:
+    - '{prefix}&a发现插件存在最新版本: &bv{version}'
+    - '&6- &3服务器运行版本: &6v{nowVersion}'
+    - '&6- &3下载地址: &d{link}'
+    - '&6- &3更新日志: {description}'
+Traditional-Chinese:
+    Prefix: '&b輕量&3指令&9編輯器 &f&l>>> '
+    Language-Name: '繁體中文'
+    No-Permission: '{prefix}&c你沒有這麼做的權限!'
+    Player-Only: '{prefix}&c控制台不能使用這個命令.'
+    Not-A-Number: '{prefix}&c參數 &e{number} &c不是一個&l有效的&c數字， 請檢查你的命令參數或數字是否符合操作執行的&l需求&c！ '
+    Player-Not-Exist: '{prefix}&c玩家 &e{player} &c不存在！ '
+    Repaired-Config-Section: '{prefix}&c插件無法獲取配置文件 &e{config} &c路徑 &7{path}&c, 已通過獲取默認配置文件進行修復.'
+    Cooldown-Of-Command: '{prefix}&c請等待 &e{second} &c秒後再使用這個命令。'
+    No-Permission-For-Alias-Command: '{prefix}&e無法使用這個指令別名 &7(&aLiteCommandEditor &7-> &a指令別名功能 &7-> &c目標指令&7) &e缺少相關權限: &6{permission}'
+    No-Item-Display-List:Language-Code-Exist: '{prefix}&e當前語言沒有可用的物品顯示名列表，你可以使用命令進行下載: %litecommandeditor_command_tools_updateItemDisplayName_confirm% &7<---點擊填充'
+    No-Item-Display-List:Language-Code-Not-Exist: '{prefix}&e當前語言沒有可用的物品顯示名列表，你可以使用命令選擇你需要的語言進行下載: %litecommandeditor_command_tools_updateItemDisplayName% &7<-- -點選填充'
+    Debug-Record-Format:
+        Command: 'command:{sender}:{record}'
+        Tab: 'tab:{sender}:{record}'
+    Information-Type:
+        'Yes': '&a&l是'
+        'No': '&c&l否'
+        'None': '&d&l無'
+        Unknown: '未知'
+    Function-Messages:
+        Functions-Type:
+            Player: '玩家函數'
+            World: '世界函數'
+            Server: '伺服器函數'
+            Configurator: '配置器函數'
+        Unknown-Function: '{prefix}&c未知的{functionType}名稱: &e{functionName}。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Unknown-Player-Name: '{prefix}&c找不到玩家 &e{playerName} &c。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Unknown-World-Name: '{prefix}&c找不到世界 &e{worldName} &c。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Unknown-Table-Name: '{prefix}&c找不到配置表 &e{tableName} &c。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Unknown-File-Name: '{prefix}&c找不到文件 &e{fileName} &c。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Incorrect-Format:Text: '{prefix}&c無法載入文字 &6{text} &c到配置表中，格式不正確。 &7（需要為JSON格式） &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Incorrect-Format:File: '{prefix}&c無法載入文件 &6{file} &c到配置表中，格式不正確。 &7（需要為JSON或YAML格式） &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Incorrect-Parameters: '{prefix}&c{functionType}的參數 &e{functionName}:&6&n{parameters}&c 不正確。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+    Condition-Messages:
+        Conditions-Type:
+            Item: '物品'
+            Permission: '權限'
+            Player: '玩家'
+            World: '世界'
+            Server: '伺服器'
+            Number: '數字'
+            Regular-Expression: '正規'
+        Unknown-Condition: '{prefix}&c未知的{conditionType}條件: &e{expression}。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Unknown-Player-Name: '{prefix}&c找不到玩家 &e{playerName} &c。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Unknown-World-Name: '{prefix}&c找不到世界 &e{worldName} &c。 &c請檢查設定檔設定: &b{fileName} &e-> &b{configPath} &7(如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定)'
+        Incorrect-Parameters: '{prefix}&c{conditionType}條件式有誤: &e{expression}:&6&n{parameters}&c , 設定檔路徑: &b{fileName} &e-> &b{configPath}. &c請檢查條件設定中是否存在&e多餘的冒號&7（如果希望關閉此提示，請在這個函數的設定檔路徑下新增「No-Function-Reminder: true」設定；如果是表達式中使用了冒號，請使用反斜線進行轉義，像這樣 \: ）'
+    Command-Messages:
+        Unknown-Command: '{prefix}&c未知命令, 使用 %litecommandeditor_command_help% &c查看幫助'
+        Help:
+        - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        - '  &f&l▶ %litecommandeditor_command_help% &b&l| &c查看插件幫助'
+        - '  &f&l▶ %litecommandeditor_command_reload% &b&l| &c重載插件設定'
+        - '  &f&l▶ %litecommandeditor_command_info% &b&l| &c查看某個命令的訊息'
+        - '  &f&l▶ %litecommandeditor_command_load% &b&l| &c加載某個命令配置文件'
+        - '  &f&l▶ %litecommandeditor_command_unload% &b&l| &c卸載某個命令配置文件'
+        - '  &f&l▶ %litecommandeditor_command_delete% &b&l| &c刪除某個命令'
+        - '  &f&l▶ %litecommandeditor_command_itemcollection% &b&l| &c管理命令配置文件的物品收藏夾'
+        - '  &f&l▶ %litecommandeditor_command_debug% &b&l| &c調試模式綜合命令'
+        - '  &f&l▶ %litecommandeditor_command_list% &b&l| &c列出所有由本插件加載的命令'
+        - '  &f&l▶ %litecommandeditor_command_listall% &b&l| &c列出本伺服器所有已啟用的命令'
+        - '  &f&l▶ %litecommandeditor_command_tools% &b&l| &c插件的工具命令'
+        - '&9▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ▬▬▬▬▬▬'
+        Reload: '{prefix}&a已重載配置文件。 '
+        Info:
+            Usage: '{prefix}&c使用方法: %litecommandeditor_command_info%'
+            Unknown: '{prefix}&c你所指定的命令 &e{command} &c不存在， 請使用 %litecommandeditor_command_list% &c查看所有命令。 '
+            Informations:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &c# &a命令名字: &6{command}'
+            - '  &c# &a命令來源: &9{source}'
+            - '  &c# &a命令前綴: &3{prefix}'
+            - '  &c# &a配置文件: &2{fileName}'
+            - '  &c# &a命令權限: &c{permission}'
+            - '  &c# &a命令說明: &7{description}'
+            - '  &c# &a使用方法: &f{usage}'
+            - '  &c# &a命令填充: %litecommandeditor_command_info_click%'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        Load:
+            Usage: '{prefix}&c使用方法: %litecommandeditor_command_load%'
+            Not-Exist: '{prefix}&c你所指定的命令配置文件 &e{command} &c不存在於LiteCommandEditor/Commands文件夾中！ '
+            Loading-Failed: '{prefix}&c你所指定的命令配置文件 &e{command} &c無法加載， 存在YAML文件格式錯誤， 請進行排查！ '
+            Missing-Required-Options: '{prefix}&c你所指定的命令配置文件 &e{command} &c無法加載， 缺少必要選項: &aName: [命令名字]'
+            Successful: '{prefix}&a成功加載命令配置文件: &b{fileName}'
+        Unload:
+            Usage: '{prefix}&c使用方法: %litecommandeditor_command_unload%'
+            Not-Exist: '{prefix}&c你所指定的命令配置文件 &e{command} &c不存在/未加載。 '
+            Successful: '{prefix}&a成功卸載命令配置文件: &b{fileName}'
+        Delete:
+            Usage: 
+            - '{prefix}&c使用方法: %litecommandeditor_command_delete%'
+            - '&c&l注意: &f刪除後，命令將無法使用（命令將不存在），直到下次重啟伺服器才會重新判斷。 刪除其他插件的命令可能會發生嚴重的後果，謹慎使用！ '
+            Not-Exist: '{prefix}&c你所指定的命令 &e{command} &c不存在。 '
+            Successful: '{prefix}&a成功刪除命令: &b{command}'
+        Item-Collection:
+            Not-Exist: '{prefix}&c你所指定的命令配置文件 &e{command} &c不存在/未加載。 '
+            Help: 
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_list% &b&l| &c列出某個命令的物品收藏夾'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_create% &b&l| &c將手上的物品添加到指定的收藏夾'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_delete% &b&l| &c刪除指定的收藏夾中的物品'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_give% &b&l| &c將指定的收藏夾物品給予玩家'
+                - ''
+                - '  &c&l說明: &f物品收藏夾功能能夠將一些包含複雜的NBT的物品序列化並添加至配置文件中，'
+                - '  &f你可以在配置文件中涉及到物品相關的設置里通過物品在收藏夾中的名字直接引用。 '
+                - '&9▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ▬▬▬▬▬▬'
+            List:
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_itemcollection_list%'
+                Empty: '{prefix}&a命令配置文件 &e{command} &a的物品收藏夾是空的。 '
+                Number-Of-Single-Page: 9
+                List:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &a收藏夾物品 &e&l{total} &a個 &c&l| &a當前頁數 &6&l{page}&7/&6&l{maxPage} &a頁'
+                - '  &c# &8&l[&a&l{number}&8&l]&r %item% &6&l- %litecommandeditor_command_itemcollection_list_give% !list!'
+                - '  &a<<< %litecommandeditor_command_itemcollection_list_previous% &c&l| %litecommandeditor_command_itemcollection_list_next% &a>>>'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Create:
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_itemcollection_create%'
+                Doesnt-Have-Item-In-Hand: '{prefix}&c你需要將需要執行操作的物品拿在手上!'
+                Successfully: '{prefix}&a成功將你手上的物品 &r%item% &a名字: &e{name} &a添加到命令 &d{command} &a的物品收藏夾中.'
+                Already-Exist: '{prefix}&c命令 &d{command} &c的收藏夾中名字為 &e{name} &c的物品已存在!'
+            Delete:
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_itemcollection_delete%'
+                Successfully: '{prefix}&a成功將收藏夾物品: &e{name}&f(%item%) &a從命令 &d{command} &a的物品收藏夾中刪除.'
+                Not-Exist: '{prefix}&c命令 &d{command} &c的收藏夾中名字為 &e{name} &c的物品不存在! 請使用 %litecommandeditor_command_itemcollection_list% &c列出所有收藏夾物品！ '
+            Give:
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_itemcollection_give%'
+                Gave-Self: '{prefix}&a已將物品 &r%item% &a名字: &e{name} &a給予自己。 '
+                Gave-Others: '{prefix}&a已將物品 &r%item% &a名字: &e{name} &a給予玩家 &c{player} &a.'
+                Not-Exist: '{prefix}&c命令 &d{command} &c的收藏夾中名字為 &e{name} &c的物品不存在! 請使用 %litecommandeditor_command_itemcollection_list% &c列出所有收藏夾物品！ '
+        Debug:
+            Help:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &f&l▶ %litecommandeditor_command_debug_switch% &b&l| &c切換調試模式'
+            - '  &f&l▶ %litecommandeditor_command_debug_view% &b&l| &c查看跟踪信息'
+            - '  &f&l▶ %litecommandeditor_command_debug_list% &b&l| &c列出當前所有調試信息'
+            - ''
+            - '  &c&l說明: &f啟用調試模式後，所有自定義命令的函數執行將被取消，並在使用時對函數運行進行記錄，'
+            - '  若使用命令的人有相關權限，將為其自動發送調試結果，反之僅作記錄等待其他管理員進行查看。 '
+            - '  &c&l注意: &f調試記錄將在重載插件或重啟伺服器時被刪除！ '
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Switch:
+                Switch-On: '{prefix}&e調試模式已&a開啟&e，所有函數運行結果將被跟踪並記錄，使用 %litecommandeditor_command_debug_list% &e以列出當前所有跟踪記錄。 '
+                Switch-Off: '{prefix}&e調試模式已&c關閉&e，所有函數已恢復正常運行。 '
+            View:
+                Conditions-Type:
+                    Comparison: '比較'
+                    Item: '擁有物品'
+                    Permission: '擁有權限'
+                    Placeholder: '存在佔位符'
+                    Player: '玩家屬性'
+                    World: '世界屬性'
+                    Server: '伺服器屬性'
+                    Number: '數字屬性'
+                    Regular-Expression: '正規匹配'
+                Usage: '{prefix}&c使用方法: %litecommandeditor_command_debug_view%'
+                Not-Exist: '{prefix}&c你所指定的調試記錄 &e{record} &c不存在，使用 %litecommandeditor_command_debug_list% &c以列出當前所有跟踪記錄。 '
+                Command-Executor-Report: '{prefix}&d{sender} &a執行了命令 &e{command} &a，使用 &c/litecommandeditor &6debug &2view {record} &a或 %litecommandeditor_command_debug_view_track% &a查看詳細跟踪信息。 '
+                Tab-Completer-Report: '{prefix}&d{sender} &a觸發了命令 &e{command} &a的TAB填充，使用 &c/litecommandeditor &6debug &2view {record} &a或 %litecommandeditor_command_debug_view_track% &a查看詳細跟踪信息。 '
+                Command-Executor-Track: 
+                - '&c[Debug] &a執行函數: &9{fileName}: &b{configPath}'
+                - '        &f&l▶ &7條件 &6{type}:&2{condition} &7是否通過 {pass} !conditions!'
+                - '        &f&l▶ &7當前佔位符列表: &e%placeholders%'
+                Tab-Completer-Track: 
+                - '&c[Debug] &a觸發TAB補充: &9{fileName}: &b{configPath}'
+                - '        &f&l▶ &7條件 &6{type}:&2{condition} &7是否通過 {pass} !conditions!'
+                - '        &f&l▶ &7當前佔位符列表: &e%placeholders%'
+            List:
+                Empty: '{prefix}&a當前沒有任何記錄。 '
+                Number-Of-Single-Page: 9
+                List:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &a調試記錄 &e&l{total} &c&l| &a當前頁數 &6&l{page}&7/&6&l{maxPage} &a頁'
+                - '  &c# &8&l[&a&l{number}&8&l]&r &6{record} &6&l- %litecommandeditor_command_debug_view_track% !list!'
+                - '  &a<<< %litecommandeditor_command_debug_list_previous% &c&l| %litecommandeditor_command_debug_list_next% &a>>>'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        List:
+            Empty: '{prefix}&a目前沒有加載任何命令配置文件。 '
+            Number-Of-Single-Page: 9
+            List:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &a已加載命令 &e&l{total} &a個 &c&l| &a當前頁數 &6&l{page}&7/&6&l{maxPage} &a頁'
+            - '  &c# &8&l[&a&l{number}&8&l]&r &6{command} &6&l- %litecommandeditor_command_list_commandInfo% !list!'
+            - '  &a<<< %litecommandeditor_command_list_previous% &c&l| %litecommandeditor_command_list_next% &a>>>'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        List-All:
+            Number-Of-Single-Page: 9
+            List: 
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &a命令總數 &e&l{total} &a個 &c&l| &a當前頁數 &6&l{page}&7/&6&l{maxPage} &a頁'
+            - '  &c# &8&l[&9&l{number}&8&l]&r &6{command}&8(&7{plugin}&8) &6&l- %litecommandeditor_command_list_commandInfo% !list!'
+            - '  &a<<< %litecommandeditor_command_listall_previous% &c&l| %litecommandeditor_command_listall_next% &a>>>'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        Tools:
+            Help:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - ' &f&l▶ %litecommandeditor_command_tools_updateItemDisplayName% &b&l| &c更新所有物品的顯示名稱'
+            - ' &f&l▶ %litecommandeditor_command_tools_listNames% &b&l| &c列出或查詢某個型別(例如聲音)的列舉常數名字清單'
+            - '  &f&l▶ %litecommandeditor_command_tools_placeholder% &b&l| &c管理佔位符(包括全域佔位符)'
+            - '  &f&l▶ %litecommandeditor_command_tools_configurator% &b&l| &c配置器操作(包括管理配置表等功能)'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Placeholder:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &c命令 &6/litecommandeditor tools placeholder &c使用幫助'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_list% &b&l| &c列出所有全域佔位符'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_add% &b&l| &c新增的全域佔位符'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_remove% &b&l| &c移除全域佔位符'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                List:
+                    Empty: '{prefix}&a目前沒有任何全域佔位符。'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &a全域佔位符 &e&l{total} &a個 &c&l| &a當前頁數 &6&l{page}&7/&6&l{maxPage} &a頁'
+                    - '  &c# &8&l[&a&l{number}&8&l]&r &e{placeholder} &7-> &6{value} !list!'
+                    - '  &a<<< %litecommandeditor_command_tools_placeholder_list_previous% &c&l| %litecommandeditor_command_tools_placeholder_list_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Add:
+                    Usage: '{prefix}&c使用方法: %litecommandeditor_command_tools_placeholder_add%'
+                    Successfully: '{prefix}&a成功將 &b{placeholder} &7-> &e{value} &a加入到全域佔位符清單中.'
+                    Already-Exist: '{prefix}&c名為 &b{placeholder} &c的佔位符已存在！'
+                    Equivalent: '{prefix}&c佔位符的名字不能和占位符的值相同！'
+                Remove:
+                    Usage: '{prefix}&c使用方法: %litecommandeditor_command_tools_placeholder_remove%'
+                    Successfully: '{prefix}&a成功將 &b{placeholder} &7-> &e{value} &a佔位符從全域佔位符中移除.'
+                    Not-Exist: '{prefix}&c名為 &b{placeholder} &c的佔位符不存在！'
+            Configurator:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &c指令 &6/litecommandeditor tools configurator &c使用幫助'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_create% &b&l| &c建立新的配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_use% &b&l| &c使用(操作)配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_delete% &b&l| &c刪除指定的配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_load% &b&l| &c載入配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_save% &b&l| &c儲存配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_list% &b&l| &c列出所有配置表'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_view% &b&l| &c查看一個配置表的視圖'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Create:
+                    Usage: '{prefix}&c使用方法: %litecommandeditor_command_tools_configurator_create%'
+                    Successfully: '{prefix}&a成功建立了名為 &e{tableName} &a的配置表，你可以在命令設定檔中或使用指令 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_use% &a來使用它了!'
+                    Already-Exist: '{prefix}&c名為 &e{tableName} &c的配置表已存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c來列出所有配置表.'
+                Use:
+                    Usage: 
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &c指令 &6/litecommandeditor tools configurator use &a[配置表名字] &c使用幫助'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_set% &b&l| &c在指定路徑存入一個值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_remove% &b&l| &c刪除指定路徑的值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listadd% &b&l| &c在指定路徑的清單中新增一個值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listset% &b&l| &c修改指定路徑中的清單中第N個元素的值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listremove% &b&l| &c刪除指定路徑中的清單中第N個元素的值'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listclear% &b&l| &c清空指定路徑中的列表'
+                    - ''
+                    - '  &c&l說明: &f向配置表存入 &2[值] &f時，可以包含佔位符；'
+                    - '  &f預設為“文字”格式，如果是數字，則預設為“數字”格式。'
+                    - '  &f進行&a清單操作&f時，如果指定路徑不是清單或不存在時，則將其變為清單。'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    Set:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_set%'
+                        Successfully: '{prefix}&a在配置表 &e{tableName} &a的 &b{path} &a路徑下設定了一個值 &6{value} &a.'
+                    Remove:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_remove%'
+                        Successfully: '{prefix}&a成功移除了配置表 &e{tableName} &a的 &b{path} &a路徑.'
+                    ListAdd:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listadd%'
+                        Successfully: '{prefix}&a在配置表 &e{tableName} &a的 &b{path} &a路徑下的列表中加入了一個值 &6{value} &a.'
+                    ListSet:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listset%'
+                        Successfully: '{prefix}&a在配置表 &e{tableName} &a的 &b{path} &a路徑下的列表中的第&e{index}&a個位置設定了一個值 &6{value} &a.'
+                    ListRemove:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listremove%'
+                        Successfully: '{prefix}&a成功移除了配置表 &e{tableName} &a的 &b{path} &a路徑下的列表中的第&e{index}&a個位置的值&a.'
+                    ListClear:
+                        Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listremove%'
+                        Successfully: '{prefix}&a成功清空了配置表 &e{tableName} &a的 &b{path} &a路徑下的列表.'
+                    Not-Exist: '{prefix}&c名為 &e{tableName} &c的配置表不存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c來列出所有配置表.'
+                Delete:
+                    Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_delete%'
+                    Successfully: '{prefix}&a成功刪除了名為 &e{tableName} &a的配置表。 '
+                    Not-Exist: '{prefix}&c名為 &e{tableName} &c的配置表不存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c來列出所有配置表.'
+                Load:
+                    Usage:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - ' &f&l▶ %litecommandeditor_command_tools_configurator_load_text% &b&l| &c載入指定文字的配置表'
+                    - ' &f&l▶ %litecommandeditor_command_tools_configurator_load_file% &b&l| &c從本機檔案載入配置表'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    Successfully: '{prefix}&a成功載入了名為 &e{tableName} &a的配置表，使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_view% &a檢視其視圖'
+                    Failed:Text: '{prefix}&c無法載入配置表 &e{tableName} &c，提供的配置表文字中存在格式錯誤(必須為JSON格式): &7{text}'
+                    Failed:File: '{prefix}&c無法載入配置表 &e{tableName} &c，指定的檔案 &6{file} &c不存在或無法被載入。 '
+                    Failed:File-Format: '{prefix}&c無法載入配置表 &e{tableName} &c，指定的檔案 &6{file} &c中的格式不正確。 '
+                Save:
+                    Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_save%'
+                    Successfully: '{prefix}&a成功保存了名為 &e{tableName} &a的配置表到本機檔案 &6{file} &a。 '
+                    Failed: '{prefix}&c無法儲存配置表 &e{tableName} &c，檔案名稱、目錄名稱或磁碟區標語法不正確。 '
+                    Not-Exist: '{prefix}&c名為 &e{tableName} &c的配置表不存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c來列出所有配置表.'
+                List:
+                    Empty: '{prefix}&a目前沒有任何配置表。 '
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - ' &a配置表 &9{total} &a個 &c&l| &a當前頁數 &6&l{page}&7/&6&l{maxPage} &a頁'
+                    - ' &c# &8&l[&a&l{number}&8&l]&r &e{tableName} &7- %litecommandeditor_command_tools_configurator_list_view% !list!'
+                    - ' &a<<< %litecommandeditor_command_tools_configurator_list_previous% &c&l| %litecommandeditor_command_tools_configurator_list_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                View:
+                    Usage: '{prefix}&c使用方法: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_view%'
+                    Empty: '{prefix}&a這個表是一個空表。 '
+                    Not-Exist: '{prefix}&c名為 &e{tableName} &c的配置表不存在! 你可以使用 &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &c來列出所有配置表.'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - ' &a配置表 &9{tableName} &c&l| &a節點數 &e&l{total} &a個 &c&l| &a當前頁數 &6&l{page}&7/&6&l{maxPage} &a頁'
+                    - ' &c# &8&l[&a&l{number}&8&l]&r &e{path}&7: &6{value} !view!'
+                    - ' &a<<< %litecommandeditor_command_tools_configurator_view_previous% &c&l| %litecommandeditor_command_tools_configurator_view_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            List-Names:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &c指令 &6/litecommandeditor tools listNames &c使用幫助'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_result% &b&l| &9查看上一次查詢的結果'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_sound% &b&l| &9列出或查詢聲音名字清單'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_treetype% &b&l| &9列出或查詢樹的型別名字清單'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_effect% &b&l| &9列出或查詢效果名字清單'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_biome% &b&l| &9列出或查詢生物群系名字清單'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_gamerule% &b&l| &9列出或查詢遊戲規則名字列表'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_entitytype% &b&l| &9列出或查詢實體類型名字清單'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_particle% &b&l| &9列出或查詢粒子效果名字清單'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_item% &b&l| &9列出或查詢物品名字清單'
+                - ''
+                - ' &c&l說明： &7此指令用於列出與查詢某個類型的枚舉常數名字列表，'
+                - ' &7並支援複製到剪貼簿，以輔助編輯自訂命令設定檔中的特殊選項。 '
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Not-Available: '{prefix}&c你所指定的{type}類型不存在，請使用 %litecommandeditor_command_tools_listNames% &c查看可用的類型。 '
+                Not-Found: '{prefix}&c無法在{type}型別找到任何符合的枚舉常數名字， 更換參數試試看？ '
+                #關鍵字高亮
+                Keyword-Highlight:
+                    Enabled: true
+                    #關鍵字顏色
+                    Keyword-Color: '&6&n'
+                    #其它部分顏色
+                    Other-Color: '&6'
+                Types:
+                    Sound: '聲音'
+                    TreeType: '樹的類型'
+                    Effect: '效果'
+                    Biome: '生物群系'
+                    GameRule: '遊戲規則'
+                    EntityType: '實體類型'
+                    Particle: '粒子效果'
+                    Item: '物品'
+                Result:
+                    No-Result: '{prefix}&c目前沒有有效的搜尋結果。'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &9型別 &d&l{type} &c&l| &a總數 &e&l{total} &c&l| &a當前頁數 &6&l{page}&7/&6&l{maxPage} &a頁'
+                    - '  &f&l▶ &8&l[&a&l{number}&8&l]&r %litecommandeditor_command_tools_listNames_result_line% !list!'
+                    - '  &a<<< %litecommandeditor_command_tools_listNames_result_previous% &c&l| %litecommandeditor_command_tools_listNames_result_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Update-Item-Display-Name:
+                Usage:
+                - '{prefix}&a使用方法: %litecommandeditor_command_tools_updateItemDisplayName%'
+                - '&f若不填寫語言代碼，則將預設為目前外掛程式所使用的語言所對應的語言代碼 &7(僅限外掛程式自帶的語言有效，詳見Config.yml的Language選項註)'
+                - '&f參考語言代碼縮寫: &d美式英語 &7-> &een_us&7, &d簡體中文 &7-> &ezh_cn&7, &d繁體中文 &7-> &ezh_tw'
+                - ''
+                - '&c&l說明&f: 物品顯示名指的是插件目錄下在&eItems.yml&f中所儲存的目前版本伺服端中所有原始物品的對應語言顯示名稱。 '
+                - '&f本命令將會自動更新所有目前版本中的物品的顯示名稱，除了&d英語(美國)&7(en_us)&f外，其他語言均為透過&aMineCraft官方API&f下載遊戲資源檔案以獲得準確的翻譯名稱（因此你需要確保插件能夠訪問互聯網）'
+                - '&c&l注意&f: 此操作不可逆，一般此指令只需在第一次安裝本插件時使用一次即可，整個過程需要使用大約幾MB的流量，根據不同語言而定。 '
+                Confirming: '{prefix}&b你正在嘗試更新所有物品的顯示名，請使用此命令確認你的操作: %litecommandeditor_command_tools_updateItemDisplayName_confirm% &7<---點擊填充'
+                Starting: '{prefix}&a開始下載 &e{languageCode} &a語言的物品顯示名列表，將在下載完成時儲存至&dItems.yml -> {path}&a路徑下。 '
+                Executions:
+                    Downloading-Versions: '&c[LiteCommandEditor-Pool] &a正在下載遊戲版本清單...'
+                    Downloaded-Versions: '&c[LiteCommandEditor-Pool] &a成功從 &6{manifestLink} &a處下載了遊戲版本清單。 '
+                    Downloading-URL: '&c[LiteCommandEditor-Pool] &a正在取得遊戲資源下載位址，版本: &9{version} &a...'
+                    Downloaded-URL: '&c[LiteCommandEditor-Pool] &a成功從 &6{resourceLink} &a處取得了遊戲資源下載位址。 '
+                    Downloading-Asset-Index: '&c[LiteCommandEditor-Pool] &a正在下載遊戲資源索引...'
+                    Downloaded-Asset-Index: '&c[LiteCommandEditor-Pool] &a成功從 &6{assetIndexLink} &a處下載了遊戲資源索引。 '
+                    Downloading-Language-Resource: '&c[LiteCommandEditor-Pool] &a正在解析遊戲資源 &7(hash=&5{hash}&7)，語言代碼: &e{languageCode}'
+                    Downloaded-Language-Resource: '&c[LiteCommandEditor-Pool] &a成功從 &6{hashLink} &a處解析遊戲資源，操作即將完成。 '
+                    Version-Not-Found: '{prefix}&c無法取得遊戲版本 &e{version} &c的資源，原因未知。 &7（也許是伺服端核心問題？）'
+                    Language-Code-Not-Found: '{prefix}&c無法取得語言代碼 &e{languageCode} &c對應的語言文件，該語言文件不存在。 '
+                    Operation-in-Progress: '{prefix}&c操作正在進行中，請稍後...'
+                Failed: '{prefix}&c無法下載 &e{languageCode} &c語言的遊戲資源，發生錯誤: {exception}'
+                Successfully: '{prefix}&a成功下載 &e{languageCode} &a語言的物品展示名稱&7({loaded}/{total})&a並儲存至&dItems.yml -> {path}&a路徑下。更改&6Config.yml&a中的&6Item-Display-Language-Path&a選項至&d{path}&a即可生效。 '
+    Initialization:
+    - '{prefix}&6配置文件加載完成，啟用語言 &a{language}'
+    - '{prefix}&6加載了 &b{components} &6個JSON消息元件'
+    - '{prefix}&6加載了 &b{commands} &6個命令配置文件'
+    - '{prefix}&6插件初始化完畢， 當前版本 &av{version}'
+    Updater:
+    - '{prefix}&a發現插件存在最新版本: &bv{version}'
+    - '&6- &3伺服器運行版本: &6v{nowVersion}'
+    - '&6- &3下載地址: &d{link}'
+    - '&6- &3更新日誌: {description}'
+English:
+    Prefix: '&bLite&3Command&9Editor &f&l>>> '
+    Language-Name: 'English'
+    No-Permission: '{prefix}&cYou don''t have permission to do this!'
+    Player-Only: '{prefix}&cThe console cannot use this command.'
+    Not-A-Number: '{prefix}&e{number} &cis not a &lvaild &cnumber, please check if your command parameters or numbers meet the &lrequirements of the operation&c!'
+    Player-Not-Exist: '{prefix}&cPlayer &e{player} &cnot exist!'
+    Repaired-Config-Section: '{prefix}&cPlugin cannot obtain the configuration file &e{config} &c path &7{path}&c, which has been fixed by obtaining the default configuration file.'
+    Cooldown-Of-Command: '{prefix}&cPlease wait &e{second}s &cbefore use this command!'
+    No-Permission-For-Alias-Command: '{prefix}&eCannot use this command alias &7(&aLiteCommandEditor &7-> &aCommand Alias &7-> &cTarget Command&7) &eLack of relevant permission: &6{permission}'
+    No-Item-Display-List:Language-Code-Exist: '{prefix}&eThere is no available item display name list in the current language. You can use the command to download it: %litecommandeditor_command_tools_updateItemDisplayName_confirm% &7<---Click to fill'
+    No-Item-Display-List:Language-Code-Not-Exist: '{prefix}&eThere is no available item display name list in the current language. You can use the command to select the language you need to download: %litecommandeditor_command_tools_updateItemDisplayName% &7<---Click to fill'
+    Debug-Record-Format:
+        Command: 'command:{sender}:{record}'
+        Tab: 'tab:{sender}:{record}'
+    Information-Type:
+        'Yes': '&a&lYes'
+        'No': '&c&lNo'
+        'None': '&d&lNone'
+        Unknown: 'Unknown'
+    Function-Messages:
+        Functions-Type:
+            Player: 'Preset Player Function'
+            World: 'Preset World Function'
+            Server: 'Preset Server Function'
+            Configurator: 'Configurator Function'
+        Unknown-Function: '{prefix}&cUnknown {functionType}: &e{functionName}. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Unknown-Player-Name: '{prefix}&cUnknown player &e{playerName} &c. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Unknown-World-Name: '{prefix}&cUnknown world &e{worldName} &c. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Unknown-Table-Name: '{prefix}&cUnknown mapping table &e{worldName} &c. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Unknown-File-Name: '{prefix}&cUnknown file name &e{fileName} &c. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Incorrect-Format:Text: '{prefix}&cUnable to load text &6{text} &cinto the mapping table: incorrect format. &7(requires JSON format) &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Incorrect-Format:File: '{prefix}&cUnable to load file &6{file} &cinto the mapping table: incorrect format. &7(requires JSON or YAML format) &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Incorrect-Parameters: '{prefix}&cThe {functionType} parameters'' &e{functionName}:&6&n{parameters}&c incorrect. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+    Condition-Messages:
+        Conditions-Type:
+            Item: 'Item'
+            Permission: 'Permission'
+            Player: 'Player'
+            World: 'World'
+            Server: 'Server'
+            Number: 'Number'
+            Regular-Expression: 'Regex'
+        Unknown-Condition: '{prefix}&cUnknown {conditionType} condition: &e{expression}. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Unknown-Player-Name: '{prefix}&cUnknown player &e{playerName} &c. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Unknown-World-Name: '{prefix}&cUnknown world &e{worldName} &c. &cPlease check: &b{fileName} &e-> &b{configPath} &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function)'
+        Incorrect-Parameters: '{prefix}&cIncorrect {conditionType} condition expression: &e{expression}:&6&n{parameters}&c , please check: &b{fileName} &e-> &b{configPath}. &cPlease check if there are any extra colons in the condition settings &7(If you want to turn off this prompt, please add the "No-Function-Reminder: true" setting in the configuration file path of this function; If a colon is used in the expression, please use a reverse slash to escape, like this \: )'
+    Command-Messages:
+        Unknown-Command: '{prefix}&cUnknown command, please use %litecommandeditor_command_help% &cfor help.'
+        Help:
+        - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        - '  &f&l▶ %litecommandeditor_command_help% &b&l| &cView plugin help'
+        - '  &f&l▶ %litecommandeditor_command_reload% &b&l| &cReload all settings'
+        - '  &f&l▶ %litecommandeditor_command_info% &b&l| &cView command''s info'
+        - '  &f&l▶ %litecommandeditor_command_load% &b&l| &cLoad a command configuration'
+        - '  &f&l▶ %litecommandeditor_command_unload% &b&l| &cUnload a command configuration'
+        - '  &f&l▶ %litecommandeditor_command_delete% &b&l| &cDelete a command'
+        - '  &f&l▶ %litecommandeditor_command_itemcollection% &b&l| &cManage item collection for command configuration'
+        - '  &f&l▶ %litecommandeditor_command_debug% &b&l| &cDebugging Mode Comprehensive Command'
+        - '  &f&l▶ %litecommandeditor_command_list% &b&l| &cList all loaded command configurations'
+        - '  &f&l▶ %litecommandeditor_command_listall% &b&l| &cList all commands'
+        - '  &f&l▶ %litecommandeditor_command_tools% &b&l| &cPlugin''s tool commands'
+        - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        Reload: '{prefix}&aAll configuration files have been reloaded.'
+        Info:
+            Usage: '{prefix}&cUsage: %litecommandeditor_command_info%'
+            Unknown: '{prefix}&cThe command &e{command} &cdoesn''t exsit, please use %litecommandeditor_command_list% &cto list all loaded commands.'
+            Informations:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &c# &aCommand name: &6{command}'
+            - '  &c# &aCommand source: &9{source}'
+            - '  &c# &aCommand prefix: &3{prefix}'
+            - '  &c# &aConfiguration: &2{fileName}'
+            - '  &c# &aCommand permission: &c{permission}'
+            - '  &c# &aCommand description: &7{description}'
+            - '  &c# &aCommand usage: &f{usage}'
+            - '  &c# &aClick here: %litecommandeditor_command_info_click%'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        Load:
+            Usage: '{prefix}&cUsage: %litecommandeditor_command_load%'
+            Not-Exist: '{prefix}&cThe command configuration file &e{command} &cdoesn''t exist in LiteCommandEditor/Commands folder!'
+            Loading-Failed: '{prefix}&cUnable to load command configuration file &e{command} &c. There is an error in the YAML file format, please troubleshoot it!'
+            Missing-Required-Options: '{prefix}&cUnable to load command configuration file &e{command} &cbecause missing required option &aName: [Command Name]'
+            Successful: '{prefix}&aSuccessfully loaded: &b{fileName}'
+        Unload:
+            Usage: '{prefix}&cUsage: %litecommandeditor_command_unload%'
+            Not-Exist: '{prefix}&cThe command &e{command} &cdoesn''t exist/not loaded.'
+            Successful: '{prefix}&aSuccessfully unloaded: &b{fileName}'
+        Delete:
+            Usage: 
+            - '{prefix}&cUsage: %litecommandeditor_command_delete%'
+            - '&c&lNOTE: &fAfter disabling, the command will not be available (the command will no longer exist) and will not be re evaluated until the next server restart. Disabling commands from other plugins may have serious consequences, use with caution!'
+            Not-Exist: '{prefix}&cThe command &e{command} &cdoesn''t exist.'
+            Successful: '{prefix}&aSuccessfully delete: &b{command}'
+        Item-Collection:
+            Not-Exist: '{prefix}&cThe command &e{command} &cdoesn''t exist/not loaded.'
+            Help: 
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_list% &b&l| &cList a custom command''s item collection'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_create% &b&l| &cAdd the item in hand to the specific collection'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_delete% &b&l| &cDelete an item in specified collection'
+                - '  &f&l▶ %litecommandeditor_command_itemcollection_give% &b&l| &cGive item from the specified collection to the player'
+                - ''
+                - '  &c&lDescription: &fThis function can serialize and add complex NBT items to the configuration file,'
+                - '  &fyou can directly reference items from the specified collection in the configuration file.'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            List:
+                Usage: '{prefix}&cUsage: %litecommandeditor_command_itemcollection_list%'
+                Empty: '{prefix}&aThe item collection in the command configuration file &e{command} &aare empty.'
+                Number-Of-Single-Page: 9
+                List:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &aItems &e&l{total} &c&l| &aPage &6&l{page}&7/&6&l{maxPage}'
+                - '  &c# &8&l[&a&l{number}&8&l]&r %item% &6&l- %litecommandeditor_command_itemcollection_list_give% !list!'
+                - '  &a<<< %litecommandeditor_command_itemcollection_list_previous% &c&l| %litecommandeditor_command_itemcollection_list_next% &a>>>'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Create:
+                Usage: '{prefix}&cUsage: %litecommandeditor_command_itemcollection_create%'
+                Doesnt-Have-Item-In-Hand: '{prefix}&cYou need to hold the item in your hand!'
+                Successfully: '{prefix}&aSuccessfully added the item &r%item% &a name: &e{name} &ato the item favorites of command &d{command}&a.'
+                Already-Exist: '{prefix}&cAn item named &e{name} &calready exists in the item collection of command &d{command}&c!'
+            Delete:
+                Usage: '{prefix}&cUsage: %litecommandeditor_command_itemcollection_delete%'
+                Successfully: '{prefix}&aSuccessfully deleted collection item: &e{name}&f(%item%) &afrom the item collection of command &d{command}&a.'
+                Not-Exist: '{prefix}&cThe item named &e{name} &cin the collection of command &d{command} &cdoes not exist! Please use %litecommandeditor_command_itemcollection_list% &cto list all items!'
+            Give:
+                Usage: '{prefix}&cUsage: %litecommandeditor_command_itemcollection_give%'
+                Gave-Self: '{prefix}&aYou have given yourself the item &r%item% &aname: &e{name}&a.'
+                Gave-Others: '{prefix}&aThe item &r%item% &aname: &e{name} &ahas been given to the player &c{player}&a.'
+                Not-Exist: '{prefix}&cThe item named &e{name} &cin the collection of command &d{command} &cdoes not exist! Please use %litecommandeditor_command_itemcollection_list% &cto list all items!'
+        Debug:
+            Help:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &f&l▶ %litecommandeditor_command_debug_switch% &b&l| &cSwitch debug mode'
+            - '  &f&l▶ %litecommandeditor_command_debug_view% &b&l| &cView tracking records'
+            - '  &f&l▶ %litecommandeditor_command_debug_list% &b&l| &cList all debug records'
+            - ''
+            - '  &c&lDescription: '
+            - '  If switch on, the execution of all custom commands will be canceled and the function will be recorded during use.'
+            - '  If the user of the command has relevant permissions, the debugging results will be automatically sent to them.'
+            - '  Otherwise, only the record will be kept for other administrators to view.'
+            - '  &c&lNOTE: &fDebugging records will be deleted when reloading plugin or restarting server!'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Switch:
+                Switch-On: '{prefix}&eDebug mode &aOn&e, all function execute results will be tracked and recorded, using the %litecommandeditor_command_debug_list% &eto list all tracking records.'
+                Switch-Off: '{prefix}&eDebug mode &cOff&e, all function execution back to normal.'
+            View:
+                Conditions-Type:
+                    Comparison: 'Comparison'
+                    Item: 'Player has item'
+                    Permission: 'Player has permission'
+                    Placeholder: 'Placeholder exist'
+                    Player: 'Player status'
+                    World: 'World status'
+                    Server: 'Server status'
+                    Number: 'Number attributes'
+                    Regular-Expression: 'Regular expression matcher'
+                Usage: '{prefix}&cUsage: %litecommandeditor_command_debug_view%'
+                Not-Exist: '{prefix}&cThe debug record &e{record} &cyou specified does not exist, using the %litecommandeditor_command_debug_list% &eto list all tracking records'
+                Command-Executor-Report: '{prefix}&d{sender} &aexecuted command &e{command} &a, use &c/litecommandeditor &6debug &2view {record} &aor %litecommandeditor_command_debug_view_track% &ato view details.'
+                Tab-Completer-Report: '{prefix}&d{sender} &atriggered &e{command}&a''s TAB completer, use &c/litecommandeditor &6debug &2view {record} &aor %litecommandeditor_command_debug_view_track% &ato view details.'
+                Command-Executor-Track: 
+                - '&c[Debug] &aExecuted function: &9{fileName}: &b{configPath}'
+                - '        &f&l▶ &7Condition &6{type}:&2{condition} &7Passed: {pass} !conditions!'
+                - '        &f&l▶ &7Current placeholders: &e%placeholders%'
+                Tab-Completer-Track: 
+                - '&c[Debug] &aTriggered TAB completer: &9{fileName}: &b{configPath}'
+                - '        &f&l▶ &7Condition &6{type}:&2{condition} &7Passed: {pass} !conditions!'
+                - '        &f&l▶ &7Current placeholders: &e%placeholders%'
+            List:
+                Empty: '{prefix}&aThere are currently no records.'
+                Number-Of-Single-Page: 9
+                List:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &aRecords &e&l{total} &c&l| &aPage &6&l{page}&7/&6&l{maxPage}'
+                - '  &c# &8&l[&a&l{number}&8&l]&r &6{record} &6&l- %litecommandeditor_command_debug_view_track% !list!'
+                - '  &a<<< %litecommandeditor_command_debug_list_previous% &c&l| %litecommandeditor_command_debug_list_next% &a>>>'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        List:
+            Empty: '{prefix}&aThere is no command configurations loaded.'
+            Number-Of-Single-Page: 9
+            List:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &aLoaded commands &e&l{total} &c&l| &aPage: &6&l{page}&7/&6&l{maxPage}'
+            - '  &c# &8&l[&a&l{number}&8&l]&r &6{command} &6&l- %litecommandeditor_command_list_commandInfo% !list!'
+            - '  &a<<< %litecommandeditor_command_list_previous% &c&l| %litecommandeditor_command_list_next% &a>>>'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        List-All:
+            Number-Of-Single-Page: 9
+            List: 
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &aCommands &e&l{total} &c&l| &aPage: &6&l{page}&7/&6&l{maxPage}'
+            - '  &c# &8&l[&9&l{number}&8&l]&r &6{command}&8(&7{plugin}&8) &6&l- %litecommandeditor_command_list_commandInfo% !list!'
+            - '  &a<<< %litecommandeditor_command_listall_previous% &c&l| %litecommandeditor_command_listall_next% &a>>>'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        Tools:
+            Help:
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &f&l▶ %litecommandeditor_command_tools_updateItemDisplayName% &b&l| &cUpdate the display names of all items.'
+            - '  &f&l▶ %litecommandeditor_command_tools_listNames% &b&l| &cList or query a list of enumerated constant names for a certain type (such as sound)'
+            - '  &f&l▶ %litecommandeditor_command_tools_placeholder% &b&l| &cManage placeholders'
+            - '  &f&l▶ %litecommandeditor_command_tools_configurator% &b&l| &cConfigurator operations'
+            - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Placeholder:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &cUsage: &6/litecommandeditor tools placeholder'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_list% &b&l| &cList all global placeholders'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_add% &b&l| &cAdd new global placeholder'
+                - '  &f&l▶ %litecommandeditor_command_tools_placeholder_remove% &b&l| &cRemove global placeholder'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                List:
+                    Empty: '{prefix}&aThere are currently no global placeholders.'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &aPlaceholders &e&l{total} &c&l| &aPage: &6&l{page}&7/&6&l{maxPage}'
+                    - '  &c# &8&l[&a&l{number}&8&l]&r &e{placeholder} &7-> &6{value} !list!'
+                    - '  &a<<< %litecommandeditor_command_tools_placeholder_list_previous% &c&l| %litecommandeditor_command_tools_placeholder_list_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Add:
+                    Usage: '{prefix}&cUsage: %litecommandeditor_command_tools_placeholder_add%'
+                    Successfully: '{prefix}&aSuccessfully added &b{placeholder} &7-> &e{value} &ato the global placeholder list.'
+                    Already-Exist: '{prefix}&cA placeholder named &b{placeholder} &calready exists!'
+                    Equivalent: '{prefix}&cThe name of the placeholder cannot be the same as its value!'
+                Remove:
+                    Usage: '{prefix}&cUsage: %litecommandeditor_command_tools_placeholder_remove%'
+                    Successfully: '{prefix}&aSuccessfully removed the &b{placeholder} &7-> &e{value} &aplaceholders from the global placeholders.'
+                    Not-Exist: '{prefix}&cThe placeholder named &b{placeholder} &cdoes not exist!'
+            Configurator:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &cUsage: &6/litecommandeditor tools configurator'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_create% &b&l| &cCreate new configuration table'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_use% &b&l| &cUse(Operate) configuration table'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_delete% &b&l| &cDelete specified configuration table'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_load% &b&l| &cLoad configuration table'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_save% &b&l| &cSave configuration table'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_list% &b&l| &cList all configuration tables'
+                - '  &f&l▶ %litecommandeditor_command_tools_configurator_view% &b&l| &cView configuration table'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Create:
+                    Usage: '{prefix}&cUsage: %litecommandeditor_command_tools_configurator_create%'
+                    Successfully: '{prefix}&aSuccessfully created a configuration table named &e{tableName} &a, which you can access in the command configuration file or by using the command &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_use% &ato use it now!'
+                    Already-Exist: '{prefix}&cThe configuration table named &e{tableName} &calready exists! You can use &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &cto list all configuration tables.'
+                Use:
+                    Usage: 
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &cCommand &6/litecommandeditor tools configurator use &a[TableName] &cusage help'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_set% &b&l| &cSet a value at specified path'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_remove% &b&l| &cRemove value at specified path'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listadd% &b&l| &cAdd a value to list at specified path'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listset% &b&l| &cModify the Nth element in list at specified path'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listremove% &b&l| &cRemove the Nth element in list at specified path'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_use_listclear% &b&l| &cClear list at specified path'
+                    - ''
+                    - '  &c&lNote: &fWhen storing &2[value] &fin configuration table, it can contain placeholders;'
+                    - '  &fDefault format is "text", if it''s a number, default format will be "number".'
+                    - '  &fWhen performing &alist operations&f, if the specified path is not a list or doesn''t exist, it will be converted to a list.'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    Set:
+                        Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_set%'
+                        Successfully: '{prefix}&aSet value &6{value} &aat path &b{path} &ain configuration table &e{tableName}&a.'
+                    Remove:
+                        Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_remove%'
+                        Successfully: '{prefix}&aSuccessfully removed path &b{path} &afrom configuration table &e{tableName}&a.'
+                    ListAdd:
+                        Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listadd%'
+                        Successfully: '{prefix}&aAdded value &6{value} &ato list at path &b{path} &ain configuration table &e{tableName}&a.'
+                    ListSet:
+                        Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listset%'
+                        Successfully: '{prefix}&aSet value &6{value} &aat position &e{index} &ain list at path &b{path} &ain configuration table &e{tableName}&a.'
+                    ListRemove:
+                        Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listremove%'
+                        Successfully: '{prefix}&aSuccessfully removed value at position &e{index} &ain list at path &b{path} &ain configuration table &e{tableName}&a.'
+                    ListClear:
+                        Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator use %litecommandeditor_command_tools_configurator_use_listremove%'
+                        Successfully: '{prefix}&aSuccessfully cleared list at path &b{path} &ain configuration table &e{tableName}&a.'
+                    Not-Exist: '{prefix}&cConfiguration table &e{tableName} &cdoesn''t exist! Use &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &cto list all configuration tables.'
+                Delete:
+                    Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_delete%'
+                    Successfully: '{prefix}&aSuccessfully deleted configuration table &e{tableName}&a.'
+                    Not-Exist: '{prefix}&cConfiguration table &e{tableName} &cdoesn''t exist! Use &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &cto list all configuration tables.'
+                Load:
+                    Usage: 
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_load_text% &b&l| &cLoad configuration table from specified text'
+                    - '  &f&l▶ %litecommandeditor_command_tools_configurator_load_file% &b&l| &cLoad configuration table from local file'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    Successfully: '{prefix}&aSuccessfully loaded configuration table &e{tableName}&a, use &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_view% &ato view it'
+                    Failed:Text: '{prefix}&cFailed to load configuration table &e{tableName} &c, invalid format in provided text (must be JSON format): &7{text}'
+                    Failed:File: '{prefix}&cFailed to load configuration table &e{tableName} &c, specified file &6{file} &cdoesn''t exist or cannot be loaded.'
+                    Failed:File-Format: '{prefix}&cFailed to load configuration table &e{tableName} &c, invalid format in specified file &6{file}&c.'
+                Save:
+                    Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_save%'
+                    Successfully: '{prefix}&aSuccessfully saved configuration table &e{tableName} &ato local file &6{file}&a.'
+                    Failed: '{prefix}&cFailed to save configuration table &e{tableName} &c, invalid filename, directory name or volume label syntax.'
+                    Not-Exist: '{prefix}&cConfiguration table &e{tableName} &cdoesn''t exist! Use &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &cto list all configuration tables.'
+                List:
+                    Empty: '{prefix}&aThere are no configuration tables currently.'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &aConfiguration tables: &9{total} &c&l| &aPage: &6&l{page}&7/&6&l{maxPage} &apages'
+                    - '  &c# &8&l[&a&l{number}&8&l]&r &e{tableName} &7- %litecommandeditor_command_tools_configurator_list_view% !list!'
+                    - '  &a<<< %litecommandeditor_command_tools_configurator_list_previous% &c&l| %litecommandeditor_command_tools_configurator_list_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                View:
+                    Usage: '{prefix}&cUsage: &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_view%'
+                    Empty: '{prefix}&aThis table is empty.'
+                    Not-Exist: '{prefix}&cConfiguration table &e{tableName} &cdoesn''t exist! Use &6/litecommandeditor tools configurator %litecommandeditor_command_tools_configurator_list% &cto list all configuration tables.'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &aConfiguration table: &9{tableName} &c&l| &aPaths &e&l{total} &c&l| &aPage: &6&l{page}&7/&6&l{maxPage} &apages'
+                    - '  &c# &8&l[&a&l{number}&8&l]&r &e{path}&7: &6{value} !view!'
+                    - '  &a<<< %litecommandeditor_command_tools_configurator_view_previous% &c&l| %litecommandeditor_command_tools_configurator_view_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            List-Names:
+                Help:
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[ &bLite&3Command&9Editor &b]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                - '  &cCommand &6/litecommandeditor tools listNames &cusage:'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_result% &b&l| &9View the results of the previous query'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_sound% &b&l| &9List or query a list of sound names'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_treetype% &b&l| &9List or query a list of tree type names'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_effect% &b&l| &9List or query the list of effect names'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_biome% &b&l| &9List or query a list of biome names'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_gamerule% &b&l| &9List or query the name list of game rules'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_entitytype% &b&l| &9List or query entity type name list'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_particle% &b&l| &9List or query a list of particle effect names'
+                - '  &f&l▶ %litecommandeditor_command_tools_listNames_item% &b&l| &9List or query a list of item names'
+                - ''
+                - '  &c&lDescription: &7This command is used to list and query a list of enumerated constant names for a certain type,'
+                - '  &7and supports copying to the clipboard to assist in editing special options in custom command configuration files.'
+                - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                Not-Available: '{prefix}&cThe {type} type you specified does not exist. Please use %litecommandeditor_command_tools_listNames% &cto view the available types.'
+                Not-Found: '{prefix}&cUnable to find any matching enumeration constant names in the {type} type, try changing the parameters?'
+                Keyword-Highlight:
+                    Enabled: true
+                    Keyword-Color: '&6&n'
+                    Other-Color: '&6'
+                Types:
+                    Sound: 'Sound'
+                    TreeType: 'Tree Type'
+                    Effect: 'Effect'
+                    Biome: 'Biome'
+                    GameRule: 'Game Rule'
+                    EntityType: 'Entity Type'
+                    Particle: 'Particle'
+                    Item: 'Item'
+                Result:
+                    No-Result: '{prefix}&cThere are currently no valid search results.'
+                    Number-Of-Single-Page: 9
+                    List:
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+                    - '  &9Type &d&l{type} &c&l| &aTotal &e&l{total} &c&l| &aPage &6&l{page}&7/&6&l{maxPage}'
+                    - '  &f&l▶ &8&l[&a&l{number}&8&l]&r %litecommandeditor_command_tools_listNames_result_line% !list!'
+                    - '  &a<<< %litecommandeditor_command_tools_listNames_result_previous% &c&l| %litecommandeditor_command_tools_listNames_result_next% &a>>>'
+                    - '&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Update-Item-Display-Name:
+                Usage: 
+                - '{prefix}&aUsage: %litecommandeditor_command_tools_updateItemDisplayName%'
+                - 'If the language code is not filled in, it will default to the language code corresponding to the language used by the current plugin.'
+                - '&7(Only the language provided by the plugin is valid. Please refer to the Language option comment in Config.yml for details)'
+                - 'Reference: &dEnglish &7-> &een_us&7, &dSimplified-Chinese &7-> &ezh_cn&7, &dTraditional-Chinese &7-> &ezh_tw'
+                - ''
+                - '&c&lDescription&f: Item display name refers to the corresponding language display name of all original items in the current version '
+                - '&fof the server saved in the Items.yml directory of the plugin.'
+                - '&fThis command will automatically update the display names of all items in the current version. Except &dEnglish&7(en_us)&f, '
+                - '&fother languages are used to download game resource files through the &aofficial MineCraft API website &fto obtain accurate translated names'
+                - '&7(so you need to ensure that the plug-in can access the Internet)'
+                - '&c&lNOTE&f: This operation is irreversible. Generally, this command only needs to be used once during the first installation of this plugin, '
+                - '&fand the entire process requires approximately a few MB of data, depending on the language.'
+                Confirming: '{prefix}&bYou are trying to update the display names of all items. Please use this command to confirm your operation: %litecommandeditor_command_tools_updateItemDisplayName_confirm% &7<---Click to fill'
+                Starting: '{prefix}&aStart downloading the list of item display names for the &e{languageCode} &alanguage, and save it to the path of &dItems.yml -> {path} &awhen the download is complete. '
+                Executions:
+                    Downloading-Versions: '&c[LiteCommandEditor-Pool] &aDownloading game version list...'
+                    Downloaded-Versions: '&c[LiteCommandEditor-Pool] &aSuccessfully downloaded the game version list from &6{manifestLink}&a.'
+                    Downloading-URL: '&c[LiteCommandEditor-Pool] &aGetting game resource download URL, version: &9{version} &a...'
+                    Downloaded-URL: '&c[LiteCommandEditor-Pool] &aSuccessfully obtained the game resource download URL from &6{resourceLink}&a.'
+                    Downloading-Asset-Index: '&c[LiteCommandEditor-Pool] &aDownloading game asset index...'
+                    Downloaded-Asset-Index: '&c[LiteCommandEditor-Pool] &aSuccessfully downloaded the game asset index from &6{assetIndexLink}&a.'
+                    Downloading-Language-Resource: '&c[LiteCommandEditor-Pool] &aAnalyzing game resources &7(hash=&5{hash}&7), language code: &e{languageCode}'
+                    Downloaded-Language-Resource: '&c[LiteCommandEditor-Pool] &aSuccessfully parsed game resources from &6{hashLink}&a, operation is about to be completed.'
+                    Version-Not-Found: '{prefix}&cUnable to get resources for game version &e{version}&c, unknown reason &7(Perhaps it''s a server core issue?)'
+                    Language-Code-Not-Found: '{prefix}&cUnable to obtain the language file corresponding to language code &e{languageCode}&c, the language file does not exist.'
+                    Operation-in-Progress: '{prefix}&cOperation in progress, please wait...'
+                Failed: '{prefix}&cUnable to download game resources for &e{languageCode} &clanguage, error occurred:{exception}'
+                Successfully: '{prefix}&aSuccessfully downloaded the item display name &7({loaded}/{total}) &afor the &e{languageCode} &alanguage and saved it to the path of &dItems.yml -> {path}&a. Change the &6Item-Display-Language-Path &aoption in &6Config.yml &ato &d{path} &ato take effect.'
+    Initialization:
+    - '{prefix}&6Configuration settings loaded, language: &a{language}'
+    - '{prefix}&6Loaded &b{components} &6JSON components'
+    - '{prefix}&6Loaded &b{commands} &6command configurations'
+    - '{prefix}&6Initialization completed, version &av{version}'
+    Updater:
+    - '{prefix}&aA new version has been released: &bv{version}'
+    - '&6- &3Now version: &6v{nowVersion}'
+    - '&6- &3Download link: &d{link}'
+    - '&6- &3Update log: {description}'

@@ -1,0 +1,237 @@
+Simplified-Chinese:
+    'ItemCollection List':
+        Placeholder: '%litecommandeditor_command_itemcollection_list%'
+        Text: '&a/litecommandeditor &6itemcollection &clist [命令] &7[页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出某个命令的物品收藏夹'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection &clist [命令] &7[页数]'
+    'ItemCollection List nextPage':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection list {command} {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'ItemCollection List previousPage':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection list {command} {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'ItemCollection List Give':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_give%'
+        Text: '&5&l[点击获取]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection give {command} {name}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击获取物品 &e{name}'
+    'ItemCollection Create':
+        Placeholder: '%litecommandeditor_command_itemcollection_create%'
+        Text: '&a/litecommandeditor &6itemcollection &ccreate [命令] [物品名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection create '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b将手上的物品添加到指定的收藏夹'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection &ccreate [命令] [物品名字]'
+    'ItemCollection Delete':
+        Placeholder: '%litecommandeditor_command_itemcollection_delete%'
+        Text: '&a/litecommandeditor &6itemcollection &cdelete [命令] [物品名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b删除指定的收藏夹中的物品'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection &cdelete [命令] [物品名字]'
+    'ItemCollection Give':
+        Placeholder: '%litecommandeditor_command_itemcollection_give%'
+        Text: '&a/litecommandeditor &6itemcollection &cgive [命令] [物品名字] &7[玩家]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection give '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b将指定的收藏夹物品给予玩家'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection &cgive [命令] [物品名字] &7[玩家]'
+Traditional-Chinese:
+    'ItemCollection List':
+        Placeholder: '%litecommandeditor_command_itemcollection_list%'
+        Text: '&a/litecommandeditor &6itemcollection &clist [命令] &7[頁數]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出某個命令的物品收藏夾'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection &clist [命令] &7[頁數]'
+    'ItemCollection List nextPage':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_next%'
+        Text: '&b&l下一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection list {command} {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到下一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7下一頁: &e{nextPage}'
+    'ItemCollection List previousPage':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_previous%'
+        Text: '&b&l上一頁'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection list {command} {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊轉到上一頁'
+            - '&7當前頁數: &e{page}'
+            - '&7上一頁: &e{previousPage}'
+    'ItemCollection List Give':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_give%'
+        Text: '&5&l[點擊獲取]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection give {command} {name}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5點擊獲取物品 &e{name}'
+    'ItemCollection Create':
+        Placeholder: '%litecommandeditor_command_itemcollection_create%'
+        Text: '&a/litecommandeditor &6itemcollection &ccreate [命令] [物品名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection create '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b將手上的物品添加到指定的收藏夾'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection &ccreate [命令] [物品名字]'
+    'ItemCollection Delete':
+        Placeholder: '%litecommandeditor_command_itemcollection_delete%'
+        Text: '&a/litecommandeditor &6itemcollection &cdelete [命令] [物品名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b刪除指定的收藏夾中的物品'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection &cdelete [命令] [物品名字]'
+    'ItemCollection Give':
+        Placeholder: '%litecommandeditor_command_itemcollection_give%'
+        Text: '&a/litecommandeditor &6itemcollection &cgive [命令] [物品名字] &7[玩家]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection give '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b將指定的收藏夾物品給予玩家'
+            - '&b使用方法 &a/litecommandeditor &6itemcollection &cgive [命令] [物品名字] &7[玩家]'
+English:
+    'ItemCollection List':
+        Placeholder: '%litecommandeditor_command_itemcollection_list%'
+        Text: '&a/litecommandeditor &6itemcollection &clist [Command] &7[Page]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection list '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bList a custom command''s item collection'
+            - '&bUsage: &a/litecommandeditor &6itemcollection &clist [Command] &7[Page]'
+    'ItemCollection List nextPage':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_next%'
+        Text: '&b&lNext Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection list {command} {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to next page'
+            - '&7Now page: &e{page}'
+            - '&7Next page: &e{nextPage}'
+    'ItemCollection List previousPage':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_previous%'
+        Text: '&b&lPrevious Page'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection list {command} {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to go to previous page'
+            - '&7Now page: &e{page}'
+            - '&7Previous page: &e{previousPage}'
+    'ItemCollection List Give':
+        Placeholder: '%litecommandeditor_command_itemcollection_list_give%'
+        Text: '&5&l[Click Here]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/litecommandeditor itemcollection give {command} {name}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5Click to get the item &e{name}'
+    'ItemCollection Create':
+        Placeholder: '%litecommandeditor_command_itemcollection_create%'
+        Text: '&a/litecommandeditor &6itemcollection &ccreate [Command] [Item Name]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection create '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bAdd the item in hand to the specific collection'
+            - '&bUsage: &a/litecommandeditor &6itemcollection &ccreate [Command] [Item Name]'
+    'ItemCollection Delete':
+        Placeholder: '%litecommandeditor_command_itemcollection_delete%'
+        Text: '&a/litecommandeditor &6itemcollection &cdelete [Command] [Item Name]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bDelete an item in specified collection'
+            - '&bUsage: &a/litecommandeditor &6itemcollection &cdelete [Command] [Item Name]'
+    'ItemCollection Give':
+        Placeholder: '%litecommandeditor_command_itemcollection_give%'
+        Text: '&a/litecommandeditor &6itemcollection &cgive [Command] [Item Name] &7[Player]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/litecommandeditor itemcollection give '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&bGive item from the specified collection to the player'
+            - '&bUsage: &a/litecommandeditor &6itemcollection &cgive [Command] [Item Name] &7[Player]'

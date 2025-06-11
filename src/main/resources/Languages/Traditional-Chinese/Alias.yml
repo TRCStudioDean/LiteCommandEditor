@@ -1,0 +1,22 @@
+#命令別名設定
+#本選項可用於設定命令的使用別名
+#以使命令的使用更加簡便
+#格式:（支持中文）
+#   [命令別名]: [原命令]
+#   [命令前綴]:[命令別名]: [原命令]
+#若不填寫命令前綴，則默認為“litecommandeditor”
+#按照此格式可自由添加新的命令別名
+#注意：建議在更改設定後重啟伺服器
+Aliases:
+    #/litecommandeditor reload -> /lcereload
+    "lcereload": "litecommandeditor reload"
+    #/litecommandeditor info -> /lceinfo
+    "lceinfo": "litecommandeditor info"
+    #/litecommandeditor load -> /lceload
+    "lceload": "litecommandeditor load"
+    #/litecommandeditor unload -> /lceunload
+    "lceunload": "litecommandeditor unload"
+    #/litecommandeditor list -> /lcelist
+    "lcelist": "litecommandeditor list"
+    #/litecommandeditor listall -> /lcelistall
+    "lcelistall": "litecommandeditor listall"

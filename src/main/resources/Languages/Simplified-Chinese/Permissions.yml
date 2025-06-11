@@ -1,0 +1,76 @@
+#所有权限均可自定义，请按照以下格式进行设置与更改：
+#  Default 是否为所有玩家可用，设置为true即所有玩家拥有此权限
+#  Permission 权限节点
+
+#绕过命令冷却的权限
+Command-Cooldown-Bypass:
+    Default: false
+    Permission: litecommandeditor.commandcooldownbypass
+
+Commands:
+    Help:
+        Default: true
+        Permission: litecommandeditor.command.help
+    Reload:
+        Default: false
+        Permission: litecommandeditor.command.reload
+    Info:
+        Default: false
+        Permission: litecommandeditor.command.info
+    Load:
+        Default: false
+        Permission: litecommandeditor.command.load
+    Unload:
+        Default: false
+        Permission: litecommandeditor.command.unload
+    Delete:
+        Default: false
+        Permission: litecommandeditor.command.delete
+    Debug:
+        Default: false
+        Permission: litecommandeditor.command.debug
+        Switch:
+            Default: false
+            Permission: litecommandeditor.command.debug.switch
+        View:
+            Default: false
+            Permission: litecommandeditor.command.debug.view
+        List:
+            Default: false
+            Permission: litecommandeditor.command.debug.list
+    Item-Collection:
+        Default: false
+        Permission: litecommandeditor.command.itemcollection
+        Create:
+            Default: false
+            Permission: litecommandeditor.command.itemcollection.create
+        Delete:
+            Default: false
+            Permission: litecommandeditor.command.itemcollection.delete
+        List:
+            Default: false
+            Permission: litecommandeditor.command.itemcollection.list
+        Give:
+            Default: false
+            Permission: litecommandeditor.command.itemcollection.give
+    Tools:
+        Default: false
+        Permission: litecommandeditor.command.tools
+        Placeholder:
+            Default: false
+            Permission: litecommandeditor.command.tools.placeholder
+        Configurator:
+            Default: false
+            Permission: litecommandeditor.command.tools.configurator
+        List-Names:
+            Default: false
+            Permission: litecommandeditor.command.tools.listnames
+        Update-Item-Display-Name:
+            Default: false
+            Permission: litecommandeditor.command.tools.updateitemdisplayname
+    List:
+        Default: false
+        Permission: litecommandeditor.command.list
+    List-All:
+        Default: false
+        Permission: litecommandeditor.command.listall

@@ -1,0 +1,77 @@
+#Plugin language
+#Optional: English, Simplified-Chinese(简体中文), Traditional-Chinese(繁體中文)
+Language: English
+
+#Item display language path
+#This option is used to set the path name for the item list used in Items.yml (it is recommended to name the paths using language names)
+#The item display name refers to the corresponding language display name of all original items in the current version of the server saved in the items.yml directory of the plugin. 
+#Use the command "/litecommandeditor tools updateItemDisplayName" to update the corresponding language and save it to Items.yml.
+#Note: Except for American English (en_us), 
+#other languages download game resource files through the official MineCraft API to obtain accurate translated names (so you need to ensure that the plug-in can access the Internet)
+#Reference language code abbreviation: American English -> en_us, Simplified Chinese -> zh_cn, Traditional Chinese -> zh_tw
+Item-Display-Language-Path: English
+
+#Disabled commands.
+#After disabling, the command will not be available (the command will no longer exist) and will not be re evaluated until the next server restart.
+#Attention: disabling commands from other plugins may have serious consequences, use with caution!
+#Format: [Prefix]:[Command]
+#Example: bukkit:plugins -> Disable "/plugins" command.
+#If you want to know the prefix of a command, you can use the "/litecommandeditor info [command]" to view it.
+Disabled-Commands: []
+
+#Commands cooling (unit: seconds)
+#Setup the commands that require adding cooling here can prevent players from frequently executing commands.
+#Note that the logic of this feature is that when a player executed a command that STARTS WITH a command in the list, it will be added as a cooldown
+#All command aliases (including prefixed commands) at the source of the main command in this setting will be cooled.
+#For example, when setting the cooldown time for the "lce" command, all command aliases in this plugin, 
+#such as "litecommandeditor:lce", "litecommandeditor:litecommandeditor", etc, will have the same cooldown time added.
+#This option can also take effect on commands from other plugins.
+Commands-Cooldown:
+    Enabled: true
+    #Command list. The format is: "[Command]: [Cooldown]"
+    List:
+    - 'examplecommand compound': 1.0 #When the player executed "/examplecommand compound...", it will trigger 1s cooling
+    
+#Async thread settings
+#If you don't know what an asynchronous thread is, please don't modify this option!
+Async-Thread-Settings: 
+    #Each tick delay. (Thread execution speed)
+    #Example: 0.1 means 10 times execution in each second, 0.05 means 20 TPS.
+    Tick-Delay: 0.1
+    #Whether to remove duplicate delayed tasks automatically
+    #Delayed tasks refer to tasks that include Delay settings and run on the thread pool
+    #If enabled, the following tasks will remove current unfinished tasks when run repeatedly:
+    #1. ActionBar (Text animation)
+    #2. Title (Text animation)
+    #3. ClientSound (Play sheet music)
+    #4. CompoundFunction (Execution of functions)
+    Remove-Duplicate-Delayed-Tasks: true
+        
+#Calculate the number of decimal places to retain
+Retaining-Decimal-Places: 2
+
+#PlaceholderAPI settings
+PlaceholderAPI:
+    #Whether to use the PlaceholderAPI
+    Enabled: true
+    #Latency (seconds) for placeholder cache updates
+    Cache-Update-Delay: -1
+    #Placeholder for exception (not cached)
+    Exceptions: []
+
+#Automatically update item display name
+#When enabled, if the current selected language is not included in the Items.yml file when getting item display name,
+#the corresponding language will be automatically downloaded from MojangAPI.
+#This feature is attached to the command "/lce tools updateItemDisplayName", 
+#refer to the usage help of this command for details.
+Auto-Update-Item-Display-Name: true
+
+#Whether to check update
+#Once a day.
+#It will check the latest version of the plugin, and report to the console and authorized players.
+#This function will not cause the server to generate too much traffic. (Less than 1kb)
+Updater: true
+
+#Whether enable Metrics
+#Detailed: https://bstats.org/plugin/bukkit/LiteCommandEditor/
+Metrics: true

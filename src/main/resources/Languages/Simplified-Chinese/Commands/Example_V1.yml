@@ -1,0 +1,309 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                      使用说明                        | #
+# +------------------------------------------------------+ #
+############################################################
+
+#这是一个用于示范的配置文件，你可以参考本配置文件的格式规范，
+#以及注释内容，自由创建新的命令配置文件。
+#设置完成后，使用命令 /litecommandeditor load 以加载命令配置文件。
+
+#注意: 每个命令配置文件只对应一个自定义的命令
+#任何人都可以通过“/[命令名字]”或“/[命令前缀:命令名字]”触发
+#请谨慎设置如权限等的相关选项！
+
+############################################################
+# +------------------------------------------------------+ #
+# |                      常规设置                        | #
+# +------------------------------------------------------+ #
+############################################################
+
+#是否启用本配置文件
+#由于只要存在命令配置文件将会被自动加载，
+#因此此选项可用于在Debug时使用，可禁止被加载。
+Enabled: true
+
+#命令前缀 & 命令归属
+#支持使用中文等特殊字符，不可以使用空格
+#例如: 命令“/minecraft:gamemode” 的前缀为“minecraft”
+#      像“/gamemode”、“/tp”、“/gamerule”等命令均归属于“minecraft”
+#若不填写此选项，则默认为“litecommandeditor”
+Prefix: 'litecommandeditor'
+
+#主命令的名字
+#支持使用中文等特殊字符，不可以使用空格
+#例如: 命令“/gamemode” 的名字为“gamemode”
+#该选项必须填写，否则本命令配置文件无法被加载
+Name: 'examplecommand'
+
+#主命令的别名（可选）
+#支持使用中文等特殊字符，不可以使用空格
+#在这个列表中填写这个命令的其他名称，
+#这些别称均可使用“/[命令别名]”和“/[命令前缀]:[命令别名]”以触发本命令配置文件
+#Aliases: []
+
+#命令使用权限（可选）
+#该权限应用于整个命令，若玩家没有该权限，则无法使用此命令
+Permission: litecommandeditor.customcommand.example
+
+#命令说明（可选）
+#该说明会在/litecommandeditor info或/help命令中显示
+#Description: 无
+
+#命令使用方法（可选）
+#该说明会在/litecommandeditor info或/help命令中显示
+#Usage: 无
+
+############################################################
+# +------------------------------------------------------+ #
+# |                      特殊设置                        | #
+# +------------------------------------------------------+ #
+############################################################
+
+#特别注意: 部分设置同时支持使用YAML的 数组格式 与 对象格式
+#例如，Messages选项可以是以下两种格式:
+#1. Messages: 'Hello World'
+#2. Messages:
+#   - 'Hello World1'
+#   - 'Hello World2'
+#可以使用这种格式的选项如下:
+#函数设置: Messages, Broadcast, Commands, Server-Teleport, Reward-Items, Take-Items, Player-Functions, World-Functions, Recipes, Exceptions
+#属性设置: Conditions, Permission
+
+#命令执行器设置
+#用于处理本自定义命令的执行
+Command-Executor:
+    #主命令
+    #当玩家只使用了“/examplecommand”则触发以下功能
+    'main-command':
+        Conditions: '{length} == 0'
+        Break: true
+        #函数（功能）列表，执行顺序是从上到下
+        #若没有设置Break为true，则会从上到下全部执行一遍
+        Functions:
+            #情况1
+            'pass':
+                #当玩家满足拥有该权限时
+                Conditions: 'permission:litecommandeditor.examplecommand'
+                #跳出函数列表遍历，即不再执行下方的情况2
+                Break: true
+                Messages: '&bLite&3Command&9Editor &f&l>>> &a这里是主命令 &e“/examplecommand” &a的执行结果.'
+                Commands: 'server:say Hello world.'
+            #情况2
+            'no permission':
+                Messages: '&bLite&3Command&9Editor &f&l>>> &c你没有使用这个命令的权限！'
+    #子命令列表
+    #当玩家使用了“/examplecommand ...[子命令]...” 则触发以下功能
+    'sub-commands':
+        Conditions: '{length} >= 1'
+        Break: true
+        Functions:
+            'help':
+                Conditions: '[1] == help'
+                Break: true
+                Functions: 
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.help'
+                        Break: true
+                        Messages:
+                        - '&bLite&3Command&9Editor &f&l>>> &a&l命令帮助'
+                        - '&3- &6/examplecommand help &e查看帮助'
+                        - '&3- &6/examplecommand message &e示范消息设置'
+                        - '&3- &6/examplecommand broadcast &e示范公告设置'
+                        - '&3- &6/examplecommand command &e示范命令设置'
+                        - '&3- &6/examplecommand title &e示范标题消息设置'
+                        - '&3- &6/examplecommand actionbar &e示范动作栏消息设置'
+                        - '&3- &6/examplecommand sound &e示范声音设置'
+                        - '&3- &6/examplecommand serverteleport &e示范跨服传送设置'
+                        - '&3- &6/examplecommand compound &e任务混合设置的效果示范'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'message':
+                Conditions: '[1] == message'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.message'
+                        Break: true
+                        Messages: '&a这是执行命令 &e“/examplecommand message” &a所返回的消息~'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'broadcast':
+                Conditions: '[1] == broadcast'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.broadcast'
+                        Break: true
+                        Broadcast: '&a这是执行命令 &e“/examplecommand broadcast” &a所返回的消息~'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'command':
+                Conditions: '[1] == command'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.command'
+                        Break: true
+                        Commands: 'server:say &a这是命令 &e“/examplecommand command” &a所执行的命令~'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'title':
+                Conditions: '[1] == title'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.title'
+                        Break: true
+                        Titles: 
+                          - Title: '&a这是执行命令'
+                            Sub-Title: '&e“/examplecommand title” &7所返回的标题消息1~'
+                            Delay: 5
+                            Fade-In: 0
+                            Stay: 5
+                            Fade-Out: 0
+                          - Title: '&a这是执行命令'
+                            Sub-Title: '&e“/examplecommand title” &7所返回的标题消息2~'
+                            Delay: 0
+                            Fade-In: 0
+                            Stay: 5
+                            Fade-Out: 0
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'actionbar':
+                Conditions: '[1] == actionbar'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.actionbar'
+                        Break: true
+                        Action-Bars: 
+                          - Text: '&a这是执行命令 &e“/examplecommand actionbar” &a所返回的动作栏消息1~'
+                            Delay: 2
+                          - Text: '&a这是执行命令 &e“/examplecommand actionbar” &a所返回的动作栏消息2~'
+                            Delay: 2
+                          - Text: '&a这是执行命令 &e“/examplecommand actionbar” &a所返回的动作栏消息3~'
+                            Delay: 2
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'sound':
+                Conditions: '[1] == sound'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.sound'
+                        Break: true
+                        Sounds: 
+                          - Sound: UI_BUTTON_CLICK
+                            Delay: 5
+                            Pitch: 1
+                            Volume: 1
+                            Broadcast: false
+                          - Sound: UI_BUTTON_CLICK
+                            Delay: 5
+                            Pitch: 1
+                            Volume: 1
+                            Broadcast: false
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'serverteleport':
+                Conditions: '[1] == serverteleport'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.serverteleport'
+                        Break: true
+                        Server-Teleport: 'Lobby'
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 正在将你传送至Lobby服务器（配置文件仅供参考）'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'compound':
+                Conditions: '[1] == compound'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.compound'
+                        Break: true
+                        Compound-Functions: 
+                          - Type: MESSAGE
+                            Messages: '&a这是执行命令 &e“/examplecommand compound” &a所返回的消息~'
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: BROADCAST
+                            Broadcast: '&a这是执行命令 &e“/examplecommand compound” &a所返回的消息~'
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: COMMAND
+                            Commands: 'server:say &a这是命令 &e“/examplecommand compound” &a所执行的命令~'
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: TITLE
+                            Title: '&a这是执行命令'
+                            Sub-Title: '&e“/examplecommand compound” &7所返回的标题消息~'
+                            Delay: 0
+                            Fade-In: 0
+                            Stay: 5
+                            Fade-Out: 0
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: ACTION_BAR
+                            Text: '&a这是执行命令 &e“/examplecommand compound” &a所返回的动作栏消息~'
+                            Delay: 0
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: SOUND
+                            Sound: UI_BUTTON_CLICK
+                            Delay: 0
+                            Pitch: 1
+                            Volume: 1
+                          - Type: SERVER_TELEPORT
+                            Server-Teleport: 'Lobby'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> 你没有使用这个子命令的权限！'
+            'unknown':
+                Messages: '&bLite&3Command&9Editor &f&l>>> &c未知命令，请使用/examplecommand help获取帮助。'
+
+#Tab填充器设置
+#用于处理本自定义命令使用时能够通过TAB键自动填充的内容
+Tab-Completer:
+    'sub-commands': 
+        Conditions: '{length} == 1'
+        Functions:
+            'message':
+                Conditions: 'permission:litecommandeditor.examplecommand.message'
+                Recipes: 'message'
+            'broadcast':
+                Conditions: 'permission:litecommandeditor.examplecommand.broadcast'
+                Recipes: 'broadcast'
+            'command':
+                Conditions: 'permission:litecommandeditor.examplecommand.command'
+                Recipes: 'command'
+            'title':
+                Conditions: 'permission:litecommandeditor.examplecommand.title'
+                Recipes: 'title'
+            'actionbar':
+                Conditions: 'permission:litecommandeditor.examplecommand.actionbar'
+                Recipes: 'actionbar'
+            'sound':
+                Conditions: 'permission:litecommandeditor.examplecommand.sound'
+                Recipes: 'sound'
+            'serverteleport':
+                Conditions: 'permission:litecommandeditor.examplecommand.serverteleport'
+                Recipes: 'serverteleport'
+            'compound':
+                Conditions: 'permission:litecommandeditor.examplecommand.compound'
+                Recipes: 'compound'
+            'default':
+                Recipes: 'help'
+
+############################################################
+# +------------------------------------------------------+ #
+# |                      其他设置                        | #
+# +------------------------------------------------------+ #
+############################################################
+
+#内置JSON元件
+JSON-Components: {}
+
+#物品收藏夹
+Item-Collection: {}

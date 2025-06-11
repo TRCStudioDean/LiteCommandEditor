@@ -1,0 +1,309 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                        Usage                         | #
+# +------------------------------------------------------+ #
+############################################################
+
+#This is a configuration file for demonstration purposes. You can refer to the format specifications 
+#and annotation content of this configuration file to freely create new command configuration files.
+#After setting up, use the command "/litecommandeditor load" to load command configuration file.
+
+#Note: Each command configuration file only corresponds to one custom command.
+#Anyone can trigger through "/[Command Name]" or "/[Prefix:Command Name]".
+#Please set relevant options such as permissions with caution!
+
+############################################################
+# +------------------------------------------------------+ #
+# |                  General Settings                    | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Enable this command configuration.
+# Since the command configuration file will be automatically loaded as long as it exists, 
+# this option can be used during debugging to prevent loading.
+Enabled: true
+
+# Command Prefix & Command Belong
+# PS: Spaces cannot be used!
+# Example: Command prefix of "/minecraft:gamemode" is "minecraft"
+#          Such as "/gamemode", "/tp", "/gamerule" is belong to "minecraft"
+# If this option is not filled in, it defaults to "litecommandeditor"
+Prefix: 'litecommandeditor'
+
+# Main command name
+# PS: Spaces cannot be used!
+# Example: Command name of "/gamemode" is "gamemode"
+# This option must be filled in, otherwise the configuration file for this command cannot be loaded.
+Name: 'examplecommand'
+
+# Command aliases (optional)
+# PS: Spaces cannot be used!
+# Please fill in the other names of this command in this list, 
+# which can be used with "/[Alias]" and "/[Command Prefix]:[Command Alias]" to trigger this command configuration file
+#Aliases: []
+
+# Command usage permissions (optional)
+# This permission applies to the entire command. 
+# If the player does not have this permission, they cannot use this command
+Permission: litecommandeditor.customcommand.example
+
+# Command description (optional)
+# This description will be displayed in the "/litecommandeditor info" or /help command
+#Description: None
+
+# Command usage (optional)
+# This usage will be displayed in the "/litecommandeditor info" or /help command
+#Usage: None
+
+############################################################
+# +------------------------------------------------------+ #
+# |                  Function Settings                   | #
+# +------------------------------------------------------+ #
+############################################################
+
+#Special note: Some settings support both YAML array format and object format
+#For example, the Messages option can be in the following two formats:
+#1. Messages: 'Hello World'
+#2. Messages:
+#   - 'Hello World1'
+#   - 'Hello World2'
+#The options that can be used in this format are as follows:
+#Function settings: Messages, Broadcast, Commands, Server-Teleport, Reward-Items, Take-Items, Player-Functions, World-Functions, Recipes, Exceptions
+#Attribute settings: Conditions, Permission
+
+#Command Executor Settings
+#Used to handle the execution of this custom command
+Command-Executor:
+    #Example: main command settings.
+    #When the player only uses "/examplecommand", the following functions are triggered:
+    'main-command':
+        Conditions: '{length} == 0'
+        Break: true
+        #List of functions, executed from top to bottom
+        #If Break is not set to true, it will be executed all the time from top to bottom
+        Functions:
+            #Case 1: 
+            'pass':
+                #When the player meets the requirement to have this permission
+                Conditions: 'permission:litecommandeditor.examplecommand'
+                #End the function list traversal, i.e. no longer execute the following Case 2
+                Break: true
+                Messages: '&bLite&3Command&9Editor &f&l>>> &aHere is the execution result of the main command &e"/examplecommand"'
+                Commands: 'server:say Hello world.'
+            #Case 2
+            'no permission':
+                Messages: '&bLite&3Command&9Editor &f&l>>> &cYou do not have permission to use this command!'
+    #Examples: sub command settings.
+    #When the player uses "/examplecommand... [subcommand]...", the following functions are triggered:
+    'sub-commands':
+        Conditions: '{length} >= 1'
+        Break: true
+        Functions:
+            'help':
+                Conditions: '[1] == help'
+                Break: true
+                Functions: 
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.help'
+                        Break: true
+                        Messages:
+                        - '&bLite&3Command&9Editor &f&l>>> &a&lCommand help'
+                        - '&3- &6/examplecommand help &eView the help'
+                        - '&3- &6/examplecommand message &eExample message'
+                        - '&3- &6/examplecommand broadcast &eExample broadcast'
+                        - '&3- &6/examplecommand command &eExample command'
+                        - '&3- &6/examplecommand title &eExample title'
+                        - '&3- &6/examplecommand actionbar &eExample action bar'
+                        - '&3- &6/examplecommand sound &eExample play sound'
+                        - '&3- &6/examplecommand serverteleport &eExample server teleport'
+                        - '&3- &6/examplecommand compound &eExample compound functions'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'message':
+                Conditions: '[1] == message'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.message'
+                        Break: true
+                        Messages: '&aThis is the message returned by executing the command &e"/examplecommand message"&a~'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'broadcast':
+                Conditions: '[1] == broadcast'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.broadcast'
+                        Break: true
+                        Broadcast: '&aThis is the broadcast returned by executing the command &e"/examplecommand broadcast" &a~'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'command':
+                Conditions: '[1] == command'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.command'
+                        Break: true
+                        Commands: 'server:say &aThis is the command executed by the command &e"/examplecommand command" &a~'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'title':
+                Conditions: '[1] == title'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.title'
+                        Break: true
+                        Titles: 
+                          - Title: '&aThis is the title 1'
+                            Sub-Title: '&eby exdecuting the command "/examplecommand title"'
+                            Delay: 3
+                            Fade-In: 0
+                            Stay: 5
+                            Fade-Out: 0
+                          - Title: '&aThis is the title 2'
+                            Sub-Title: '&eby exdecuting the command "/examplecommand title"'
+                            Delay: 3
+                            Fade-In: 0
+                            Stay: 5
+                            Fade-Out: 0
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'actionbar':
+                Conditions: '[1] == actionbar'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.actionbar'
+                        Break: true
+                        Action-Bars: 
+                          - Text: '&aThis is the action bar message 1 returned by executing the command &e"/examplecommand actionbar"&a~'
+                            Delay: 2
+                          - Text: '&aThis is the action bar message 2 returned by executing the command &e"/examplecommand actionbar"&a~'
+                            Delay: 2
+                          - Text: '&aThis is the action bar message 3 returned by executing the command &e"/examplecommand actionbar"&a~'
+                            Delay: 2
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'sound':
+                Conditions: '[1] == sound'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.sound'
+                        Break: true
+                        Sounds: 
+                          - Sound: UI_BUTTON_CLICK
+                            Delay: 5
+                            Pitch: 1
+                            Volume: 1
+                            Broadcast: false
+                          - Sound: UI_BUTTON_CLICK
+                            Delay: 5
+                            Pitch: 1
+                            Volume: 1
+                            Broadcast: false
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'serverteleport':
+                Conditions: '[1] == serverteleport'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.serverteleport'
+                        Break: true
+                        Server-Teleport: 'Lobby'
+                        Messages: '&bLite&3Command&9Editor &f&l>>> Transferring you to the Lobby server (configuration file for reference only)'
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'compound':
+                Conditions: '[1] == compound'
+                Break: true
+                Functions:
+                    'pass':
+                        Conditions: 'permission:litecommandeditor.examplecommand.compound'
+                        Break: true
+                        Compound-Functions: 
+                          - Type: MESSAGE
+                            Messages: '&aThis is the message returned by executing the command &e"/examplecommand compound"&a~'
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: BROADCAST
+                            Broadcast: '&aThis is the broadcast returned by executing the command &e"/examplecommand compound"&a~'
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: COMMAND
+                            Commands: 'server:say &aThis is the command executed by the command &e"/examplecommand compound" &a~'
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: TITLE
+                            Title: '&aThis is the title'
+                            Sub-Title: '&eby exdecuting the command "/examplecommand compound"'
+                            Delay: 0
+                            Fade-In: 0
+                            Stay: 5
+                            Fade-Out: 0
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: ACTION_BAR
+                            Text: '&aThis is the action bar message returned by executing the command &e"/examplecommand compound"&a~'
+                            Delay: 0
+                          - Type: DELAY
+                            Delay: 4
+                          - Type: SOUND
+                            Sound: UI_BUTTON_CLICK
+                            Delay: 0
+                            Pitch: 1
+                            Volume: 1
+                            Broadcast: false
+                    'no permission':
+                        Messages: '&bLite&3Command&9Editor &f&l>>> You are not have permission to do this!'
+            'unknown':
+                Messages: '&bLite&3Command&9Editor &f&l>>> &cUnknown command, please use "/examplecommand help" for assistance.'
+
+#Tab Completer settings
+#Used to handle the content that can be automatically filled in through the TAB key when using this custom command
+Tab-Completer:
+    'sub-commands': 
+        Conditions: '{length} == 1'
+        Functions:
+            'message':
+                Conditions: 'permission:litecommandeditor.examplecommand.message'
+                Recipes: 'message'
+            'broadcast':
+                Conditions: 'permission:litecommandeditor.examplecommand.broadcast'
+                Recipes: 'broadcast'
+            'command':
+                Conditions: 'permission:litecommandeditor.examplecommand.command'
+                Recipes: 'command'
+            'title':
+                Conditions: 'permission:litecommandeditor.examplecommand.title'
+                Recipes: 'title'
+            'actionbar':
+                Conditions: 'permission:litecommandeditor.examplecommand.actionbar'
+                Recipes: 'actionbar'
+            'sound':
+                Conditions: 'permission:litecommandeditor.examplecommand.sound'
+                Recipes: 'sound'
+            'serverteleport':
+                Conditions: 'permission:litecommandeditor.examplecommand.serverteleport'
+                Recipes: 'serverteleport'
+            'compound':
+                Conditions: 'permission:litecommandeditor.examplecommand.compound'
+                Recipes: 'compound'
+            'default':
+                Recipes: 'help'
+
+############################################################
+# +------------------------------------------------------+ #
+# |                   Other Settings                     | #
+# +------------------------------------------------------+ #
+############################################################
+
+#Inner JSON components
+JSON-Components: {}
+
+#Item collection
+Item-Collection: {}
