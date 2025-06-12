@@ -792,10 +792,13 @@ public class ToolsCommand
     }
     
     private List<String> tab_updateItemDisplayNames(String[] args) {
-        if (cachedLanguageCodeList.isEmpty() && ItemUtil.getAssetIndex() != null) {
-            saveLoadedLanguageCodeToCache();
+        if (args.length == 3) {
+            if (cachedLanguageCodeList.isEmpty() && ItemUtil.getAssetIndex() != null) {
+                saveLoadedLanguageCodeToCache();
+            }
+            return getTabElements(args, 3, cachedLanguageCodeList);
         }
-        return getTabElements(args, 3, cachedLanguageCodeList);
+        return new ArrayList<>();
     }
     
     private Map<String, String> getTableInfo(Map<Object, Object> table, List<String> parent, boolean list) {

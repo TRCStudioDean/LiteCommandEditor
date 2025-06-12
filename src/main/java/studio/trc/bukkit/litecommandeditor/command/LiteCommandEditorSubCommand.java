@@ -11,35 +11,35 @@ import org.bukkit.command.CommandSender;
 public interface LiteCommandEditorSubCommand
 {
     /**
-     * 执行子命令
-     * @param sender 发送命令的人
-     * @param args 参数
+     * Execute sub command.
+     * @param sender Command sender.
+     * @param args arguments.
      */
     public void execute(CommandSender sender, String... args);
     
     /**
-     * 子命令的名字
+     * Sub command's name.
      * @return 
      */
     public String getName();
     
     /**
-     * Tab补充命令
-     * @param sender 发送命令的人
-     * @param subCommand 子命令
-     * @param args 参数
+     * Tab complete.
+     * @param sender Command sender.
+     * @param subCommand The sub command.
+     * @param args arguments.
      * @return 
      */
     public List<String> tabComplete(CommandSender sender, String subCommand, String... args);
     
     /**
-     * 子命令的类型
+     * Sub command type.
      * @return 
      */
     public LiteCommandEditorSubCommandType getCommandType();
     
     /**
-     * 使用TAB快速填充玩家名
+     * Quickly fill in player names using TAB
      * @param args
      * @param length
      * @return 
@@ -55,7 +55,7 @@ public interface LiteCommandEditorSubCommand
     }
     
     /**
-     * 使用TAB快速填充元素名字
+     * Quickly fill in elements using TAB
      * @param args
      * @param length
      * @param elements
