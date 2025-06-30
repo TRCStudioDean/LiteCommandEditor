@@ -1,6 +1,7 @@
 package studio.trc.bukkit.litecommandeditor.module.function;
 
-import com.pa_project.lib.json.JSONArray;
+import com.pa_project.lib.json.JSONDataStructure;
+import com.pa_project.lib.json.JSONList;
 import com.pa_project.lib.json.JSONObject;
 import com.pa_project.lib.json.parser.JSONParseException;
 
@@ -83,7 +84,7 @@ public class Configurator
                                     if (json.get(parameters[3]) instanceof List) {
                                         json.getRawList(parameters[3]).add(LiteCommandEditorUtils.toValue(parameters[4]));
                                     } else {
-                                        JSONArray array = new JSONArray();
+                                        JSONList array = JSONList.create();
                                         array.add(LiteCommandEditorUtils.toValue(parameters[4]));
                                         json.set(parameters[3], array);
                                     }
@@ -101,7 +102,7 @@ public class Configurator
                                             list.add(LiteCommandEditorUtils.toValue(parameters[5]));
                                         }
                                     } else {
-                                        JSONArray array = new JSONArray();
+                                        JSONList array = JSONList.create();
                                         array.add(LiteCommandEditorUtils.toValue(parameters[5]));
                                         json.set(parameters[3], array);
                                     }
@@ -136,7 +137,7 @@ public class Configurator
             }
             case "create": { //Configurator:create:[Name]
                 if (parameters.length >= 2 && getTable(parameters[1]) == null) {
-                    tables.put(parameters[1], new JSONObject());
+                    tables.put(parameters[1], JSONObject.create(JSONDataStructure.LINKED));
                     incorrect = false;
                 }
                 break;
@@ -154,7 +155,7 @@ public class Configurator
                         case "text": {
                             String text = String.join(":", Arrays.stream(parameters).skip(3).toArray(String[]::new));
                             try {
-                                tables.put(parameters[2], JSONObject.toJSONObject(text));
+                                tables.put(parameters[2], JSONObject.toJSONObject(text, JSONDataStructure.LINKED));
                             } catch (JSONParseException ex) {
                                 incorrectFormat_Text(text);
                             }
@@ -166,10 +167,10 @@ public class Configurator
                             File file = new File(fileName);
                             if (file.exists()) {
                                 try {
-                                    tables.put(parameters[2], JSONObject.toJSONObject(file));
+                                    tables.put(parameters[2], JSONObject.toJSONObject(file, JSONDataStructure.LINKED));
                                 } catch (JSONParseException ex) {
                                     try (Reader reader = new InputStreamReader(new FileInputStream(file), LiteCommandEditorProperties.getMessage("Charset"))) {
-                                        tables.put(parameters[2], JSONObject.toJSONObject((Map<?,?>) new Yaml().load(YamlConfiguration.loadConfiguration(reader).saveToString())));
+                                        tables.put(parameters[2], JSONObject.toJSONObject((Map<?,?>) new Yaml().load(YamlConfiguration.loadConfiguration(reader).saveToString()), true, JSONDataStructure.LINKED));
                                     } catch (IOException | JSONParseException ex1) {
                                         incorrectFormat_File(fileName);
                                     }

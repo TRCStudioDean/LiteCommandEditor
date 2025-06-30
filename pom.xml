@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>studio.trc</groupId>
     <artifactId>LiteCommandEditor</artifactId>
-    <version>1.0.0.0</version>
+    <version>1.0.1.0</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,7 +75,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>1.18.32</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

@@ -110,3 +110,8 @@ In addition to the main function of "custom commands", plugin also include other
 
 ---
 [![BigImage](https://bstats.org/signatures/bukkit/LiteCommandEditor.svg)](https://bstats.org/plugin/bukkit/LiteCommandEditor/16521)
+
+## My Updating Plugins:
+**LiteSignIn: [https://www.spigotmc.org/resources/79584/](https://www.spigotmc.org/resources/79584/)**  
+**LiteAnnouncer: [https://www.spigotmc.org/resources/84664/](https://www.spigotmc.org/resources/84664/)**  
+**GlobalMarketPlus: [https://www.spigotmc.org/resources/103648/](https://www.spigotmc.org/resources/103648/)**

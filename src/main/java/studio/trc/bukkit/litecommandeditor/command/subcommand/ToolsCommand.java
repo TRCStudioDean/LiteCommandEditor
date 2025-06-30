@@ -1,6 +1,7 @@
 package studio.trc.bukkit.litecommandeditor.command.subcommand;
 
-import com.pa_project.lib.json.JSONArray;
+import com.pa_project.lib.json.JSONDataStructure;
+import com.pa_project.lib.json.JSONList;
 import com.pa_project.lib.json.JSONObject;
 import com.pa_project.lib.json.parser.JSONParseException;
 
@@ -219,7 +220,7 @@ public class ToolsCommand
                     if (Configurator.getTable(args[3]) != null) {
                         MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Create.Already-Exist", placeholders);
                     } else {
-                        Configurator.getTables().put(args[3], new JSONObject());
+                        Configurator.getTables().put(args[3], JSONObject.create(JSONDataStructure.LINKED));
                         MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Create.Successfully", placeholders);
                     }
                 }
@@ -263,7 +264,7 @@ public class ToolsCommand
                                 if (table.get(path) instanceof List) {
                                     table.getRawList(path).add(LiteCommandEditorUtils.toValue(value));
                                 } else {
-                                    JSONArray array = new JSONArray();
+                                    JSONList array = JSONList.create();
                                     array.add(LiteCommandEditorUtils.toValue(value));
                                     table.set(path, array);
                                 }
@@ -287,7 +288,7 @@ public class ToolsCommand
                                         list.add(LiteCommandEditorUtils.toValue(value));
                                     }
                                 } else {
-                                    JSONArray array = new JSONArray();
+                                    JSONList array = JSONList.create();
                                     array.add(LiteCommandEditorUtils.toValue(value));
                                     table.set(path, array);
                                 }
@@ -355,11 +356,11 @@ public class ToolsCommand
                             File file = new File(value);
                             if (file.exists()) {
                                 try {
-                                    Configurator.getTables().put(tableName, JSONObject.toJSONObject(file));
+                                    Configurator.getTables().put(tableName, JSONObject.toJSONObject(file, JSONDataStructure.LINKED));
                                     MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Load.Successfully", placeholders);
                                 } catch (JSONParseException ex) {
                                     try (Reader reader = new InputStreamReader(new FileInputStream(file), LiteCommandEditorProperties.getMessage("Charset"))) {
-                                        Configurator.getTables().put(tableName, JSONObject.toJSONObject((Map<?,?>) new Yaml().load(YamlConfiguration.loadConfiguration(reader).saveToString())));
+                                        Configurator.getTables().put(tableName, JSONObject.toJSONObject((Map<?,?>) new Yaml().load(YamlConfiguration.loadConfiguration(reader).saveToString()), true, JSONDataStructure.LINKED));
                                         MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Load.Successfully", placeholders);
                                     } catch (IOException | JSONParseException ex1) {
                                         MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Load.Failed:File-Format", placeholders);
@@ -373,7 +374,7 @@ public class ToolsCommand
                         case "text": {
                             placeholders.put("{text}", value.length() > 256 ? value.substring(0, 255) + "..." : value);
                             try {
-                                Configurator.getTables().put(tableName, JSONObject.toJSONObject(value));
+                                Configurator.getTables().put(tableName, JSONObject.toJSONObject(value, JSONDataStructure.LINKED));
                                 MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Load.Successfully", placeholders);
                             } catch (JSONParseException ex) {
                                 MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Load.Failed:Text", placeholders);

@@ -29,9 +29,6 @@ public class PluginControl
     @Setter
     private static boolean reloading = false;
     
-    /**
-     * 加载插件
-     */
     public static void loadPlugin() {
         reloading = true;
         Map<String, String> placeholders = reloadConfig();

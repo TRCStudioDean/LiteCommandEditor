@@ -17,9 +17,6 @@ import java.util.regex.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 import org.bukkit.Bukkit;
@@ -124,7 +121,7 @@ public class ItemUtil
                             MessageUtil.sendCommandMessage(sender, "Tools.Update-Item-Display-Name.Executions.Downloaded-Versions", placeholders);
                         }
                         placeholders.put("{version}", getServerVersion());
-                        JSONObject targetVersion = (JSONObject) manifestJSON.getJSONArray("versions").stream().filter(version -> version instanceof JSONObject).filter(version -> ((JSONObject) version).getString("id").equals(getServerVersion())).findFirst().orElse(null);
+                        JSONObject targetVersion = (JSONObject) manifestJSON.getJSONList("versions").stream().filter(version -> version instanceof JSONObject).filter(version -> ((JSONObject) version).getString("id").equals(getServerVersion())).findFirst().orElse(null);
                         //Check version
                         if (targetVersion != null) {
                             //Download resources index
@@ -188,7 +185,7 @@ public class ItemUtil
                         MessageUtil.sendCommandMessage(sender, "Tools.Update-Item-Display-Name.Executions.Downloaded-Versions", placeholders);
                     }
                     placeholders.put("{version}", getServerVersion());
-                    JSONObject targetVersion = (JSONObject) manifestJSON.getJSONArray("versions").stream().filter(version -> version instanceof JSONObject).filter(version -> ((JSONObject) version).getString("id").equals(getServerVersion())).findFirst().orElse(null);
+                    JSONObject targetVersion = (JSONObject) manifestJSON.getJSONList("versions").stream().filter(version -> version instanceof JSONObject).filter(version -> ((JSONObject) version).getString("id").equals(getServerVersion())).findFirst().orElse(null);
                     //Check version
                     if (targetVersion != null) {
                         //Download resources index
@@ -326,9 +323,9 @@ public class ItemUtil
     }
     
     public static String getItemDisplayName(ItemStack is) {
-        if (is == null || is.getItemMeta() == null) return null;
+        if (is == null) return null;
         String text;
-        if (is.getItemMeta().hasDisplayName()) {
+        if (is.getItemMeta() != null && is.getItemMeta().hasDisplayName()) {
             text = is.getItemMeta().getDisplayName();
         } else {
             if (!Bukkit.getBukkitVersion().startsWith("1.7") && !Bukkit.getBukkitVersion().startsWith("1.8") && !Bukkit.getBukkitVersion().startsWith("1.9") && !Bukkit.getBukkitVersion().startsWith("1.10") && !Bukkit.getBukkitVersion().startsWith("1.11") && !Bukkit.getBukkitVersion().startsWith("1.12")) {
@@ -370,12 +367,11 @@ public class ItemUtil
         return text;
     }
     
-    public static BaseComponent getJSONItemStack(ItemStack is) {
-        if (is != null && !is.getType().equals(Material.AIR)) {
-            BaseComponent tc = new TextComponent(getItemDisplayName(is));
-            ComponentBuilder cb = new ComponentBuilder(NMSUtil.JSONItem.getJSONAsNBTTagCompound(is));
-            tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, cb.create()));
-            return tc;
+    public static TextComponent getJSONItemStack(ItemStack item) {
+        if (item != null && !item.getType().equals(Material.AIR)) {
+            TextComponent component = new TextComponent(getItemDisplayName(item));
+            NMSUtil.JSONItem.setItemHover(item, component);
+            return component;
         }
         return new TextComponent();
     }

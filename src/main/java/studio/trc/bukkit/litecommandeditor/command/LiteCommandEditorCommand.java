@@ -30,7 +30,7 @@ public class LiteCommandEditorCommand
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         checkUpdate();
         if (args.length == 0) {
-            MessageUtil.sendCommandMessage(sender, "Help");
+            MessageUtil.sendCommandMessage(sender, "Unknown-Command");
         } else if (args.length >= 1) {
             callSubCommand(sender, args);
         }

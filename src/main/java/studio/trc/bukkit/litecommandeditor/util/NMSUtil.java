@@ -9,11 +9,18 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.ItemTag;
+import net.md_5.bungee.api.chat.hover.content.Item;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 
@@ -342,27 +349,35 @@ public class NMSUtil
             }
         }
 
-        public static String getJSONAsNBTTagCompound(ItemStack is) {
+        public static void setItemHover(ItemStack item, BaseComponent component) {
             try {
-                Object mcStack = craftItemStack.getDeclaredMethod("asNMSCopy", ItemStack.class).invoke(null, is);
-                Object NBTTagCompound = nbtTagCompound.newInstance();
-                Method saveMethod = Arrays.stream(itemStack.getDeclaredMethods()).filter(method -> method.getParameterTypes().length == 1 && method.getParameterTypes()[0].equals(nbtTagCompound) && method.getReturnType().equals(nbtTagCompound)).findFirst().orElse(null);
-                if (saveMethod != null) {
-                    if (saveMethod.isAccessible()) {
-                        saveMethod.invoke(mcStack, NBTTagCompound);
+                Item hoverItem = new Item(
+                    item.getType().getKey().toString(),
+                    item.getAmount(),
+                    ItemTag.ofNbt(item.getItemMeta() != null ? (String) ItemMeta.class.getMethod("getAsString").invoke(item.getItemMeta()) : "")
+                );
+                component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, hoverItem));
+            } catch (Throwable t) {
+                try {
+                    Object mcStack = craftItemStack.getDeclaredMethod("asNMSCopy", ItemStack.class).invoke(null, item);
+                    Object NBTTagCompound = nbtTagCompound.newInstance();
+                    Method saveMethod = Arrays.stream(itemStack.getDeclaredMethods()).filter(method -> method.getParameterTypes().length == 1 && method.getParameterTypes()[0].equals(nbtTagCompound) && method.getReturnType().equals(nbtTagCompound)).findFirst().orElse(null);
+                    if (saveMethod != null) {
+                        if (saveMethod.isAccessible()) {
+                            saveMethod.invoke(mcStack, NBTTagCompound);
+                        } else {
+                            saveMethod.setAccessible(true);
+                            saveMethod.invoke(mcStack, NBTTagCompound);
+                            saveMethod.setAccessible(false);
+                        }
                     } else {
-                        saveMethod.setAccessible(true);
-                        saveMethod.invoke(mcStack, NBTTagCompound);
-                        saveMethod.setAccessible(false);
+                        nbtTagCompound.getMethod("putString", String.class, String.class).invoke(NBTTagCompound, "id", item.getType().getKey().toString());
+                        nbtTagCompound.getMethod("putByte", String.class, byte.class).invoke(NBTTagCompound, "Count", (byte) item.getAmount());
                     }
-                } else {
-                    nbtTagCompound.getMethod("putString", String.class, String.class).invoke(NBTTagCompound, "id", is.getType().getKey().getNamespace() + ":" + is.getType().getKey().getKey());
-                    nbtTagCompound.getMethod("putByte", String.class, byte.class).invoke(NBTTagCompound, "Count", (byte) is.getAmount());
+                    component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new ComponentBuilder(NBTTagCompound.toString()).create()));
+                } catch (Throwable t1) {
+                    t1.printStackTrace();
                 }
-                return NBTTagCompound.toString();
-            } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException ex) {
-                ex.printStackTrace();
-                return null;
             }
         }
     }
