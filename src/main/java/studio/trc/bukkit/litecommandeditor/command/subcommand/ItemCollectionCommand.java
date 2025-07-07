@@ -2,14 +2,11 @@ package studio.trc.bukkit.litecommandeditor.command.subcommand;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import lombok.Getter;
-
-import net.md_5.bungee.api.chat.BaseComponent;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -19,7 +16,6 @@ import org.bukkit.inventory.ItemStack;
 
 import studio.trc.bukkit.litecommandeditor.command.LiteCommandEditorSubCommand;
 import studio.trc.bukkit.litecommandeditor.command.LiteCommandEditorSubCommandType;
-import studio.trc.bukkit.litecommandeditor.itemmanager.ItemUtil;
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 import studio.trc.bukkit.litecommandeditor.module.CommandConfiguration;
 import studio.trc.bukkit.litecommandeditor.module.CommandManager;

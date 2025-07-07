@@ -42,6 +42,7 @@ public class MessageUtil
     public static void addDefaultPlaceholder(String placeholder, String value) {
         defaultPlaceholders.put(placeholder, value);
     }
+    
     public static void removeDefaultPlaceholder(String placeholder) {
         defaultPlaceholders.remove(placeholder);
     }
