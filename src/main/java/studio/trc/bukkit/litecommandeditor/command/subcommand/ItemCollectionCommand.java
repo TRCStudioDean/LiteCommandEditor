@@ -106,7 +106,7 @@ public class ItemCollectionCommand
             MessageUtil.sendCommandMessage(player, "Item-Collection.Create.Doesnt-Have-Item-In-Hand");
             return;
         }
-        if (command.getItemCollection().addItem(item, itemName)) {//解决这个，测试，发布，同步到其他插件
+        if (command.getItemCollection().addItem(item, itemName)) {
             MessageUtil.sendCommandMessageWithItem(player, "Item-Collection.Create.Successfully", placeholders, item);
         } else {
             MessageUtil.sendCommandMessage(player, "Item-Collection.Create.Already-Exist", placeholders);
