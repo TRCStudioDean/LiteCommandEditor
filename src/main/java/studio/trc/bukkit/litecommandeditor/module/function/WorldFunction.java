@@ -27,7 +27,7 @@ import studio.trc.bukkit.litecommandeditor.module.command.CommandFunctionTask;
 import studio.trc.bukkit.litecommandeditor.module.tool.ItemCollection;
 import studio.trc.bukkit.litecommandeditor.module.tool.ItemInfo;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorUtils;
-import studio.trc.bukkit.litecommandeditor.util.NMSUtil;
+import studio.trc.bukkit.litecommandeditor.util.NMSUtils;
 
 public class WorldFunction 
     implements CommandFunctionTask
@@ -430,17 +430,17 @@ public class WorldFunction
                                 double z = Double.valueOf(parameters[5]);
                                 int count = Integer.valueOf(parameters[6]);
                                 if (parameters.length == 7) {
-                                    NMSUtil.ParticleUtil.spawnParticle(world, parameters[2], x, y, z, count);
+                                    NMSUtils.ParticleUtil.spawnParticle(world, parameters[2], x, y, z, count);
                                     incorrect = false;
                                 } else if (parameters.length > 9 && LiteCommandEditorUtils.isDouble(parameters[7]) && LiteCommandEditorUtils.isDouble(parameters[8]) && LiteCommandEditorUtils.isDouble(parameters[9])) {
                                     double offsetX = Double.valueOf(parameters[7]);
                                     double offsetY = Double.valueOf(parameters[8]);
                                     double offsetZ = Double.valueOf(parameters[9]);
                                     if (parameters.length == 10) {
-                                        NMSUtil.ParticleUtil.spawnParticle(world, parameters[2], x, y, z, count, offsetX, offsetY, offsetZ);
+                                        NMSUtils.ParticleUtil.spawnParticle(world, parameters[2], x, y, z, count, offsetX, offsetY, offsetZ);
                                         incorrect = false;
                                     } else if (LiteCommandEditorUtils.isDouble(parameters[10])) {
-                                        NMSUtil.ParticleUtil.spawnParticle(world, parameters[2], x, y, z, count, offsetX, offsetY, offsetZ, Double.valueOf(parameters[10]));
+                                        NMSUtils.ParticleUtil.spawnParticle(world, parameters[2], x, y, z, count, offsetX, offsetY, offsetZ, Double.valueOf(parameters[10]));
                                         incorrect = false;
                                     }
                                 }

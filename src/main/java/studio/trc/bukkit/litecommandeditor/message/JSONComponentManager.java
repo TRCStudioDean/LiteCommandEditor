@@ -15,8 +15,6 @@ import java.util.Map;
 
 import lombok.Getter;
 
-import net.md_5.bungee.api.chat.BaseComponent;
-
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -31,19 +29,9 @@ public class JSONComponentManager
     private static final Map<String, YamlConfiguration> loadedJSONComponentConfigs = new HashMap<>();
     @Getter
     private static final PlaceholderTree<JSONComponent> defaultJSONComponents = new PlaceholderTree();
-    @Getter
-    private static final PlaceholderTree<BaseComponent> defaultComponents = new PlaceholderTree();
-    
-    static {
-        defaultJSONComponents.setStartChar('%');
-        defaultJSONComponents.setEndChar('%');
-        defaultComponents.setStartChar('%');
-        defaultComponents.setEndChar('%');
-    }
     
     public static Map<String, String> reloadJSONComponents() {
         defaultJSONComponents.clear();
-        defaultComponents.clear();
         loadedJSONComponentConfigs.clear();
         File file = new File("plugins/LiteCommandEditor/JSONComponents/");
         createDirectory(file);
@@ -99,7 +87,6 @@ public class JSONComponentManager
                 }
             });
         });
-        defaultJSONComponents.getAllPlaceholders().entrySet().stream().forEach(entry -> defaultComponents.addPlaceholder(entry.getKey(), entry.getValue().getComponent()));
         Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
         placeholders.put("{components}", String.valueOf(defaultJSONComponents.size()));
         return placeholders;

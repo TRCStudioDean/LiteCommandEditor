@@ -13,7 +13,7 @@ import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 import studio.trc.bukkit.litecommandeditor.module.command.CommandFunctionTask;
 import studio.trc.bukkit.litecommandeditor.thread.LiteCommandEditorThread;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorProperties;
-import studio.trc.bukkit.litecommandeditor.util.NMSUtil;
+import studio.trc.bukkit.litecommandeditor.util.NMSUtils;
 
 public class Title
     implements CommandFunctionTask
@@ -90,11 +90,11 @@ public class Title
     public Title() {}
     
     public void send(Player player) {
-        NMSUtil.TitleUtil.sendTitle(player, title, subTitle, fadeIn, stay, fadeOut);
+        NMSUtils.TitleUtil.sendTitle(player, title, subTitle, fadeIn, stay, fadeOut);
     }
     
     public void send(Player player, Map<String, String> placeholders) {
-        NMSUtil.TitleUtil.sendTitle(player, title, subTitle, fadeIn, stay, fadeOut, placeholders);
+        NMSUtils.TitleUtil.sendTitle(player, title, subTitle, fadeIn, stay, fadeOut, placeholders);
     }
 
     @Override

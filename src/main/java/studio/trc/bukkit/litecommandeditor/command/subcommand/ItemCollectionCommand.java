@@ -106,10 +106,8 @@ public class ItemCollectionCommand
             MessageUtil.sendCommandMessage(player, "Item-Collection.Create.Doesnt-Have-Item-In-Hand");
             return;
         }
-        Map<String, BaseComponent> json = new HashMap<>();
-        json.put("%item%", ItemUtil.getJSONItemStack(item));
-        if (command.getItemCollection().addItem(item, itemName)) {
-            MessageUtil.sendCommandMessage(player, "Item-Collection.Create.Successfully", placeholders, json);
+        if (command.getItemCollection().addItem(item, itemName)) {//解决这个，测试，发布，同步到其他插件
+            MessageUtil.sendCommandMessageWithItem(player, "Item-Collection.Create.Successfully", placeholders, item);
         } else {
             MessageUtil.sendCommandMessage(player, "Item-Collection.Create.Already-Exist", placeholders);
         }
@@ -138,11 +136,8 @@ public class ItemCollectionCommand
             MessageUtil.sendCommandMessage(sender, "Item-Collection.Delete.Not-Exist", placeholders);
             return;
         }
-        ItemStack item = itemInfo.getItem(sender, placeholders);
-        Map<String, BaseComponent> json = new HashMap<>();
-        json.put("%item%", ItemUtil.getJSONItemStack(item));
         if (command.getItemCollection().removeItem(itemName)) {
-            MessageUtil.sendCommandMessage(sender, "Item-Collection.Delete.Successfully", placeholders, json);
+            MessageUtil.sendCommandMessageWithItem(sender, "Item-Collection.Delete.Successfully", placeholders, itemInfo.getItem(sender, placeholders));
         } else {
             MessageUtil.sendCommandMessage(sender, "Item-Collection.Delete.Not-Exist", placeholders);
         }
@@ -171,15 +166,13 @@ public class ItemCollectionCommand
             MessageUtil.sendCommandMessage(sender, "Item-Collection.Give.Not-Exist", placeholders);
             return;
         }
-        Map<String, BaseComponent> json = new HashMap<>();
         Player target;
         if (args.length == 4) {
             if (!LiteCommandEditorUtils.isPlayer(sender, true)) {
                 return;
             }
             target = (Player) sender;
-            json.put("%item%", ItemUtil.getJSONItemStack(itemInfo.give(sender, placeholders, target, -1)));
-            MessageUtil.sendCommandMessage(sender, "Item-Collection.Give.Gave-Self", placeholders, json);
+            MessageUtil.sendCommandMessageWithItem(sender, "Item-Collection.Give.Gave-Self", placeholders, itemInfo.give(sender, placeholders, target, -1));
         } else {
             target = Bukkit.getPlayer(args[4]);
             if (target == null) {
@@ -187,8 +180,7 @@ public class ItemCollectionCommand
                 return;
             }
             placeholders.put("{player}", target.getName());
-            json.put("%item%", ItemUtil.getJSONItemStack(itemInfo.give(sender, placeholders, target, -1)));
-            MessageUtil.sendCommandMessage(sender, "Item-Collection.Give.Gave-Others", placeholders, json);
+            MessageUtil.sendCommandMessageWithItem(sender, "Item-Collection.Give.Gave-Others", placeholders, itemInfo.give(sender, placeholders, target, -1));
         }
     }
     
@@ -245,9 +237,7 @@ public class ItemCollectionCommand
                     ItemInfo item = items.get(names.get(count - 1));
                     placeholders.put("{number}", String.valueOf(count));
                     placeholders.put("{name}", names.get(count - 1));
-                    Map<String, BaseComponent> json = new HashMap<>();
-                    json.put("%item%", ItemUtil.getJSONItemStack(item.getItem(sender, placeholders)));
-                    MessageUtil.sendMessage(sender, message, placeholders, json);
+                    MessageUtil.sendMessageWithItem(sender, message, placeholders, item.getItem(sender, placeholders));
                 }
             } else {
                 MessageUtil.sendMessage(sender, message, placeholders);

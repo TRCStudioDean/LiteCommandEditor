@@ -32,6 +32,7 @@ public class PluginControl
     public static void loadPlugin() {
         reloading = true;
         Map<String, String> placeholders = reloadConfig();
+        MessageUtil.setAdventureAvailable();
         MessageUtil.loadPlaceholders();
         placeholders.put("{language}", MessageUtil.getLangaugeName());
         placeholders.put("{version}", Main.getInstance().getDescription().getVersion());
@@ -39,7 +40,7 @@ public class PluginControl
         placeholders.put("{commands}", String.valueOf(CommandLoader.getCache().size()));
         placeholders.putAll(JSONComponentManager.reloadJSONComponents());
         try {
-            NMSUtil.initialize();
+            NMSUtils.initialize();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import net.kyori.adventure.text.event.HoverEventSource;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.ItemTag;
 import net.md_5.bungee.api.chat.hover.content.Item;
 
@@ -24,7 +24,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 
-public class NMSUtil
+public class NMSUtils
 {
     private static boolean nmsLoaded = false;
     
@@ -356,7 +356,7 @@ public class NMSUtil
                     item.getAmount(),
                     ItemTag.ofNbt(item.getItemMeta() != null ? (String) ItemMeta.class.getMethod("getAsString").invoke(item.getItemMeta()) : "")
                 );
-                component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, hoverItem));
+                component.setHoverEvent(new net.md_5.bungee.api.chat.HoverEvent(net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_ITEM, hoverItem));
             } catch (Throwable t) {
                 try {
                     Object mcStack = craftItemStack.getDeclaredMethod("asNMSCopy", ItemStack.class).invoke(null, item);
@@ -374,11 +374,15 @@ public class NMSUtil
                         nbtTagCompound.getMethod("putString", String.class, String.class).invoke(NBTTagCompound, "id", item.getType().getKey().toString());
                         nbtTagCompound.getMethod("putByte", String.class, byte.class).invoke(NBTTagCompound, "Count", (byte) item.getAmount());
                     }
-                    component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new ComponentBuilder(NBTTagCompound.toString()).create()));
+                    component.setHoverEvent(new net.md_5.bungee.api.chat.HoverEvent(net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_ITEM, new ComponentBuilder(NBTTagCompound.toString()).create()));
                 } catch (Throwable t1) {
                     t1.printStackTrace();
                 }
             }
+        }
+        
+        public static Object setItemHover(ItemStack item, Object component) {
+            return AdventureUtils.toComponent(component).hoverEvent(HoverEventSource.class.cast(item));
         }
     }
 }

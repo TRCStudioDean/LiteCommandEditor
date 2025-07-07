@@ -11,8 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 import studio.trc.bukkit.litecommandeditor.event.CommandConditionsResetEvent;
-import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
-import studio.trc.bukkit.litecommandeditor.module.command.CommandFunction;
+import studio.trc.bukkit.litecommandeditor.message.MessageEditor;
 import studio.trc.bukkit.litecommandeditor.module.condition.*;
 import studio.trc.bukkit.litecommandeditor.module.tool.Function;
 
@@ -62,7 +61,7 @@ public abstract class CommandCondition
     }
     
     public static Schedule getCommandConditions(Function function, String expression) {
-        return new Schedule(expression, MessageUtil.splitIntoParagraphs(expression, operators).stream().map(text -> {
+        return new Schedule(expression, MessageEditor.parse(expression, operators).stream().map(text -> {
             if (text.isPlaceholder()) {
                 return text.getPlaceholder();
             } else {

@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.chat.TextComponent;
 
 import org.bukkit.Bukkit;
@@ -27,11 +28,12 @@ import org.bukkit.inventory.ItemStack;
 import studio.trc.bukkit.litecommandeditor.command.subcommand.ToolsCommand;
 import studio.trc.bukkit.litecommandeditor.configuration.ConfigurationType;
 import studio.trc.bukkit.litecommandeditor.configuration.RobustConfiguration;
+import studio.trc.bukkit.litecommandeditor.util.AdventureUtils;
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 import studio.trc.bukkit.litecommandeditor.thread.LiteCommandEditorThread;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorProperties;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorUtils;
-import studio.trc.bukkit.litecommandeditor.util.NMSUtil;
+import studio.trc.bukkit.litecommandeditor.util.NMSUtils;
 
 /**
  * @author Dean
@@ -367,10 +369,22 @@ public class ItemUtil
         return text;
     }
     
-    public static TextComponent getJSONItemStack(ItemStack item) {
+    public static Object getAdventureJSONItemStack(ItemStack item) {
+        if (item != null && !item.getType().equals(Material.AIR)) {
+            try {
+                String translationKey = Material.class.getMethod("translationKey").invoke(item.getType()).toString();
+                return NMSUtils.JSONItem.setItemHover(item, Component.translatable(translationKey));
+            } catch (Exception ex) {
+                return NMSUtils.JSONItem.setItemHover(item, AdventureUtils.serializeText(getItemDisplayName(item)));
+            }
+        }
+        return Component.text("");
+    }
+    
+    public static TextComponent getBungeeJSONItemStack(ItemStack item) {
         if (item != null && !item.getType().equals(Material.AIR)) {
             TextComponent component = new TextComponent(getItemDisplayName(item));
-            NMSUtil.JSONItem.setItemHover(item, component);
+            NMSUtils.JSONItem.setItemHover(item, component);
             return component;
         }
         return new TextComponent();
@@ -409,6 +423,16 @@ public class ItemUtil
                 if (!ItemUtil.isDownloading()) {
                     LiteCommandEditorThread.runTask(() -> {
                         if (downloadLanguage(Bukkit.getConsoleSender(), getLanguageCode())) {
+                            long loaded = ItemUtil.updateItemNames(Bukkit.getConsoleSender(), MessageUtil.getLanguage());
+                            if (loaded > 0) {
+                                Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
+                                int total = Material.values().length;
+                                placeholders.put("{languageCode}", ItemUtil.getLanguageCode());
+                                placeholders.put("{path}", MessageUtil.getLanguage());
+                                placeholders.put("{loaded}", String.valueOf(loaded));
+                                placeholders.put("{total}", String.valueOf(total));
+                                MessageUtil.sendCommandMessage(Bukkit.getConsoleSender(), "Tools.Update-Item-Display-Name.Successfully", placeholders);
+                            }
                             reminded = true;
                         }
                     });

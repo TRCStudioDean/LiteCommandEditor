@@ -47,7 +47,7 @@ import studio.trc.bukkit.litecommandeditor.module.tool.ListNamesRecord;
 import studio.trc.bukkit.litecommandeditor.thread.LiteCommandEditorThread;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorProperties;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorUtils;
-import studio.trc.bukkit.litecommandeditor.util.NMSUtil;
+import studio.trc.bukkit.litecommandeditor.util.NMSUtils;
 
 public class ToolsCommand 
     implements LiteCommandEditorSubCommand
@@ -639,7 +639,7 @@ public class ToolsCommand
                             break;
                         }
                         case "particle": {
-                            listNamesRecorder.put(sender, getRecord("Particle", args, NMSUtil.ParticleUtil.values()));
+                            listNamesRecorder.put(sender, getRecord("Particle", args, NMSUtils.ParticleUtil.values()));
                             break;
                         }
                         case "item": {

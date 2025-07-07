@@ -13,17 +13,20 @@ import lombok.Setter;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 import studio.trc.bukkit.litecommandeditor.Main;
 import studio.trc.bukkit.litecommandeditor.configuration.ConfigurationType;
 import studio.trc.bukkit.litecommandeditor.configuration.RobustConfiguration;
+import studio.trc.bukkit.litecommandeditor.util.AdventureUtils;
+import studio.trc.bukkit.litecommandeditor.itemmanager.ItemUtil;
 import studio.trc.bukkit.litecommandeditor.message.color.ColorUtils;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.ArgumentsPlaceholderRequest;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.PlaceholderRequestUtils;
@@ -51,41 +54,86 @@ public class MessageUtil
     }
     
     public static void sendMessage(CommandSender sender, String message) {
-        sendMessage(sender, message, defaultPlaceholders, null);
+        sendMessage(sender, message, defaultPlaceholders);
     }
     
     public static void sendMessage(CommandSender sender, String message, Map<String, String> placeholders) {
-        sendMessage(sender, message, placeholders, null);
+        if (useAdventure()) {
+            sendAdventureMessage(sender, message, placeholders, null);
+        } else {
+            sendBungeeMessage(sender, message, placeholders, null);
+        }
     }
     
-    public static void sendMessage(CommandSender sender, String message, Map<String, String> placeholders, Map<String, BaseComponent> additionalComponents) {
+    public static void sendBungeeMessage(CommandSender sender, String message, Map<String, String> placeholders, Map<String, BaseComponent> additionalComponents) {
         if (sender == null) return;
         String sample = replacePlaceholders(sender, message, placeholders);
         Map<String, BaseComponent> components = JSONComponentManager.getDefaultJSONComponents().getPlaceholderAbout(sample).entrySet()
-            .stream().collect(Collectors.toMap(Map.Entry::getKey, value -> value.getValue().getComponent(placeholders)));
+            .stream().collect(Collectors.toMap(Map.Entry::getKey, value -> value.getValue().getBungeeComponent(placeholders)));
         if (additionalComponents != null && !additionalComponents.isEmpty()) {
             components.putAll(additionalComponents);
         }
         if (!components.isEmpty()) {
-            sendJSONMessage(sender, createJSONMessage(sender, sample, components));
+            sendBungeeJSONMessage(sender, MessageEditor.createBungeeJSONMessage(sender, sample, components));
         } else {
             sender.sendMessage(sample);
         }
     }
     
-    public static void sendMessage(CommandSender sender, String message, Map<String, String> placeholders, Map<String, JSONComponent> additionalComponents, Map<String, String> additionalPlaceholders) {
+    public static void sendAdventureMessage(CommandSender sender, String message, Map<String, String> placeholders, Map<String, Object> additionalComponents) {
         if (sender == null) return;
         String sample = replacePlaceholders(sender, message, placeholders);
-        Map<String, BaseComponent> components = JSONComponentManager.getDefaultJSONComponents().getPlaceholderAbout(sample).entrySet()
-            .stream().collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue().getComponent(additionalPlaceholders)));
+        Map<String, Component> components = JSONComponentManager.getDefaultJSONComponents().getPlaceholderAbout(sample).entrySet()
+            .stream().collect(Collectors.toMap(Map.Entry::getKey, value -> AdventureUtils.toComponent(value.getValue().getAdventureComponent(placeholders))));
         if (additionalComponents != null && !additionalComponents.isEmpty()) {
-            components.putAll(additionalComponents.entrySet()
-                .stream().collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue().getComponent(additionalPlaceholders))));
+            components.putAll(AdventureUtils.toAdventureComponents(additionalComponents));
         }
         if (!components.isEmpty()) {
-            sendJSONMessage(sender, createJSONMessage(sender, sample, components));
+            sendAdventureJSONMessage(sender, MessageEditor.createAdventureJSONMessage(sender, sample, components));
         } else {
             sender.sendMessage(sample);
+        }
+    }
+    
+    public static void sendMixedMessage(CommandSender sender, String message, Map<String, String> placeholders, Map<String, JSONComponent> additionalComponents, Map<String, String> additionalPlaceholders) {
+        if (sender == null) return;
+        String sample = replacePlaceholders(sender, message, placeholders);
+        if (useAdventure()) {
+            Map<String, Component> components = JSONComponentManager.getDefaultJSONComponents().getPlaceholderAbout(sample).entrySet()
+                .stream().collect(Collectors.toMap(Map.Entry::getKey, value -> AdventureUtils.toComponent(value.getValue().getAdventureComponent(placeholders))));
+            if (additionalComponents != null && !additionalComponents.isEmpty()) {
+                components.putAll(additionalComponents.entrySet()
+                    .stream().collect(Collectors.toMap(entry -> entry.getKey(), entry -> AdventureUtils.toComponent(entry.getValue().getAdventureComponent(additionalPlaceholders)))));
+            }
+            if (!components.isEmpty()) {
+                sendAdventureJSONMessage(sender, MessageEditor.createAdventureJSONMessage(sender, sample, components));
+            } else {
+                sender.sendMessage(sample);
+            }
+        } else {
+            Map<String, BaseComponent> components = JSONComponentManager.getDefaultJSONComponents().getPlaceholderAbout(sample).entrySet()
+                .stream().collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue().getBungeeComponent(additionalPlaceholders)));
+            if (additionalComponents != null && !additionalComponents.isEmpty()) {
+                components.putAll(additionalComponents.entrySet()
+                    .stream().collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue().getBungeeComponent(additionalPlaceholders))));
+            }
+            if (!components.isEmpty()) {
+                sendBungeeJSONMessage(sender, MessageEditor.createBungeeJSONMessage(sender, sample, components));
+            } else {
+                sender.sendMessage(sample);
+            }
+        }
+    }
+    
+    public static void sendMessageWithItem(CommandSender sender, String message, Map<String, String> placeholders, ItemStack item) {
+        if (useAdventure()) {
+            Map<String, Object> json = new HashMap<>();
+            json.put("%item%", ItemUtil.getAdventureJSONItemStack(item));
+            sendAdventureMessage(sender, message, placeholders, json);
+        } else {
+            Map<String, BaseComponent> json = new HashMap<>();
+            json.put("%item%", ItemUtil.getBungeeJSONItemStack(item));
+            sendBungeeMessage(sender, message, placeholders, json);
         }
     }
     
@@ -97,41 +145,58 @@ public class MessageUtil
         messages.stream().forEach(rawMessage -> sendMessage(sender, rawMessage, placeholders));
     }
     
-    public static void sendMessage(CommandSender sender, List<String> messages, Map<String, String> placeholders, Map<String, BaseComponent> jsonComponents) {
-        messages.stream().forEach(rawMessage -> sendMessage(sender, rawMessage, placeholders, jsonComponents));
+    public static void sendBungeeMessage(CommandSender sender, List<String> messages, Map<String, String> placeholders, Map<String, BaseComponent> jsonComponents) {
+        messages.stream().forEach(rawMessage -> sendBungeeMessage(sender, rawMessage, placeholders, jsonComponents));
+    }
+    
+    public static void sendAdventureMessage(CommandSender sender, List<String> messages, Map<String, String> placeholders, Map<String, Object> jsonComponents) {
+        messages.stream().forEach(rawMessage -> sendAdventureMessage(sender, rawMessage, placeholders, jsonComponents));
     }
     
     public static void sendMessage(CommandSender sender, List<String> messages, Map<String, String> placeholders, Map<String, JSONComponent> jsonComponents, Map<String, String> jsonComponentPlaceholders) {
-        messages.stream().forEach(rawMessage -> sendMessage(sender, rawMessage, placeholders, jsonComponents, jsonComponentPlaceholders));
+        messages.stream().forEach(rawMessage -> sendMixedMessage(sender, rawMessage, placeholders, jsonComponents, jsonComponentPlaceholders));
     }
     
     public static void sendMessage(CommandSender sender, RobustConfiguration configuration, String configPath) {
-        sendMessage(sender, configuration, configPath, defaultPlaceholders, null);
+        sendMessage(sender, configuration, configPath, defaultPlaceholders);
     }
     
     public static void sendMessage(CommandSender sender, RobustConfiguration configuration, String configPath, Map<String, String> placeholders) {
-        sendMessage(sender, configuration, configPath, placeholders, null);
+        if (useAdventure()) {
+            sendAdventureMessage(sender, configuration, configPath, placeholders, null);
+        } else {
+            sendBungeeMessage(sender, configuration, configPath, placeholders, null);
+        }
     }
     
-    public static void sendMessage(CommandSender sender, RobustConfiguration configuration, String configPath, Map<String, String> placeholders, Map<String, BaseComponent> jsonComponents) {
+    public static void sendBungeeMessage(CommandSender sender, RobustConfiguration configuration, String configPath, Map<String, String> placeholders, Map<String, BaseComponent> jsonComponents) {
         List<String> messages = configuration.getStringList(getLanguage() + "." + configPath);
         if (messages.isEmpty() && !ConfigurationType.MESSAGES.getRobustConfig().getString(getLanguage() + "." + configPath).equals("[]")) {
-            sendMessage(sender, configuration.getString(getLanguage() + "." + configPath), placeholders, jsonComponents);
+            sendBungeeMessage(sender, configuration.getString(getLanguage() + "." + configPath), placeholders, jsonComponents);
         } else {
-            sendMessage(sender, messages, placeholders, jsonComponents);
+            sendBungeeMessage(sender, messages, placeholders, jsonComponents);
+        }
+    }
+    
+    public static void sendAdventureMessage(CommandSender sender, RobustConfiguration configuration, String configPath, Map<String, String> placeholders, Map<String, Object> jsonComponents) {
+        List<String> messages = configuration.getStringList(getLanguage() + "." + configPath);
+        if (messages.isEmpty() && !ConfigurationType.MESSAGES.getRobustConfig().getString(getLanguage() + "." + configPath).equals("[]")) {
+            sendAdventureMessage(sender, configuration.getString(getLanguage() + "." + configPath), placeholders, jsonComponents);
+        } else {
+            sendAdventureMessage(sender, messages, placeholders, jsonComponents);
         }
     }
     
     public static void sendMessage(CommandSender sender, RobustConfiguration configuration, String configPath, Map<String, String> placeholders, Map<String, JSONComponent> jsonComponents, Map<String, String> jsonComponentPlaceholders) {
         List<String> messages = configuration.getStringList(getLanguage() + "." + configPath);
         if (messages.isEmpty() && !ConfigurationType.MESSAGES.getRobustConfig().getString(getLanguage() + "." + configPath).equals("[]")) {
-            sendMessage(sender, configuration.getString(getLanguage() + "." + configPath), placeholders, jsonComponents, jsonComponentPlaceholders);
+            sendMixedMessage(sender, configuration.getString(getLanguage() + "." + configPath), placeholders, jsonComponents, jsonComponentPlaceholders);
         } else {
             sendMessage(sender, messages, placeholders, jsonComponents, jsonComponentPlaceholders);
         }
     }
     
-    public static void sendJSONMessage(CommandSender sender, List<BaseComponent> components) {
+    public static void sendBungeeJSONMessage(CommandSender sender, List<BaseComponent> components) {
         if (sender instanceof Player) {
             ((Player) sender).spigot().sendMessage(components.toArray(new BaseComponent[] {}));
         } else {
@@ -141,16 +206,28 @@ public class MessageUtil
         }
     }
     
+    public static void sendAdventureJSONMessage(CommandSender sender, Object component) {
+        try {
+            sender.getClass().getMethod("sendMessage", adventureAPI).invoke(sender, component);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public static void sendConsoleMessage(String configPath, ConfigurationType type) {
-        sendMessage(Bukkit.getConsoleSender(), type.getRobustConfig(), configPath, defaultPlaceholders, null);
+        sendMessage(Bukkit.getConsoleSender(), type.getRobustConfig(), configPath, defaultPlaceholders);
     }
     
     public static void sendConsoleMessage(String configPath, ConfigurationType type, Map<String, String> placeholders) {
-        sendMessage(Bukkit.getConsoleSender(), type.getRobustConfig(), configPath, placeholders, null);
+        sendMessage(Bukkit.getConsoleSender(), type.getRobustConfig(), configPath, placeholders);
     }
     
-    public static void sendConsoleMessage(String configPath, ConfigurationType type, Map<String, String> placeholders, Map<String, BaseComponent> jsonComponents) {
-        sendMessage(Bukkit.getConsoleSender(), type.getRobustConfig(), configPath, placeholders, jsonComponents);
+    public static void sendConsoleBungeeMessage(String configPath, ConfigurationType type, Map<String, String> placeholders, Map<String, BaseComponent> jsonComponents) {
+        sendBungeeMessage(Bukkit.getConsoleSender(), type.getRobustConfig(), configPath, placeholders, jsonComponents);
+    }
+    
+    public static void sendConsoleAdventureMessage(String configPath, ConfigurationType type, Map<String, String> placeholders, Map<String, Object> jsonComponents) {
+        sendAdventureMessage(Bukkit.getConsoleSender(), type.getRobustConfig(), configPath, placeholders, jsonComponents);
     }
     
     public static void sendConsoleMessage(String configPath, ConfigurationType type, Map<String, String> placeholders, Map<String, JSONComponent> jsonComponents, Map<String, String> jsonComponentPlaceholders) {
@@ -158,19 +235,35 @@ public class MessageUtil
     }
     
     public static void sendCommandMessage(CommandSender sender, String configPath) {
-        sendMessage(sender, ConfigurationType.MESSAGES.getRobustConfig(), "Command-Messages." + configPath, defaultPlaceholders, null);
+        sendMessage(sender, ConfigurationType.MESSAGES.getRobustConfig(), "Command-Messages." + configPath, defaultPlaceholders);
     }
     
     public static void sendCommandMessage(CommandSender sender, String configPath, Map<String, String> placeholders) {
-        sendMessage(sender, ConfigurationType.MESSAGES.getRobustConfig(), "Command-Messages." + configPath, placeholders, null);
+        sendMessage(sender, ConfigurationType.MESSAGES.getRobustConfig(), "Command-Messages." + configPath, placeholders);
     }
     
-    public static void sendCommandMessage(CommandSender sender, String configPath, Map<String, String> placeholders, Map<String, BaseComponent> jsonComponents) {
-        sendMessage(sender, ConfigurationType.MESSAGES.getRobustConfig(), "Command-Messages." + configPath, placeholders, jsonComponents);
+    public static void sendCommandBungeeMessage(CommandSender sender, String configPath, Map<String, String> placeholders, Map<String, BaseComponent> jsonComponents) {
+        sendBungeeMessage(sender, ConfigurationType.MESSAGES.getRobustConfig(), "Command-Messages." + configPath, placeholders, jsonComponents);
+    }
+    
+    public static void sendCommandAdventureMessage(CommandSender sender, String configPath, Map<String, String> placeholders, Map<String, Object> jsonComponents) {
+        sendAdventureMessage(sender, ConfigurationType.MESSAGES.getRobustConfig(), "Command-Messages." + configPath, placeholders, jsonComponents);
     }
     
     public static void sendCommandMessage(CommandSender sender, String configPath, Map<String, String> placeholders, Map<String, JSONComponent> jsonComponents, Map<String, String> jsonComponentPlaceholders) {
         sendMessage(sender, ConfigurationType.MESSAGES.getRobustConfig(), "Command-Messages." + configPath, placeholders, jsonComponents, jsonComponentPlaceholders);
+    }
+    
+    public static void sendCommandMessageWithItem(CommandSender sender, String configPath, Map<String, String> placeholders, ItemStack item) {
+        if (useAdventure()) {
+            Map<String, Object> json = new HashMap<>();
+            json.put("%item%", ItemUtil.getAdventureJSONItemStack(item));
+            sendCommandAdventureMessage(sender, configPath, placeholders, json);
+        } else {
+            Map<String, BaseComponent> json = new HashMap<>();
+            json.put("%item%", ItemUtil.getBungeeJSONItemStack(item));
+            sendCommandBungeeMessage(sender, configPath, placeholders, json);
+        }
     }
     
     public static String replacePlaceholders(String message, String key, String value) {
@@ -195,14 +288,14 @@ public class MessageUtil
         StringBuilder builder = new StringBuilder();
         try {
             //Execute replacements
-            List<TextParagraph> splitedTexts = splitIntoParagraphs(message, placeholders);
-            for (TextParagraph paragraph : splitedTexts) {
-                if (paragraph.isPlaceholder()) {
-                    builder.append(placeholders.get(paragraph.getText()));
+            List<MessageSection> sections = MessageEditor.parse(message, placeholders);
+            sections.stream().forEach(section -> {
+                if (section.isPlaceholder()) {
+                    builder.append(placeholders.get(section.getPlaceholder()));
                 } else {
-                    builder.append(message.substring(paragraph.startsWith, paragraph.endsWith).replace("/n", "\n"));
+                    builder.append(section.getText().replace("/n", "\n"));
                 }
-            }
+            });
 
             //Update result
             message = builder.toString();
@@ -256,16 +349,16 @@ public class MessageUtil
                 if (builder.length() > 0) {
                     builder.delete(0, builder.length());
                 }
-                List<TextParagraph> splitedTexts = splitIntoParagraphs(message, placeholders);
-                for (TextParagraph paragraph : splitedTexts) {
-                    if (paragraph.isPlaceholder()) {
-                        builder.append(placeholders.get(paragraph.getText()));
+                List<MessageSection> sections = MessageEditor.parse(message, placeholders);
+                sections.stream().forEach(section -> {
+                    if (section.isPlaceholder()) {
+                        builder.append(placeholders.get(section.getPlaceholder()));
                     } else {
-                        builder.append(sender != null ? 
-                            toPlaceholderAPIResult(message.substring(paragraph.startsWith, paragraph.endsWith), sender).replace("/n", "\n") : 
-                            message.substring(paragraph.startsWith, paragraph.endsWith).replace("/n", "\n"));
+                        builder.append(sender != null ?
+                                toPlaceholderAPIResult(section.getText(), sender).replace("/n", "\n") :
+                                section.getText().replace("/n", "\n"));
                     }
-                }
+                });
             
                 //Update result
                 message = builder.toString();
@@ -304,93 +397,6 @@ public class MessageUtil
             message = replacePlaceholders(message, rawRetentions); 
         }
         return message;
-    }
-    
-    public static List<BaseComponent> createJSONMessage(CommandSender sender, String message, Map<String, BaseComponent> baseComponents) {
-        return createJSONMessage(sender, message, baseComponents, true);
-    }
-    
-    public static List<BaseComponent> createJSONMessage(CommandSender sender, String message, Map<String, BaseComponent> baseComponents, boolean toColor) {
-        List<TextParagraph> splitedTexts = splitIntoComponentParagraphs(message, baseComponents);
-        List<BaseComponent> components = new ArrayList<>();
-        splitedTexts.stream().forEach(paragraph -> {
-            if (paragraph.isPlaceholder()) {
-                components.add(paragraph.getComponent());
-            } else {
-                components.add(new TextComponent(toPlaceholderAPIResult(message.substring(paragraph.startsWith, paragraph.endsWith), sender).replace("/n", "\n")));
-            }
-        });
-        return components;
-    }
-    
-    public static List<TextParagraph> splitIntoParagraphs(String message, Map<String, String> placeholders) {
-        List<TextParagraph> resolvedParagraphs = new ArrayList<>();
-        resolvedParagraphs.add(new TextParagraph(0, message.length(), message));
-        placeholders.keySet().stream().filter(placeholder -> placeholder != null && placeholders.get(placeholder) != null).forEach(placeholder -> {
-            List<TextParagraph> array = new ArrayList<>();
-            resolvedParagraphs.stream().forEach(paragraph -> {
-                String text = paragraph.getText().toLowerCase();
-                String placeholderName = placeholder.toLowerCase();
-                if (text.contains(placeholderName)) {
-                    String[] splitText = text.split(escape(placeholderName), -1);
-                    int last = paragraph.getStartsWith();
-                    for (String subText : splitText) {
-                        int next = last + subText.length();
-                        if (last != next) {
-                            TextParagraph subParagraph = new TextParagraph(last, next, subText);
-                            last = last + subText.length();
-                            array.add(subParagraph);
-                        }
-                        if (last < paragraph.getEndsWith()) {
-                            TextParagraph insertPlaceholder = new TextParagraph(last, last + placeholder.length(), placeholder, placeholder);
-                            last = last + placeholder.length();
-                            array.add(insertPlaceholder);
-                        }
-                    }
-                } else {
-                    array.add(paragraph);
-                }
-            });
-            resolvedParagraphs.clear();
-            resolvedParagraphs.addAll(array);
-        });
-        return resolvedParagraphs;
-    }
-    
-    public static List<TextParagraph> splitIntoComponentParagraphs(String message, Map<String, BaseComponent> baseComponents) {
-        List<TextParagraph> splitedTexts = new ArrayList<>();
-        splitedTexts.add(new TextParagraph(0, message.length(), new TextComponent(message)));
-        baseComponents.keySet().stream().filter(placeholder -> placeholder != null && baseComponents.get(placeholder) != null).map(placeholder -> {
-            List<TextParagraph> newArray = new ArrayList<>();
-            splitedTexts.stream().forEach(textParagraphs -> {
-                String message_lowerCase = textParagraphs.getComponent().toPlainText().toLowerCase();
-                String placeholder_lowerCase = placeholder.toLowerCase();
-                if (message_lowerCase.contains(placeholder_lowerCase)) {
-                    String[] splitText = message_lowerCase.split(escape(placeholder_lowerCase), -1);
-                    int last = textParagraphs.startsWith;
-                    for (String paragraph : splitText) {
-                        int next = last + paragraph.length();
-                        if (last != next) {
-                            TextParagraph subParagraph = new TextParagraph(last, next, new TextComponent(paragraph));
-                            last = last + paragraph.length();
-                            newArray.add(subParagraph);
-                        }
-                        if (last < textParagraphs.endsWith) {
-                            TextParagraph insertComponent = new TextParagraph(last, last + placeholder.length(), baseComponents.get(placeholder), placeholder);
-                            last = last + placeholder.length();
-                            newArray.add(insertComponent);
-                        }
-                    }
-                } else {
-                    newArray.add(textParagraphs);
-                }
-            });
-            return newArray;
-        }).forEach(newArray -> {
-            splitedTexts.clear();
-            splitedTexts.addAll(newArray);
-        });
-        return splitedTexts;
     }
     
     /**
@@ -560,6 +566,24 @@ public class MessageUtil
         return new HashMap<>(defaultPlaceholders);
     }
     
+    private static boolean adventureAvailable = false;
+    private static Class<?> adventureAPI;
+    
+    public static void setAdventureAvailable() {
+        try {
+            adventureAPI = Class.forName("net.kyori.adventure.text.Component");
+            adventureAvailable = !Bukkit.getBukkitVersion().startsWith("1.7") && !Bukkit.getBukkitVersion().startsWith("1.8") && !Bukkit.getBukkitVersion().startsWith("1.9") && !Bukkit.getBukkitVersion().startsWith("1.10") &&
+                !Bukkit.getBukkitVersion().startsWith("1.11") && !Bukkit.getBukkitVersion().startsWith("1.12") && !Bukkit.getBukkitVersion().startsWith("1.13") && !Bukkit.getBukkitVersion().startsWith("1.14") &&
+                !Bukkit.getBukkitVersion().startsWith("1.15") && !Bukkit.getBukkitVersion().startsWith("1.16") && !Bukkit.getBukkitVersion().startsWith("1.17");
+        } catch (ClassNotFoundException ex) {
+            adventureAvailable = false;
+        }
+    }
+    
+    public static boolean useAdventure() {
+        return adventureAvailable;
+    }
+    
     public static enum Language {
         
         /**
@@ -596,61 +620,6 @@ public class MessageUtil
         
         private Language(String folderName) {
             this.folderName = folderName;
-        }
-    }
-    
-    public static class TextParagraph {
-        
-        @Getter
-        private final int startsWith;
-        @Getter
-        private final int endsWith;
-        @Getter
-        private final BaseComponent component;
-        @Getter
-        private final String text;
-        @Getter
-        private final String placeholder;
-        
-        public TextParagraph(int startsWith, int endsWith, BaseComponent component, String placeholder) {
-            this.startsWith = startsWith;
-            this.endsWith = endsWith;
-            this.component = component;
-            this.placeholder = placeholder;
-            this.text = component.toPlainText();
-        }
-        
-        public TextParagraph(int startsWith, int endsWith, BaseComponent component) {
-            this.startsWith = startsWith;
-            this.endsWith = endsWith;
-            this.component = component;
-            this.placeholder = null;
-            this.text = component.toPlainText();
-        }
-        
-        public TextParagraph(int startsWith, int endsWith, String text, String placeholder) {
-            this.startsWith = startsWith;
-            this.endsWith = endsWith;
-            this.component = null;
-            this.placeholder = placeholder;
-            this.text = text;
-        }
-        
-        public TextParagraph(int startsWith, int endsWith, String text) {
-            this.startsWith = startsWith;
-            this.endsWith = endsWith;
-            this.component = null;
-            this.placeholder = null;
-            this.text = text;
-        }
-        
-        public boolean isPlaceholder() {
-            return placeholder != null;
-        }
-
-        @Override
-        public String toString() {
-            return text;
         }
     }
 }

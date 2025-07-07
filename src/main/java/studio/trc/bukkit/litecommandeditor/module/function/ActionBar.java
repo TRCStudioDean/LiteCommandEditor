@@ -13,7 +13,7 @@ import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 import studio.trc.bukkit.litecommandeditor.module.command.CommandFunctionTask;
 import studio.trc.bukkit.litecommandeditor.thread.LiteCommandEditorThread;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorProperties;
-import studio.trc.bukkit.litecommandeditor.util.NMSUtil;
+import studio.trc.bukkit.litecommandeditor.util.NMSUtils;
 
 public class ActionBar
     implements CommandFunctionTask
@@ -74,11 +74,11 @@ public class ActionBar
     public ActionBar() {}
     
     public void send(Player player) {
-        NMSUtil.ActionBarUtil.sendActionBar(player, text, MessageUtil.getDefaultPlaceholders());
+        NMSUtils.ActionBarUtil.sendActionBar(player, text, MessageUtil.getDefaultPlaceholders());
     }
     
     public void send(Player player, Map<String, String> placeholders) {
-        NMSUtil.ActionBarUtil.sendActionBar(player, text, placeholders);
+        NMSUtils.ActionBarUtil.sendActionBar(player, text, placeholders);
     }
 
     @Override

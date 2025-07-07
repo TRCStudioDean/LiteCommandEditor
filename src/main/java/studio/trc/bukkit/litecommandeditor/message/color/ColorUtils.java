@@ -19,7 +19,7 @@ import studio.trc.bukkit.litecommandeditor.message.tag.TagContentInfo;
  * Text coloring & "Pseudo MiniMessage" processing
  * @author Mercy
  */
-public class ColorUtils 
+public class ColorUtils
 {
     @Getter
     private static final Map<Color, Character> colorRGBValues = new HashMap<>();
