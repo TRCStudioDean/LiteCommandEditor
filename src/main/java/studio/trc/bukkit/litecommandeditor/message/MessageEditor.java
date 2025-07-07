@@ -51,11 +51,11 @@ public class MessageEditor
     }
     
     public static <T> List<MessageSection> parse(String message, Map<String, T> placeholders) {
-        //把占位符原文全部转为小写（目的是下面的代码要忽略大小写匹配）
+        //Convert all placeholders to lowercase (in order to ignore case matching in the following code)
         Map<String, T> normalizedMap = new HashMap<>();
         placeholders.entrySet().stream().forEach(entry -> normalizedMap.put(entry.getKey().toLowerCase(), entry.getValue()));
         
-        //按长度降序排序占位符（避免短占位符匹配长占位符的前缀）
+        //Sort placeholders in descending order by length (avoid short placeholders matching the prefix of long placeholders)
         List<String> sortedKeys = new ArrayList<>(normalizedMap.keySet());
         sortedKeys.sort((s1, s2) -> Integer.compare(s2.length(), s1.length()));
         
@@ -67,14 +67,14 @@ public class MessageEditor
         
         while (index < messageLength) {
             boolean matched = false;
-            //扫描每一个占位符进行匹配
+            //Scan each placeholder for matching
             for (String keyLower : sortedKeys) {
                 int keyLength = keyLower.length();
                 int endIndex = index + keyLength;
                 if (endIndex > messageLength) continue;
                 String paragraph = message.substring(index, endIndex);
                 if (paragraph.toLowerCase().equals(keyLower)) {
-                    //匹配成功先将累积的文本加入结果
+                    //When the match is successful, add the accumulated text to the result first
                     if (currentText.length() > 0) {
                         result.add(new MessageSection(
                             currentText.toString(), 
@@ -107,14 +107,14 @@ public class MessageEditor
                             index + keyLength
                         ));
                     }
-                    //将指针指向占位符之后以跳过当前占位符的位置
+                    //Point the pointer after the placeholder to skip the current placeholder position
                     index = endIndex;
                     textStart = index;
                     matched = true;
                     break;
                 }
             }
-            //未匹配到占位符，则进入下一个字符
+            //If no placeholder is found, proceed to the next character
             if (!matched) {
                 if (currentText.length() == 0) {
                     textStart = index;
@@ -124,7 +124,7 @@ public class MessageEditor
             }
         }
         
-        // 处理剩余的文本
+        //Process the remaining text
         if (currentText.length() > 0) {
             result.add(new MessageSection(
                 currentText.toString(), 
