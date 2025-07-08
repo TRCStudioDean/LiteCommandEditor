@@ -1,5 +1,5 @@
 name: LiteCommandEditor
-version: 1.0.2.0
+version: 1.0.2.1
 author: TRCStudio
 main: studio.trc.bukkit.litecommandeditor.Main
 api-version: 1.13

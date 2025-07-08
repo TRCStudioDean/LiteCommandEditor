@@ -16,10 +16,6 @@ import studio.trc.bukkit.litecommandeditor.util.AdventureUtils;
 public class MessageEditor
 {
     public static List<BaseComponent> createBungeeJSONMessage(CommandSender sender, String message, Map<String, BaseComponent> baseComponents) {
-        return createBungeeJSONMessage(sender, message, baseComponents, true);
-    }
-    
-    public static List<BaseComponent> createBungeeJSONMessage(CommandSender sender, String message, Map<String, BaseComponent> baseComponents, boolean toColor) {
         List<MessageSection> sections = parse(message, baseComponents);
         List<BaseComponent> components = new ArrayList<>();
         sections.stream().forEach(section -> {
@@ -33,10 +29,6 @@ public class MessageEditor
     }
     
     public static Object createAdventureJSONMessage(CommandSender sender, String message, Map<String, Component> components) {
-        return createAdventureJSONMessage(sender, message, components, true);
-    }
-    
-    public static Object createAdventureJSONMessage(CommandSender sender, String message, Map<String, Component> components, boolean toColor) {
         List<MessageSection> sections = parse(message, components);
         Component component = null;
         for (MessageSection section : sections) {
@@ -47,7 +39,7 @@ public class MessageEditor
                 component = component == null ? AdventureUtils.serializeText(text) : component.append(AdventureUtils.serializeText(text));
             }
         }
-        return component;
+        return component != null ? component : Component.text("");
     }
     
     public static <T> List<MessageSection> parse(String message, Map<String, T> placeholders) {
