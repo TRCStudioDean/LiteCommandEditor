@@ -79,7 +79,11 @@ public class ItemUtil
                     } else if (itemID.endsWith("_ARMOR_TRIM_SMITHING_TEMPLATE")) {
                         materials.put(itemID, languageJSONObject.getString("trim_pattern.minecraft." + itemID.toLowerCase().substring(0, itemID.length() - "_armor_trim_smithing_template".length())));
                     } else if (itemID.startsWith("MUSIC_DISC") || itemID.endsWith("_BANNER_PATTERN")) {
-                        materials.put(itemID, languageJSONObject.getString("item.minecraft." + itemID.toLowerCase() + ".desc"));
+                        if (languageJSONObject.containsKey("item.minecraft." + itemID.toLowerCase() + ".desc")) {
+                            materials.put(itemID, languageJSONObject.getString("item.minecraft." + itemID.toLowerCase() + ".desc"));
+                        } else {
+                            materials.put(itemID, languageJSONObject.getString("item.minecraft." + itemID.toLowerCase()));
+                        }
                     } else if (languageJSONObject.containsKey("item.minecraft." + itemID.toLowerCase())) {
                         materials.put(itemID, languageJSONObject.getString("item.minecraft." + itemID.toLowerCase()));
                     } else if (languageJSONObject.containsKey("block.minecraft." + itemID.toLowerCase())) {
@@ -440,6 +444,7 @@ public class ItemUtil
                 autoUpdate = false;
             } else {
                 Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
+                placeholders.put("{arguments}", "confirm");
                 switch (MessageUtil.getLanguage()) {
                     case "English": {
                         downloadLanguage(Bukkit.getConsoleSender(), toLanguageCode("English"));
@@ -448,7 +453,6 @@ public class ItemUtil
                     }
                     case "Simplified-Chinese":
                     case "Traditional-Chinese": {
-                        placeholders.put("{arguments}", "confirm");
                         MessageUtil.sendMessage(Bukkit.getConsoleSender(), ConfigurationType.MESSAGES.getRobustConfig(), "No-Item-Display-List:Language-Code-Exist", placeholders);
                         Bukkit.getOnlinePlayers().stream()
                                 .filter(player -> LiteCommandEditorUtils.hasCommandPermission(player, ToolsCommand.SubCommandType.UPDATE_ITEM_DISPLAY_NAME.getCommandPermissionPath(), false))

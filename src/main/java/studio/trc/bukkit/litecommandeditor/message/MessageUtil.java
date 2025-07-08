@@ -292,7 +292,7 @@ public class MessageUtil
             List<MessageSection> sections = MessageEditor.parse(message, placeholders);
             sections.stream().forEach(section -> {
                 if (section.isPlaceholder()) {
-                    builder.append(placeholders.get(section.getPlaceholder()));
+                    builder.append(placeholders.getOrDefault(section.getPlaceholder(), placeholders.entrySet().stream().collect(Collectors.toMap(key -> key.getKey().toLowerCase(), Map.Entry::getValue)).get(section.getPlaceholder().toLowerCase())));
                 } else {
                     builder.append(section.getText().replace("/n", "\n"));
                 }
@@ -353,7 +353,7 @@ public class MessageUtil
                 List<MessageSection> sections = MessageEditor.parse(message, placeholders);
                 sections.stream().forEach(section -> {
                     if (section.isPlaceholder()) {
-                        builder.append(placeholders.get(section.getPlaceholder()));
+                        builder.append(placeholders.getOrDefault(section.getPlaceholder(), placeholders.entrySet().stream().collect(Collectors.toMap(key -> key.getKey().toLowerCase(), Map.Entry::getValue)).get(section.getPlaceholder().toLowerCase())));
                     } else {
                         builder.append(sender != null ?
                                 toPlaceholderAPIResult(section.getText(), sender).replace("/n", "\n") :
