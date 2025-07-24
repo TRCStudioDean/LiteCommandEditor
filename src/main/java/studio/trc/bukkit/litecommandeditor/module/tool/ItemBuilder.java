@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import lombok.Getter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
@@ -76,6 +78,7 @@ public class ItemBuilder
         setOptions(item);
         setHeadTextures(item, sender, placeholders);
         setCustomModelData(item);
+        setItemModel(item);
         return item;
     }
     
@@ -160,6 +163,45 @@ public class ItemBuilder
             LiteCommandEditorProperties.sendOperationMessage("InvalidNumber", placeholders);
         }
         item.setItemMeta(im);
+        return this;
+    }
+    
+    /**
+     * Set item's model.
+     * @param item item
+     * @return 
+     */
+    public ItemBuilder setItemModel(ItemStack item) {
+        if (Bukkit.getBukkitVersion().startsWith("1.7") ||
+            Bukkit.getBukkitVersion().startsWith("1.8") ||
+            Bukkit.getBukkitVersion().startsWith("1.9") ||
+            Bukkit.getBukkitVersion().startsWith("1.10") ||
+            Bukkit.getBukkitVersion().startsWith("1.11") ||
+            Bukkit.getBukkitVersion().startsWith("1.12") || 
+            Bukkit.getBukkitVersion().startsWith("1.13") || 
+            Bukkit.getBukkitVersion().startsWith("1.14") || 
+            Bukkit.getBukkitVersion().startsWith("1.15") || 
+            Bukkit.getBukkitVersion().startsWith("1.16") || 
+            Bukkit.getBukkitVersion().startsWith("1.17") || 
+            Bukkit.getBukkitVersion().startsWith("1.18") || 
+            Bukkit.getBukkitVersion().startsWith("1.19")) {
+            return this;
+        }
+        ItemMeta im = item.getItemMeta();
+        String name = config.getString("Item-Model");
+        if (im == null || name == null) return this;
+        String[] modelInfo = name.split(":");
+        try {
+            Method method = im.getClass().getMethod("setItemModel", NamespacedKey.class);
+            if (!method.isAccessible()) {
+                method.setAccessible(true);
+            }
+            if (modelInfo.length == 2) {
+                method.invoke(im, new NamespacedKey(modelInfo[0], modelInfo[1]));
+            } else {
+                method.invoke(im, NamespacedKey.minecraft(modelInfo[0]));
+            }
+        } catch (Exception ex) {}
         return this;
     }
     

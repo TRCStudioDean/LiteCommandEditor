@@ -31,7 +31,7 @@ public class ListAllCommand
         } else {
             page = 1;
         }
-        int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getProtectedMessage("Command-Messages.List-All.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getProtectedMessage("Command-Messages.List-All.Number-Of-Single-Page")) : 9;
+        int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getRobustMessage("Command-Messages.List-All.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getRobustMessage("Command-Messages.List-All.Number-Of-Single-Page")) : 9;
         List<Command> commands = new ArrayList(new HashSet(CommandManager.getServerCommands().values()));
         int arraySize = commands.size();
         int maxPage = arraySize % numberOfSinglePage == 0 ? arraySize / numberOfSinglePage : arraySize / numberOfSinglePage + 1;

@@ -34,7 +34,7 @@ public class ListCommand
             MessageUtil.sendCommandMessage(sender, "List.Empty");
             return;
         }
-        int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getProtectedMessage("Command-Messages.List.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getProtectedMessage("Command-Messages.List.Number-Of-Single-Page")) : 9;
+        int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getRobustMessage("Command-Messages.List.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getRobustMessage("Command-Messages.List.Number-Of-Single-Page")) : 9;
         List<CommandConfiguration> commandConfigs = new ArrayList(CommandLoader.getCache().values());
         int arraySize = commandConfigs.size();
         int maxPage = arraySize % numberOfSinglePage == 0 ? arraySize / numberOfSinglePage : arraySize / numberOfSinglePage + 1;

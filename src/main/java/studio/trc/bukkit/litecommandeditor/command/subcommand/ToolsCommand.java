@@ -133,7 +133,7 @@ public class ToolsCommand
                 } else {
                     page = 1;
                 }
-                int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getProtectedMessage("Command-Messages.Tools.Placeholder.List.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getProtectedMessage("Command-Messages.Tools.Placeholder.List.Number-Of-Single-Page")) : 9;
+                int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getRobustMessage("Command-Messages.Tools.Placeholder.List.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getRobustMessage("Command-Messages.Tools.Placeholder.List.Number-Of-Single-Page")) : 9;
                 int arraySize = placeholders.size();
                 int maxPage = arraySize % numberOfSinglePage == 0 ? arraySize / numberOfSinglePage : arraySize / numberOfSinglePage + 1;
                 if (page > maxPage) {
@@ -455,7 +455,7 @@ public class ToolsCommand
                 } else {
                     page = 1;
                 }
-                int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getProtectedMessage("Command-Messages.Tools.Configurator.List.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getProtectedMessage("Command-Messages.Tools.Configurator.List.Number-Of-Single-Page")) : 9;
+                int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getRobustMessage("Command-Messages.Tools.Configurator.List.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getRobustMessage("Command-Messages.Tools.Configurator.List.Number-Of-Single-Page")) : 9;
                 int arraySize = tables.length;
                 int maxPage = arraySize % numberOfSinglePage == 0 ? arraySize / numberOfSinglePage : arraySize / numberOfSinglePage + 1;
                 if (page > maxPage) {
@@ -505,7 +505,7 @@ public class ToolsCommand
                         } else {
                             page = 1;
                         }
-                        int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getProtectedMessage("Command-Messages.Tools.Configurator.View.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getProtectedMessage("Command-Messages.Tools.Configurator.View.Number-Of-Single-Page")) : 9;
+                        int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getRobustMessage("Command-Messages.Tools.Configurator.View.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getRobustMessage("Command-Messages.Tools.Configurator.View.Number-Of-Single-Page")) : 9;
                         int arraySize = viewer.size();
                         int maxPage = arraySize % numberOfSinglePage == 0 ? arraySize / numberOfSinglePage : arraySize / numberOfSinglePage + 1;
                         if (page > maxPage) {
@@ -570,7 +570,7 @@ public class ToolsCommand
                 }
                 List<String> keywords = record.getKeywords();
                 String[] names = record.getNames().stream().sorted().toArray(String[]::new);
-                int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getProtectedMessage("Command-Messages.Tools.List-Names.Result.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getProtectedMessage("Command-Messages.Tools.List-Names.Result.Number-Of-Single-Page")) : 9;
+                int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getRobustMessage("Command-Messages.Tools.List-Names.Result.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getRobustMessage("Command-Messages.Tools.List-Names.Result.Number-Of-Single-Page")) : 9;
                 int arraySize = names.length;
                 int maxPage = arraySize % numberOfSinglePage == 0 ? arraySize / numberOfSinglePage : arraySize / numberOfSinglePage + 1;
                 if (page > maxPage) {

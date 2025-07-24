@@ -285,7 +285,7 @@ public class MessageUtil
      * @return 
      */
     public static String replacePlaceholders(String message, Map<String, String> placeholders, boolean toColor) {
-        if (message == null || placeholders.isEmpty()) return message;
+        if (message == null || placeholders.isEmpty()) return ColorUtils.toColor(message);
         StringBuilder builder = new StringBuilder();
         try {
             //Execute replacements
@@ -356,7 +356,7 @@ public class MessageUtil
                         builder.append(placeholders.getOrDefault(section.getPlaceholder(), placeholders.entrySet().stream().collect(Collectors.toMap(key -> key.getKey().toLowerCase(), Map.Entry::getValue)).get(section.getPlaceholder().toLowerCase())));
                     } else {
                         builder.append(sender != null ?
-                                toPlaceholderAPIResult(section.getText(), sender).replace("/n", "\n") :
+                                toPlaceholderAPIResult(sender, section.getText()).replace("/n", "\n") :
                                 section.getText().replace("/n", "\n"));
                     }
                 });
@@ -473,7 +473,7 @@ public class MessageUtil
         return text.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)").replace("[", "\\[").replace("]", "\\]").replace("{", "\\{").replace("}", "\\}").replace("+", "\\+").replace("*", "\\*").replace("|", "\\|").replace("?", "\\?").replace("$", "\\$").replace("^", "\\^");
     }
     
-    public static String toPlaceholderAPIResult(String text, CommandSender sender) {
+    public static String toPlaceholderAPIResult(CommandSender sender, String text) {
         return text != null && isEnabledPAPI() && sender instanceof Player ? PlaceholderAPI.setPlaceholders((Player) sender, text) : text;
     }
     
@@ -511,11 +511,11 @@ public class MessageUtil
         return messages;
     }
     
-    public static String getProtectedMessage(String configPath) {
+    public static String getRobustMessage(String configPath) {
         return ConfigurationType.MESSAGES.getRobustConfig().getString(getLanguage() + "." + configPath);
     }
     
-    public static String getProtectedMessage(ConfigurationType configType, String configPath) {
+    public static String getRobustMessage(ConfigurationType configType, String configPath) {
         return configType.getRobustConfig().getString(getLanguage() + "." + configPath);
     }
     
@@ -532,7 +532,7 @@ public class MessageUtil
     }
 
     public static String getPrefix() {
-        return ColorUtils.toColor(getProtectedMessage("Prefix"));
+        return ColorUtils.toColor(getRobustMessage("Prefix"));
     }
     
     public static String getLangaugeName() {

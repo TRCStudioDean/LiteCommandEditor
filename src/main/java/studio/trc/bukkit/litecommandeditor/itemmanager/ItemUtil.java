@@ -358,8 +358,10 @@ public class ItemUtil
                         }
                     }
                 } else {
-                    if (config.getRobustConfig().getConfig().contains(MessageUtil.getItemDisplayLanguagePath() + "." + is.getType().name() + ":" + is.getData().getData())) {
-                        text = config.getRobustConfig().getConfig().getString(MessageUtil.getItemDisplayLanguagePath() + "." + is.getType().name() + ":" + is.getData().getData());
+                    if (config.getRobustConfig().getConfig().contains(MessageUtil.getLanguage() + "." + is.getType().name() + ":" + is.getData().getData())) {
+                        text = config.getRobustConfig().getConfig().getString(MessageUtil.getLanguage() + "." + is.getType().name() + ":" + is.getData().getData());
+                    } else if (config.getRobustConfig().getConfig().contains(MessageUtil.getLanguage() + "." + is.getType().name())) {
+                        text = config.getRobustConfig().getConfig().getString(MessageUtil.getLanguage() + "." + is.getType().name());
                     } else {
                         if (remindToUpdateItemDisplayList() && config.getRobustConfig().getConfig().contains(MessageUtil.getItemDisplayLanguagePath() + "." + is.getType().name() + ":" + is.getData().getData())) {
                             text = config.getRobustConfig().getConfig().getString(MessageUtil.getItemDisplayLanguagePath() + "." + is.getType().name() + ":" + is.getData().getData());
@@ -376,8 +378,12 @@ public class ItemUtil
     public static Object getAdventureJSONItemStack(ItemStack item) {
         if (item != null && !item.getType().equals(Material.AIR)) {
             try {
-                String translationKey = Material.class.getMethod("translationKey").invoke(item.getType()).toString();
-                return NMSUtils.JSONItem.setItemHover(item, Component.translatable(translationKey));
+                if (item.getItemMeta() != null && item.getItemMeta().hasDisplayName()) {
+                    return NMSUtils.JSONItem.setItemHover(item, AdventureUtils.serializeText(item.getItemMeta().getDisplayName()));
+                } else {
+                    String translationKey = Material.class.getMethod("translationKey").invoke(item.getType()).toString();
+                    return NMSUtils.JSONItem.setItemHover(item, Component.translatable(translationKey));
+                }
             } catch (Exception ex) {
                 return NMSUtils.JSONItem.setItemHover(item, AdventureUtils.serializeText(getItemDisplayName(item)));
             }

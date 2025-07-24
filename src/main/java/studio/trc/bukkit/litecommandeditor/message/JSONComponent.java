@@ -154,7 +154,7 @@ public class JSONComponent
                 LiteCommandEditorProperties.sendOperationMessage("LoadingJSONComponentFailed", placeholders);
                 ex.printStackTrace();
             }
-            Component component = AdventureUtils.serializeText(MessageUtil.doBasicProcessing(config.getString(configPath + ".Text")));
+            Component component = AdventureUtils.serializeText(MessageUtil.replacePlaceholders(config.getString(configPath + ".Text"), placeholders));
             if (hoverEvent != null) component = AdventureUtils.setHoverEvent(component, hoverEvent);
             if (clickEvent != null) component = AdventureUtils.setClickEvent(component, clickEvent);
             return component;

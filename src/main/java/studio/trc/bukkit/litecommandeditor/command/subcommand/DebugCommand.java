@@ -112,7 +112,7 @@ public class DebugCommand
             MessageUtil.sendCommandMessage(sender, "Debug.List.Empty");
             return;
         }
-        int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getProtectedMessage("Command-Messages.Debug.List.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getProtectedMessage("Command-Messages.Debug.List.Number-Of-Single-Page")) : 9;
+        int numberOfSinglePage = LiteCommandEditorUtils.isInteger(MessageUtil.getRobustMessage("Command-Messages.Debug.List.Number-Of-Single-Page")) ? Integer.valueOf(MessageUtil.getRobustMessage("Command-Messages.Debug.List.Number-Of-Single-Page")) : 9;
         int arraySize = records.size();
         int maxPage = arraySize % numberOfSinglePage == 0 ? arraySize / numberOfSinglePage : arraySize / numberOfSinglePage + 1;
         if (page > maxPage) {

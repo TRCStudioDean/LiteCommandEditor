@@ -2,6 +2,7 @@ package studio.trc.bukkit.litecommandeditor.itemmanager;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.bukkit.Material;
 
@@ -15,6 +16,7 @@ public class LegacyItemUtil
 {
     static Map<String, String> updateLegacyItemNames() {
         Map<String, String> materials = new HashMap<>();
+        Properties languageProperties = ItemUtil.getLanguageProperties();
         for (Material material : Material.values()) {
             try {
                 String itemID = material.name();
@@ -48,17 +50,17 @@ public class LegacyItemUtil
                 else if (itemID.endsWith("_BARDING")) putHorseArmor(itemID, materials);
 
                 //Special named and multiple items
-                else if (itemID.endsWith("_AXE") && ItemUtil.languageProperties.containsKey("item." + toInvertedCamelCase(itemID.replace("_AXE", "_PICKAXE")) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + toInvertedCamelCase(itemID.replace("AXE", "PICKAXE")) + ".name"));
-                else if (itemID.endsWith("_SPADE") && ItemUtil.languageProperties.containsKey("item." + toInvertedCamelCase(itemID.replace("_SPADE", "_SHOVEL")) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + toInvertedCamelCase(itemID.replace("_SPADE", "_SHOVEL")) + ".name"));
-                else if (itemID.startsWith("LEATHER_") && ItemUtil.languageProperties.containsKey("item." + toInvertedCamelCase(itemID.replace("LEATHER_", "CLOTH_")) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + toInvertedCamelCase(itemID.replace("LEATHER_", "CLOTH_")) + ".name"));
-                else if (itemID.startsWith("CHAINMAIL_") && ItemUtil.languageProperties.containsKey("item." + toInvertedCamelCase(itemID.replace("CHAINMAIL_", "CHAIN_")) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + toInvertedCamelCase(itemID.replace("CHAINMAIL_", "CHAIN_")) + ".name"));
+                else if (itemID.endsWith("_AXE") && languageProperties.containsKey("item." + toInvertedCamelCase(itemID.replace("_AXE", "_PICKAXE")) + ".name")) materials.put(itemID, languageProperties.getProperty("item." + toInvertedCamelCase(itemID.replace("AXE", "PICKAXE")) + ".name"));
+                else if (itemID.endsWith("_SPADE") && languageProperties.containsKey("item." + toInvertedCamelCase(itemID.replace("_SPADE", "_SHOVEL")) + ".name")) materials.put(itemID, languageProperties.getProperty("item." + toInvertedCamelCase(itemID.replace("_SPADE", "_SHOVEL")) + ".name"));
+                else if (itemID.startsWith("LEATHER_") && languageProperties.containsKey("item." + toInvertedCamelCase(itemID.replace("LEATHER_", "CLOTH_")) + ".name")) materials.put(itemID, languageProperties.getProperty("item." + toInvertedCamelCase(itemID.replace("LEATHER_", "CLOTH_")) + ".name"));
+                else if (itemID.startsWith("CHAINMAIL_") && languageProperties.containsKey("item." + toInvertedCamelCase(itemID.replace("CHAINMAIL_", "CHAIN_")) + ".name")) materials.put(itemID, languageProperties.getProperty("item." + toInvertedCamelCase(itemID.replace("CHAINMAIL_", "CHAIN_")) + ".name"));
 
                 //Colorables
                 else if (itemID.equals("WOOL")) putItemColors(itemID, materials, "tile.cloth");
                 else if (itemID.equals("CONCRETE")) putItemColors(itemID, materials, "tile.concrete");
                 else if (itemID.equals("CONCRETE_POWDER")) putItemColors(itemID, materials, "tile.concretePowder");
                 else if (itemID.equals("INK_SACK")) putItemColors(itemID, materials, "item.dyePowder");
-                else if (itemID.equals("BED") && !ItemUtil.languageProperties.containsKey("item.bed.name")) putItemColors(itemID, materials, "item.bed");
+                else if (itemID.equals("BED") && !languageProperties.containsKey("item.bed.name")) putItemColors(itemID, materials, "item.bed");
                 else if (itemID.equals("BANNER")) putItemColors(itemID, materials, "item.banner");
                 else if (itemID.equals("SHIELD")) putItemColors(itemID, materials, "item.shield");
                 else if (itemID.equals("STAINED_GLASS")) putItemColors(itemID, materials, "tile.stainedGlass");
@@ -66,120 +68,123 @@ public class LegacyItemUtil
                 else if (itemID.equals("CARPET")) putItemColors(itemID, materials, "tile.woolCarpet");
 
                 //Special named
-                else if ((itemID.equals("WRITTEN_BOOK") || itemID.equals("BOOK_AND_QUILL")) && ItemUtil.languageProperties.containsKey("item.writingBook.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.writingBook.name"));
-                else if (itemID.equals("COBBLESTONE") && ItemUtil.languageProperties.containsKey("tile.stonebrick.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stonebrick.name"));
-                else if (itemID.equals("YELLOW_FLOWER") && ItemUtil.languageProperties.containsKey("tile.flower1.dandelion.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.flower1.dandelion.name"));
-                else if (itemID.equals("WATCH") && ItemUtil.languageProperties.containsKey("item.clock.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.clock.name"));
-                else if (itemID.equals("ITEM_FRAME") && ItemUtil.languageProperties.containsKey("item.frame.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.frame.name"));
-                else if (itemID.equals("COMMAND") && ItemUtil.languageProperties.containsKey("tile.commandBlock.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.commandBlock.name"));
-                else if (itemID.equals("COMMAND_REPEATING") && ItemUtil.languageProperties.containsKey("tile.repeatingCommandBlock.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.repeatingCommandBlock.name"));
-                else if (itemID.equals("COMMAND_CHAIN") && ItemUtil.languageProperties.containsKey("tile.chainCommandBlock.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.chainCommandBlock.name"));
-                else if ((itemID.equals("RED_MUSHROOM") || itemID.equals("BROWN_MUSHROOM")) && ItemUtil.languageProperties.containsKey("tile.mushroom.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.mushroom.name"));
-                else if (itemID.equals("GOLDEN_APPLE") && ItemUtil.languageProperties.containsKey("item.appleGold.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.appleGold.name"));
-                else if (itemID.equals("WOODEN_DOOR") && ItemUtil.languageProperties.containsKey("item.doorOak.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.doorOak.name"));
-                else if (itemID.equals("ENDER_STONE") && ItemUtil.languageProperties.containsKey("tile.whiteStone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.whiteStone.name"));
-                else if (itemID.equals("ENDER_PORTAL") && ItemUtil.languageProperties.containsKey("tile.portal.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.portal.name"));
-                else if (itemID.equals("BREWING_STAND_ITEM") && ItemUtil.languageProperties.containsKey("item.brewingStand.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.brewingStand.name"));
-                else if (itemID.equals("CAULDRON_ITEM") && ItemUtil.languageProperties.containsKey("tile.cauldron.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.cauldron.name"));
-                else if (itemID.equals("FLOWER_POT_ITEM") && ItemUtil.languageProperties.containsKey("item.flowerPot.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.flowerPot.name"));
-                else if ((itemID.equals("CARROT") || itemID.equals("CARROT_ITEM")) && ItemUtil.languageProperties.containsKey("item.carrots.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.carrots.name"));
-                else if (itemID.equals("POTATO_ITEM") && ItemUtil.languageProperties.containsKey("item.potato.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.potato.name"));
-                else if (itemID.equals("DRAGONS_BREATH") && ItemUtil.languageProperties.containsKey("item.dragon_breath.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.dragon_breath.name"));
-                else if (itemID.equals("MUTTON") && ItemUtil.languageProperties.containsKey("item.muttonRaw.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.muttonRaw.name"));
-                else if (itemID.equals("COOKED_MUTTON") && ItemUtil.languageProperties.containsKey("item.muttonCooked.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.muttonCooked.name"));
-                else if (itemID.equals("RABBIT") && ItemUtil.languageProperties.containsKey("item.rabbitRaw.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.rabbitRaw.name"));
-                else if (itemID.equals("COOKED_RABBIT") && ItemUtil.languageProperties.containsKey("item.rabbitCooked.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.rabbitCooked.name"));
-                else if (itemID.equals("QUARTZ") && ItemUtil.languageProperties.containsKey("item.netherquartz.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.netherquartz.name"));
-                else if ((itemID.equals("FIREWORK") || itemID.equals("FIREWORK_CHARGE")) && ItemUtil.languageProperties.containsKey("item.fireworks.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.fireworks.name"));
-                else if (itemID.equals("CARROT_STICK") && ItemUtil.languageProperties.containsKey("item.carrotOnAStick.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.carrotOnAStick.name"));
-                else if ((itemID.equals("MONSTER_EGG") || itemID.equals("MONSTER_EGGS")) && ItemUtil.languageProperties.containsKey("item.monsterPlacer.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.monsterPlacer.name"));
-                else if (itemID.equals("MELON_SEEDS") && ItemUtil.languageProperties.containsKey("item.seeds_melon.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.seeds_melon.name"));
-                else if (itemID.equals("PUMPKIN_SEEDS") && ItemUtil.languageProperties.containsKey("item.seeds_pumpkin.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.seeds_pumpkin.name"));
-                else if (itemID.equals("COOKED_FISH") && ItemUtil.languageProperties.containsKey("item.fish.cod.cooked.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.fish.cod.cooked.name"));
-                else if (itemID.equals("RAW_FISH") && ItemUtil.languageProperties.containsKey("item.fish.cod.raw.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.fish.cod.raw.name"));
-                else if (itemID.equals("GLOWSTONE_DUST") && ItemUtil.languageProperties.containsKey("item.yellowDust.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.yellowDust.name"));
-                else if ((itemID.equals("SUGAR_CANE") || itemID.equals("SUGAR_CANE_BLOCK")) && ItemUtil.languageProperties.containsKey("tile.reeds.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.reeds.name"));
-                else if (itemID.equals("CLAY_BALL") && ItemUtil.languageProperties.containsKey("item.clay.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.clay.name"));
-                else if (itemID.equals("CLAY_BRICK") && ItemUtil.languageProperties.containsKey("item.brick.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.brick.name"));
-                else if (itemID.equals("MILK_BUCKET") && ItemUtil.languageProperties.containsKey("item.milk.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.milk.name"));
-                else if (itemID.equals("GRILLED_PORK") && ItemUtil.languageProperties.containsKey("item.porkchopCooked.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.porkchopCooked.name"));
-                else if (itemID.equals("PORK") && ItemUtil.languageProperties.containsKey("item.porkchopRaw.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.porkchopRaw.name"));
-                else if (itemID.equals("MUSHROOM_SOUP") && ItemUtil.languageProperties.containsKey("item.mushroomStew.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.mushroomStew.name"));
-                else if (itemID.equals("END_GATEWAY") && ItemUtil.languageProperties.containsKey("tile.portal.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.portal.name"));
-                else if (itemID.equals("BEETROOT_BLOCK") && ItemUtil.languageProperties.containsKey("item.beetroot.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.beetroot.name"));
-                else if (itemID.equals("PURPUR_DOUBLE_SLAB") && ItemUtil.languageProperties.containsKey("tile.purpurSlab.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.purpurSlab.name"));
-                else if ((itemID.equals("STONE_SLAB2") || itemID.equals("DOUBLE_STONE_SLAB2")) && ItemUtil.languageProperties.containsKey("tile.stoneSlab2.red_sandstone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stoneSlab2.red_sandstone.name"));
-                else if (itemID.equals("DAYLIGHT_DETECTOR_INVERTED") && ItemUtil.languageProperties.containsKey("tile.daylightDetector.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.daylightDetector.name"));
-                else if ((itemID.equals("WALL_BANNER") || itemID.equals("STANDING_BANNER")) && ItemUtil.languageProperties.containsKey("item.banner.white.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.banner.white.name"));
-                else if (itemID.equals("HARD_CLAY") && ItemUtil.languageProperties.containsKey("tile.clay.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.clay.name"));
-                else if (itemID.equals("SLIME_BLOCK") && ItemUtil.languageProperties.containsKey("tile.slime.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.slime.name"));
-                else if (itemID.equals("STATIONARY_WATER") && ItemUtil.languageProperties.containsKey("tile.water.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.water.name"));
-                else if (itemID.equals("STATIONARY_LAVA") && ItemUtil.languageProperties.containsKey("tile.lava.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.lava.name"));
-                else if (itemID.equals("BED_BLOCK") && ItemUtil.languageProperties.containsKey("item.bed.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.bed.name"));
-                else if (itemID.equals("BED_BLOCK") && ItemUtil.languageProperties.containsKey("item.bed.white.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.bed.white.name"));
-                else if (itemID.equals("SANDSTONE_STAIRS") && ItemUtil.languageProperties.containsKey("tile.stairsSandStone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stairsSandStone.name"));
-                else if (itemID.equals("GLOWSTONE") && ItemUtil.languageProperties.containsKey("tile.lightgem.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.lightgem.name"));
-                else if (itemID.equals("RED_SANDSTONE_STAIRS") && ItemUtil.languageProperties.containsKey("tile.stairsRedSandStone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stairsRedSandStone.name"));
-                else if (itemID.equals("DARK_OAK_STAIRS") && ItemUtil.languageProperties.containsKey("tile.stairsWoodDarkOak.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stairsWoodDarkOak.name"));
-                else if (itemID.equals("ACACIA_STAIRS") && ItemUtil.languageProperties.containsKey("tile.stairsWoodAcacia.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stairsWoodAcacia.name"));
-                else if (itemID.equals("STAINED_GLASS_PANE") && ItemUtil.languageProperties.containsKey("tile.thinStainedGlass.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.thinStainedGlass.name"));
-                else if (itemID.equals("QUARTZ_ORE") && ItemUtil.languageProperties.containsKey("tile.netherquartz.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.netherquartz.name"));
-                else if (itemID.equals("IRON_PLATE") && ItemUtil.languageProperties.containsKey("tile.weightedPlate_light.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.weightedPlate_light.name"));
-                else if (itemID.equals("GOLD_PLATE") && ItemUtil.languageProperties.containsKey("tile.weightedPlate_heavy.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.weightedPlate_heavy.name"));
-                else if (itemID.equals("TRAPPED_CHEST") && ItemUtil.languageProperties.containsKey("tile.chestTrap.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.chestTrap.name"));
-                else if ((itemID.equals("WOOD_BUTTON") || itemID.equals("STONE_BUTTON")) && ItemUtil.languageProperties.containsKey("tile.button.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.button.name"));
-                else if (itemID.equals("TRIPWIRE") && ItemUtil.languageProperties.containsKey("tile.tripWire.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.tripWire.name"));
-                else if (itemID.equals("TRIPWIRE_HOOK") && ItemUtil.languageProperties.containsKey("tile.tripWireSource.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.tripWireSource.name"));
-                else if ((itemID.equals("WOOD_STEP") || itemID.equals("WOOD_DOUBLE_STEP")) && ItemUtil.languageProperties.containsKey("tile.stoneSlab.wood.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stoneSlab.wood.name"));
-                else if (itemID.equals("NETHER_WARTS") && ItemUtil.languageProperties.containsKey("item.netherStalkSeeds.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.netherStalkSeeds.name"));
-                else if (itemID.equals("SMOOTH_STAIRS") && ItemUtil.languageProperties.containsKey("tile.stairsStoneBrickSmooth.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stairsStoneBrickSmooth.name"));
-                else if ((itemID.equals("MELON_STEM") || itemID.equals("MELON_BLOCK")) && ItemUtil.languageProperties.containsKey("tile.melon.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.melon.name"));
-                else if ((itemID.equals("PUMPKIN_STEM")) && ItemUtil.languageProperties.containsKey("tile.pumpkin.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.pumpkin.name"));
-                else if ((itemID.equals("HUGE_MUSHROOM_1") || itemID.equals("HUGE_MUSHROOM_2")) && ItemUtil.languageProperties.containsKey("tile.mushroom.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.mushroom.name"));
-                else if (itemID.equals("SMOOTH_BRICK") && ItemUtil.languageProperties.containsKey("tile.stonebricksmooth.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stonebricksmooth.name"));
-                else if (itemID.equals("CAKE_BLOCK") && ItemUtil.languageProperties.containsKey("item.cake.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.cake.name"));
-                else if (itemID.equals("JACK_O_LANTERN") && ItemUtil.languageProperties.containsKey("tile.litpumpkin.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.litpumpkin.name"));
-                else if (itemID.equals("SOUL_SAND") && ItemUtil.languageProperties.containsKey("tile.hellsand.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.hellsand.name"));
-                else if (itemID.equals("NETHERRACK") && ItemUtil.languageProperties.containsKey("tile.hellrock.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.hellrock.name"));
-                else if (itemID.equals("SNOW_BLOCK") && ItemUtil.languageProperties.containsKey("tile.snow.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.snow.name"));
-                else if (itemID.equals("GLOWING_REDSTONE_ORE") && ItemUtil.languageProperties.containsKey("tile.oreRedstone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.oreRedstone.name"));
-                else if (itemID.equals("WOOD_PLATE") && ItemUtil.languageProperties.containsKey("tile.pressurePlateWood.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.pressurePlateWood.name")); //1.12.2
-                else if (itemID.equals("STONE_PLATE") && ItemUtil.languageProperties.containsKey("tile.pressurePlateStone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.pressurePlateStone.name")); //1.12.2
-                else if (itemID.equals("WOOD_PLATE") && ItemUtil.languageProperties.containsKey("tile.pressurePlate.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.pressurePlate.name")); //1.7.10
-                else if (itemID.equals("STONE_PLATE") && ItemUtil.languageProperties.containsKey("tile.pressurePlate.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.pressurePlate.name")); //1.7.10
-                else if (itemID.equals("WOODEN_DOOR") && ItemUtil.languageProperties.containsKey("item.doorWood.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.doorWood.name")); //1.7.10
-                else if (itemID.equals("IRON_DOOR_BLOCK") && ItemUtil.languageProperties.containsKey("tile.doorIron.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.doorIron.name"));
-                else if ((itemID.equals("WALL_SIGN") || itemID.equals("SIGN_POST"))&& ItemUtil.languageProperties.containsKey("item.sign.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.sign.name"));
-                else if (itemID.equals("COBBLESTONE_STAIRS") && ItemUtil.languageProperties.containsKey("tile.stairsStone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stairsStone.name"));
-                else if (itemID.equals("RAILS") && ItemUtil.languageProperties.containsKey("tile.rail.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.rail.name"));
-                else if (itemID.equals("POWERED_RAIL") && ItemUtil.languageProperties.containsKey("tile.goldenRail.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.goldenRail.name"));
-                else if (itemID.equals("BURNING_FURNACE") && ItemUtil.languageProperties.containsKey("tile.furnace.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.furnace.name"));
-                else if (itemID.equals("SOIL") && ItemUtil.languageProperties.containsKey("tile.farmland.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.farmland.name"));
-                else if (itemID.equals("REDSTONE_WIRE") && ItemUtil.languageProperties.containsKey("item.redstone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.redstone.name"));
-                else if (itemID.equals("MOSSY_COBBLESTONE") && ItemUtil.languageProperties.containsKey("tile.stoneMoss.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stoneMoss.name"));
-                else if (itemID.equals("DOUBLE_STEP") && ItemUtil.languageProperties.containsKey("tile.stoneSlab.stone.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.stoneSlab.stone.name"));
-                else if ((itemID.equals("PISTON_EXTENSION") || itemID.equals("PISTON_MOVING_PIECE")) && ItemUtil.languageProperties.containsKey("tile.pistonStickyBase.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.pistonStickyBase.name"));
-                else if (itemID.equals("NOTE_BLOCK") && ItemUtil.languageProperties.containsKey("tile.musicBlock.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.musicBlock.name"));
-                else if (itemID.equals("NETHER_BRICK_ITEM") && ItemUtil.languageProperties.containsKey("item.netherbrick.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.netherbrick.name"));
-                else if (itemID.equals("ENDER_PORTAL_FRAME") && ItemUtil.languageProperties.containsKey("tile.endPortalFrame.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.endPortalFrame.name"));
-                else if ((itemID.equals("REDSTONE_LAMP_OFF") || itemID.equals("REDSTONE_LAMP_ON")) && ItemUtil.languageProperties.containsKey("tile.redstoneLight.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.redstoneLight.name"));
-                else if ((itemID.equals("REDSTONE_COMPARATOR") || itemID.equals("REDSTONE_COMPARATOR_ON") || itemID.equals("REDSTONE_COMPARATOR_OFF")) && ItemUtil.languageProperties.containsKey("item.comparator.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.comparator.name"));
-                else if ((itemID.equals("REDSTONE_TORCH_ON") || itemID.equals("REDSTONE_TORCH_OFF")) && ItemUtil.languageProperties.containsKey("tile.notGate.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile.notGate.name"));
-                else if ((itemID.equals("DIODE_BLOCK_ON") || itemID.equals("DIODE_BLOCK_OFF")) && ItemUtil.languageProperties.containsKey("item.diode.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.diode.name"));
-                else if (itemID.equals("SPLASH_POTION") && !ItemUtil.languageProperties.containsKey("item.splash_potion.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.potion.name"));
-                else if (itemID.equals("LINGERING_POTION") && !ItemUtil.languageProperties.containsKey("item.lingering_potion.name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item.potion.name"));
+                else if ((itemID.equals("WRITTEN_BOOK") || itemID.equals("BOOK_AND_QUILL")) && languageProperties.containsKey("item.writingBook.name")) materials.put(itemID, languageProperties.getProperty("item.writingBook.name"));
+                else if (itemID.equals("COBBLESTONE") && languageProperties.containsKey("tile.stonebrick.name")) materials.put(itemID, languageProperties.getProperty("tile.stonebrick.name"));
+                else if (itemID.equals("YELLOW_FLOWER") && languageProperties.containsKey("tile.flower1.dandelion.name")) materials.put(itemID, languageProperties.getProperty("tile.flower1.dandelion.name"));
+                else if (itemID.equals("WATCH") && languageProperties.containsKey("item.clock.name")) materials.put(itemID, languageProperties.getProperty("item.clock.name"));
+                else if (itemID.equals("ITEM_FRAME") && languageProperties.containsKey("item.frame.name")) materials.put(itemID, languageProperties.getProperty("item.frame.name"));
+                else if (itemID.equals("COMMAND") && languageProperties.containsKey("tile.commandBlock.name")) materials.put(itemID, languageProperties.getProperty("tile.commandBlock.name"));
+                else if (itemID.equals("COMMAND_REPEATING") && languageProperties.containsKey("tile.repeatingCommandBlock.name")) materials.put(itemID, languageProperties.getProperty("tile.repeatingCommandBlock.name"));
+                else if (itemID.equals("COMMAND_CHAIN") && languageProperties.containsKey("tile.chainCommandBlock.name")) materials.put(itemID, languageProperties.getProperty("tile.chainCommandBlock.name"));
+                else if ((itemID.equals("RED_MUSHROOM") || itemID.equals("BROWN_MUSHROOM")) && languageProperties.containsKey("tile.mushroom.name")) materials.put(itemID, languageProperties.getProperty("tile.mushroom.name"));
+                else if (itemID.equals("GOLDEN_APPLE") && languageProperties.containsKey("item.appleGold.name")) {
+                    materials.put(itemID, languageProperties.getProperty("item.appleGold.name"));
+                    materials.put(itemID + ":1", languageProperties.getProperty("item.appleGold.name"));
+                }
+                else if (itemID.equals("WOODEN_DOOR") && languageProperties.containsKey("item.doorOak.name")) materials.put(itemID, languageProperties.getProperty("item.doorOak.name"));
+                else if (itemID.equals("ENDER_STONE") && languageProperties.containsKey("tile.whiteStone.name")) materials.put(itemID, languageProperties.getProperty("tile.whiteStone.name"));
+                else if (itemID.equals("ENDER_PORTAL") && languageProperties.containsKey("tile.portal.name")) materials.put(itemID, languageProperties.getProperty("tile.portal.name"));
+                else if (itemID.equals("BREWING_STAND_ITEM") && languageProperties.containsKey("item.brewingStand.name")) materials.put(itemID, languageProperties.getProperty("item.brewingStand.name"));
+                else if (itemID.equals("CAULDRON_ITEM") && languageProperties.containsKey("tile.cauldron.name")) materials.put(itemID, languageProperties.getProperty("tile.cauldron.name"));
+                else if (itemID.equals("FLOWER_POT_ITEM") && languageProperties.containsKey("item.flowerPot.name")) materials.put(itemID, languageProperties.getProperty("item.flowerPot.name"));
+                else if ((itemID.equals("CARROT") || itemID.equals("CARROT_ITEM")) && languageProperties.containsKey("item.carrots.name")) materials.put(itemID, languageProperties.getProperty("item.carrots.name"));
+                else if (itemID.equals("POTATO_ITEM") && languageProperties.containsKey("item.potato.name")) materials.put(itemID, languageProperties.getProperty("item.potato.name"));
+                else if (itemID.equals("DRAGONS_BREATH") && languageProperties.containsKey("item.dragon_breath.name")) materials.put(itemID, languageProperties.getProperty("item.dragon_breath.name"));
+                else if (itemID.equals("MUTTON") && languageProperties.containsKey("item.muttonRaw.name")) materials.put(itemID, languageProperties.getProperty("item.muttonRaw.name"));
+                else if (itemID.equals("COOKED_MUTTON") && languageProperties.containsKey("item.muttonCooked.name")) materials.put(itemID, languageProperties.getProperty("item.muttonCooked.name"));
+                else if (itemID.equals("RABBIT") && languageProperties.containsKey("item.rabbitRaw.name")) materials.put(itemID, languageProperties.getProperty("item.rabbitRaw.name"));
+                else if (itemID.equals("COOKED_RABBIT") && languageProperties.containsKey("item.rabbitCooked.name")) materials.put(itemID, languageProperties.getProperty("item.rabbitCooked.name"));
+                else if (itemID.equals("QUARTZ") && languageProperties.containsKey("item.netherquartz.name")) materials.put(itemID, languageProperties.getProperty("item.netherquartz.name"));
+                else if ((itemID.equals("FIREWORK") || itemID.equals("FIREWORK_CHARGE")) && languageProperties.containsKey("item.fireworks.name")) materials.put(itemID, languageProperties.getProperty("item.fireworks.name"));
+                else if (itemID.equals("CARROT_STICK") && languageProperties.containsKey("item.carrotOnAStick.name")) materials.put(itemID, languageProperties.getProperty("item.carrotOnAStick.name"));
+                else if ((itemID.equals("MONSTER_EGG") || itemID.equals("MONSTER_EGGS")) && languageProperties.containsKey("item.monsterPlacer.name")) materials.put(itemID, languageProperties.getProperty("item.monsterPlacer.name"));
+                else if (itemID.equals("MELON_SEEDS") && languageProperties.containsKey("item.seeds_melon.name")) materials.put(itemID, languageProperties.getProperty("item.seeds_melon.name"));
+                else if (itemID.equals("PUMPKIN_SEEDS") && languageProperties.containsKey("item.seeds_pumpkin.name")) materials.put(itemID, languageProperties.getProperty("item.seeds_pumpkin.name"));
+                else if (itemID.equals("COOKED_FISH") && languageProperties.containsKey("item.fish.cod.cooked.name")) materials.put(itemID, languageProperties.getProperty("item.fish.cod.cooked.name"));
+                else if (itemID.equals("RAW_FISH") && languageProperties.containsKey("item.fish.cod.raw.name")) materials.put(itemID, languageProperties.getProperty("item.fish.cod.raw.name"));
+                else if (itemID.equals("GLOWSTONE_DUST") && languageProperties.containsKey("item.yellowDust.name")) materials.put(itemID, languageProperties.getProperty("item.yellowDust.name"));
+                else if ((itemID.equals("SUGAR_CANE") || itemID.equals("SUGAR_CANE_BLOCK")) && languageProperties.containsKey("tile.reeds.name")) materials.put(itemID, languageProperties.getProperty("tile.reeds.name"));
+                else if (itemID.equals("CLAY_BALL") && languageProperties.containsKey("item.clay.name")) materials.put(itemID, languageProperties.getProperty("item.clay.name"));
+                else if (itemID.equals("CLAY_BRICK") && languageProperties.containsKey("item.brick.name")) materials.put(itemID, languageProperties.getProperty("item.brick.name"));
+                else if (itemID.equals("MILK_BUCKET") && languageProperties.containsKey("item.milk.name")) materials.put(itemID, languageProperties.getProperty("item.milk.name"));
+                else if (itemID.equals("GRILLED_PORK") && languageProperties.containsKey("item.porkchopCooked.name")) materials.put(itemID, languageProperties.getProperty("item.porkchopCooked.name"));
+                else if (itemID.equals("PORK") && languageProperties.containsKey("item.porkchopRaw.name")) materials.put(itemID, languageProperties.getProperty("item.porkchopRaw.name"));
+                else if (itemID.equals("MUSHROOM_SOUP") && languageProperties.containsKey("item.mushroomStew.name")) materials.put(itemID, languageProperties.getProperty("item.mushroomStew.name"));
+                else if (itemID.equals("END_GATEWAY") && languageProperties.containsKey("tile.portal.name")) materials.put(itemID, languageProperties.getProperty("tile.portal.name"));
+                else if (itemID.equals("BEETROOT_BLOCK") && languageProperties.containsKey("item.beetroot.name")) materials.put(itemID, languageProperties.getProperty("item.beetroot.name"));
+                else if (itemID.equals("PURPUR_DOUBLE_SLAB") && languageProperties.containsKey("tile.purpurSlab.name")) materials.put(itemID, languageProperties.getProperty("tile.purpurSlab.name"));
+                else if ((itemID.equals("STONE_SLAB2") || itemID.equals("DOUBLE_STONE_SLAB2")) && languageProperties.containsKey("tile.stoneSlab2.red_sandstone.name")) materials.put(itemID, languageProperties.getProperty("tile.stoneSlab2.red_sandstone.name"));
+                else if (itemID.equals("DAYLIGHT_DETECTOR_INVERTED") && languageProperties.containsKey("tile.daylightDetector.name")) materials.put(itemID, languageProperties.getProperty("tile.daylightDetector.name"));
+                else if ((itemID.equals("WALL_BANNER") || itemID.equals("STANDING_BANNER")) && languageProperties.containsKey("item.banner.white.name")) materials.put(itemID, languageProperties.getProperty("item.banner.white.name"));
+                else if (itemID.equals("HARD_CLAY") && languageProperties.containsKey("tile.clay.name")) materials.put(itemID, languageProperties.getProperty("tile.clay.name"));
+                else if (itemID.equals("SLIME_BLOCK") && languageProperties.containsKey("tile.slime.name")) materials.put(itemID, languageProperties.getProperty("tile.slime.name"));
+                else if (itemID.equals("STATIONARY_WATER") && languageProperties.containsKey("tile.water.name")) materials.put(itemID, languageProperties.getProperty("tile.water.name"));
+                else if (itemID.equals("STATIONARY_LAVA") && languageProperties.containsKey("tile.lava.name")) materials.put(itemID, languageProperties.getProperty("tile.lava.name"));
+                else if (itemID.equals("BED_BLOCK") && languageProperties.containsKey("item.bed.name")) materials.put(itemID, languageProperties.getProperty("item.bed.name"));
+                else if (itemID.equals("BED_BLOCK") && languageProperties.containsKey("item.bed.white.name")) materials.put(itemID, languageProperties.getProperty("item.bed.white.name"));
+                else if (itemID.equals("SANDSTONE_STAIRS") && languageProperties.containsKey("tile.stairsSandStone.name")) materials.put(itemID, languageProperties.getProperty("tile.stairsSandStone.name"));
+                else if (itemID.equals("GLOWSTONE") && languageProperties.containsKey("tile.lightgem.name")) materials.put(itemID, languageProperties.getProperty("tile.lightgem.name"));
+                else if (itemID.equals("RED_SANDSTONE_STAIRS") && languageProperties.containsKey("tile.stairsRedSandStone.name")) materials.put(itemID, languageProperties.getProperty("tile.stairsRedSandStone.name"));
+                else if (itemID.equals("DARK_OAK_STAIRS") && languageProperties.containsKey("tile.stairsWoodDarkOak.name")) materials.put(itemID, languageProperties.getProperty("tile.stairsWoodDarkOak.name"));
+                else if (itemID.equals("ACACIA_STAIRS") && languageProperties.containsKey("tile.stairsWoodAcacia.name")) materials.put(itemID, languageProperties.getProperty("tile.stairsWoodAcacia.name"));
+                else if (itemID.equals("STAINED_GLASS_PANE") && languageProperties.containsKey("tile.thinStainedGlass.name")) materials.put(itemID, languageProperties.getProperty("tile.thinStainedGlass.name"));
+                else if (itemID.equals("QUARTZ_ORE") && languageProperties.containsKey("tile.netherquartz.name")) materials.put(itemID, languageProperties.getProperty("tile.netherquartz.name"));
+                else if (itemID.equals("IRON_PLATE") && languageProperties.containsKey("tile.weightedPlate_light.name")) materials.put(itemID, languageProperties.getProperty("tile.weightedPlate_light.name"));
+                else if (itemID.equals("GOLD_PLATE") && languageProperties.containsKey("tile.weightedPlate_heavy.name")) materials.put(itemID, languageProperties.getProperty("tile.weightedPlate_heavy.name"));
+                else if (itemID.equals("TRAPPED_CHEST") && languageProperties.containsKey("tile.chestTrap.name")) materials.put(itemID, languageProperties.getProperty("tile.chestTrap.name"));
+                else if ((itemID.equals("WOOD_BUTTON") || itemID.equals("STONE_BUTTON")) && languageProperties.containsKey("tile.button.name")) materials.put(itemID, languageProperties.getProperty("tile.button.name"));
+                else if (itemID.equals("TRIPWIRE") && languageProperties.containsKey("tile.tripWire.name")) materials.put(itemID, languageProperties.getProperty("tile.tripWire.name"));
+                else if (itemID.equals("TRIPWIRE_HOOK") && languageProperties.containsKey("tile.tripWireSource.name")) materials.put(itemID, languageProperties.getProperty("tile.tripWireSource.name"));
+                else if ((itemID.equals("WOOD_STEP") || itemID.equals("WOOD_DOUBLE_STEP")) && languageProperties.containsKey("tile.stoneSlab.wood.name")) materials.put(itemID, languageProperties.getProperty("tile.stoneSlab.wood.name"));
+                else if (itemID.equals("NETHER_WARTS") && languageProperties.containsKey("item.netherStalkSeeds.name")) materials.put(itemID, languageProperties.getProperty("item.netherStalkSeeds.name"));
+                else if (itemID.equals("SMOOTH_STAIRS") && languageProperties.containsKey("tile.stairsStoneBrickSmooth.name")) materials.put(itemID, languageProperties.getProperty("tile.stairsStoneBrickSmooth.name"));
+                else if ((itemID.equals("MELON_STEM") || itemID.equals("MELON_BLOCK")) && languageProperties.containsKey("tile.melon.name")) materials.put(itemID, languageProperties.getProperty("tile.melon.name"));
+                else if ((itemID.equals("PUMPKIN_STEM")) && languageProperties.containsKey("tile.pumpkin.name")) materials.put(itemID, languageProperties.getProperty("tile.pumpkin.name"));
+                else if ((itemID.equals("HUGE_MUSHROOM_1") || itemID.equals("HUGE_MUSHROOM_2")) && languageProperties.containsKey("tile.mushroom.name")) materials.put(itemID, languageProperties.getProperty("tile.mushroom.name"));
+                else if (itemID.equals("SMOOTH_BRICK") && languageProperties.containsKey("tile.stonebricksmooth.name")) materials.put(itemID, languageProperties.getProperty("tile.stonebricksmooth.name"));
+                else if (itemID.equals("CAKE_BLOCK") && languageProperties.containsKey("item.cake.name")) materials.put(itemID, languageProperties.getProperty("item.cake.name"));
+                else if (itemID.equals("JACK_O_LANTERN") && languageProperties.containsKey("tile.litpumpkin.name")) materials.put(itemID, languageProperties.getProperty("tile.litpumpkin.name"));
+                else if (itemID.equals("SOUL_SAND") && languageProperties.containsKey("tile.hellsand.name")) materials.put(itemID, languageProperties.getProperty("tile.hellsand.name"));
+                else if (itemID.equals("NETHERRACK") && languageProperties.containsKey("tile.hellrock.name")) materials.put(itemID, languageProperties.getProperty("tile.hellrock.name"));
+                else if (itemID.equals("SNOW_BLOCK") && languageProperties.containsKey("tile.snow.name")) materials.put(itemID, languageProperties.getProperty("tile.snow.name"));
+                else if (itemID.equals("GLOWING_REDSTONE_ORE") && languageProperties.containsKey("tile.oreRedstone.name")) materials.put(itemID, languageProperties.getProperty("tile.oreRedstone.name"));
+                else if (itemID.equals("WOOD_PLATE") && languageProperties.containsKey("tile.pressurePlateWood.name")) materials.put(itemID, languageProperties.getProperty("tile.pressurePlateWood.name")); //1.12.2
+                else if (itemID.equals("STONE_PLATE") && languageProperties.containsKey("tile.pressurePlateStone.name")) materials.put(itemID, languageProperties.getProperty("tile.pressurePlateStone.name")); //1.12.2
+                else if (itemID.equals("WOOD_PLATE") && languageProperties.containsKey("tile.pressurePlate.name")) materials.put(itemID, languageProperties.getProperty("tile.pressurePlate.name")); //1.7.10
+                else if (itemID.equals("STONE_PLATE") && languageProperties.containsKey("tile.pressurePlate.name")) materials.put(itemID, languageProperties.getProperty("tile.pressurePlate.name")); //1.7.10
+                else if (itemID.equals("WOODEN_DOOR") && languageProperties.containsKey("item.doorWood.name")) materials.put(itemID, languageProperties.getProperty("item.doorWood.name")); //1.7.10
+                else if (itemID.equals("IRON_DOOR_BLOCK") && languageProperties.containsKey("tile.doorIron.name")) materials.put(itemID, languageProperties.getProperty("tile.doorIron.name"));
+                else if ((itemID.equals("WALL_SIGN") || itemID.equals("SIGN_POST"))&& languageProperties.containsKey("item.sign.name")) materials.put(itemID, languageProperties.getProperty("item.sign.name"));
+                else if (itemID.equals("COBBLESTONE_STAIRS") && languageProperties.containsKey("tile.stairsStone.name")) materials.put(itemID, languageProperties.getProperty("tile.stairsStone.name"));
+                else if (itemID.equals("RAILS") && languageProperties.containsKey("tile.rail.name")) materials.put(itemID, languageProperties.getProperty("tile.rail.name"));
+                else if (itemID.equals("POWERED_RAIL") && languageProperties.containsKey("tile.goldenRail.name")) materials.put(itemID, languageProperties.getProperty("tile.goldenRail.name"));
+                else if (itemID.equals("BURNING_FURNACE") && languageProperties.containsKey("tile.furnace.name")) materials.put(itemID, languageProperties.getProperty("tile.furnace.name"));
+                else if (itemID.equals("SOIL") && languageProperties.containsKey("tile.farmland.name")) materials.put(itemID, languageProperties.getProperty("tile.farmland.name"));
+                else if (itemID.equals("REDSTONE_WIRE") && languageProperties.containsKey("item.redstone.name")) materials.put(itemID, languageProperties.getProperty("item.redstone.name"));
+                else if (itemID.equals("MOSSY_COBBLESTONE") && languageProperties.containsKey("tile.stoneMoss.name")) materials.put(itemID, languageProperties.getProperty("tile.stoneMoss.name"));
+                else if (itemID.equals("DOUBLE_STEP") && languageProperties.containsKey("tile.stoneSlab.stone.name")) materials.put(itemID, languageProperties.getProperty("tile.stoneSlab.stone.name"));
+                else if ((itemID.equals("PISTON_EXTENSION") || itemID.equals("PISTON_MOVING_PIECE")) && languageProperties.containsKey("tile.pistonStickyBase.name")) materials.put(itemID, languageProperties.getProperty("tile.pistonStickyBase.name"));
+                else if (itemID.equals("NOTE_BLOCK") && languageProperties.containsKey("tile.musicBlock.name")) materials.put(itemID, languageProperties.getProperty("tile.musicBlock.name"));
+                else if (itemID.equals("NETHER_BRICK_ITEM") && languageProperties.containsKey("item.netherbrick.name")) materials.put(itemID, languageProperties.getProperty("item.netherbrick.name"));
+                else if (itemID.equals("ENDER_PORTAL_FRAME") && languageProperties.containsKey("tile.endPortalFrame.name")) materials.put(itemID, languageProperties.getProperty("tile.endPortalFrame.name"));
+                else if ((itemID.equals("REDSTONE_LAMP_OFF") || itemID.equals("REDSTONE_LAMP_ON")) && languageProperties.containsKey("tile.redstoneLight.name")) materials.put(itemID, languageProperties.getProperty("tile.redstoneLight.name"));
+                else if ((itemID.equals("REDSTONE_COMPARATOR") || itemID.equals("REDSTONE_COMPARATOR_ON") || itemID.equals("REDSTONE_COMPARATOR_OFF")) && languageProperties.containsKey("item.comparator.name")) materials.put(itemID, languageProperties.getProperty("item.comparator.name"));
+                else if ((itemID.equals("REDSTONE_TORCH_ON") || itemID.equals("REDSTONE_TORCH_OFF")) && languageProperties.containsKey("tile.notGate.name")) materials.put(itemID, languageProperties.getProperty("tile.notGate.name"));
+                else if ((itemID.equals("DIODE_BLOCK_ON") || itemID.equals("DIODE_BLOCK_OFF")) && languageProperties.containsKey("item.diode.name")) materials.put(itemID, languageProperties.getProperty("item.diode.name"));
+                else if (itemID.equals("SPLASH_POTION") && !languageProperties.containsKey("item.splash_potion.name")) materials.put(itemID, languageProperties.getProperty("item.potion.name"));
+                else if (itemID.equals("LINGERING_POTION") && !languageProperties.containsKey("item.lingering_potion.name")) materials.put(itemID, languageProperties.getProperty("item.potion.name"));
 
                 //Generals (Attempting to get key from properties by deforming the naming)
-                else if (ItemUtil.languageProperties.containsKey("item." + itemID.toLowerCase() + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + itemID.toLowerCase() + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("tile." + itemID.toLowerCase() + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile." + itemID.toLowerCase() + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("item." + itemID.toLowerCase().replace("_", "") + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + itemID.toLowerCase().replace("_", "") + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("tile." + itemID.toLowerCase().replace("_", "") + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile." + itemID.toLowerCase().replace("_", "") + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("item." + toCamelCase(itemID) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + toCamelCase(itemID) + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("tile." + toCamelCase(itemID) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile." + toCamelCase(itemID) + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("item." + toInvertedCamelCase(itemID) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + toInvertedCamelCase(itemID) + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("tile." + toInvertedCamelCase(itemID) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile." + toInvertedCamelCase(itemID) + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("item." + toLastWordReversedCamelCase(itemID) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("item." + toLastWordReversedCamelCase(itemID) + ".name"));
-                else if (ItemUtil.languageProperties.containsKey("tile." + toLastWordReversedCamelCase(itemID) + ".name")) materials.put(itemID, ItemUtil.languageProperties.getProperty("tile." + toLastWordReversedCamelCase(itemID) + ".name"));
+                else if (languageProperties.containsKey("item." + itemID.toLowerCase() + ".name")) materials.put(itemID, languageProperties.getProperty("item." + itemID.toLowerCase() + ".name"));
+                else if (languageProperties.containsKey("tile." + itemID.toLowerCase() + ".name")) materials.put(itemID, languageProperties.getProperty("tile." + itemID.toLowerCase() + ".name"));
+                else if (languageProperties.containsKey("item." + itemID.toLowerCase().replace("_", "") + ".name")) materials.put(itemID, languageProperties.getProperty("item." + itemID.toLowerCase().replace("_", "") + ".name"));
+                else if (languageProperties.containsKey("tile." + itemID.toLowerCase().replace("_", "") + ".name")) materials.put(itemID, languageProperties.getProperty("tile." + itemID.toLowerCase().replace("_", "") + ".name"));
+                else if (languageProperties.containsKey("item." + toCamelCase(itemID) + ".name")) materials.put(itemID, languageProperties.getProperty("item." + toCamelCase(itemID) + ".name"));
+                else if (languageProperties.containsKey("tile." + toCamelCase(itemID) + ".name")) materials.put(itemID, languageProperties.getProperty("tile." + toCamelCase(itemID) + ".name"));
+                else if (languageProperties.containsKey("item." + toInvertedCamelCase(itemID) + ".name")) materials.put(itemID, languageProperties.getProperty("item." + toInvertedCamelCase(itemID) + ".name"));
+                else if (languageProperties.containsKey("tile." + toInvertedCamelCase(itemID) + ".name")) materials.put(itemID, languageProperties.getProperty("tile." + toInvertedCamelCase(itemID) + ".name"));
+                else if (languageProperties.containsKey("item." + toLastWordReversedCamelCase(itemID) + ".name")) materials.put(itemID, languageProperties.getProperty("item." + toLastWordReversedCamelCase(itemID) + ".name"));
+                else if (languageProperties.containsKey("tile." + toLastWordReversedCamelCase(itemID) + ".name")) materials.put(itemID, languageProperties.getProperty("tile." + toLastWordReversedCamelCase(itemID) + ".name"));
 
                 //1.7.10
                 else if (itemID.equals("AIR")) materials.put(itemID, "");
