@@ -45,10 +45,10 @@ public class ItemCollection
     public ItemInfo getItem(String itemName) {
         if (Material.getMaterial(itemName.toUpperCase()) != null) {
             return new ItemInfo(new ItemStack(Material.getMaterial(itemName)));
-        } else if (commandConfig.getItemCollection().getItemBuilders().stream().anyMatch(item -> item.getItemName().equals(itemName))) {
-            return new ItemInfo(commandConfig.getItemCollection().getItemBuilders().stream().filter(item -> item.getItemName().equals(itemName)).findFirst().get());
-        } else if (commandConfig.getItemCollection().getItemStacks().get(itemName) != null) {
-            return new ItemInfo(commandConfig.getItemCollection().getItemStacks().get(itemName));
+        } else if (itemBuilders.stream().anyMatch(item -> item.getItemName().equals(itemName))) {
+            return new ItemInfo(itemBuilders.stream().filter(item -> item.getItemName().equals(itemName)).findFirst().get());
+        } else if (itemStacks.get(itemName) != null) {
+            return new ItemInfo(itemStacks.get(itemName));
         } else if (itemName.contains("-")) {
             String[] details = itemName.toUpperCase().split("-");
             ItemStack item = new ItemStack(Material.getMaterial(details[0]));
@@ -62,17 +62,17 @@ public class ItemCollection
     
     public Map<String, ItemInfo> getItems() {
         Map<String, ItemInfo> items = new HashMap<>();
-        commandConfig.getItemCollection().getItemBuilders().stream().forEach(item -> items.put(item.getItemName(), new ItemInfo(item)));
-        commandConfig.getItemCollection().getItemStacks().keySet().stream().forEach(item -> items.put(item, new ItemInfo(commandConfig.getItemCollection().getItemStacks().get(item))));
+        itemBuilders.stream().forEach(item -> items.put(item.getItemName(), new ItemInfo(item)));
+        itemStacks.keySet().stream().forEach(item -> items.put(item, new ItemInfo(itemStacks.get(item))));
         return items;
     }
     
     public boolean addItem(ItemStack item, String itemName) {
         try {
-            if (config.contains("Item-Collection." + itemName)) {
+            if (config.contains(configPath + "." + itemName)) {
                 return false;
             }
-            config.set("Item-Collection." + itemName, item);
+            config.set(configPath + "." + itemName, item);
             config.save(new File("plugins/LiteCommandEditor/Commands", fileName));
             itemStacks.put(itemName, item);
             return true;
@@ -84,10 +84,10 @@ public class ItemCollection
     
     public boolean removeItem(String itemName) {
         try {
-            if (!config.contains("Item-Collection." + itemName)) {
+            if (!config.contains(configPath + "." + itemName)) {
                 return false;
             }
-            config.set("Item-Collection." + itemName, null);
+            config.set(configPath + "." + itemName, null);
             config.save(new File("plugins/LiteCommandEditor/Commands", fileName));
             itemStacks.remove(itemName);
             return true;
@@ -110,7 +110,7 @@ public class ItemCollection
             } catch (Exception ex) {
                 Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
                 placeholders.put("{exception}", ex.getLocalizedMessage() != null ? ex.getLocalizedMessage() : "null");
-                placeholders.put("{configPath}", fileName + ": " + configPath);
+                placeholders.put("{configPath}", fileName + ": " + configPath + "." + item);
                 LiteCommandEditorProperties.sendOperationMessage("LoadingItemCollectionFailed", placeholders);
                 ex.printStackTrace();
             }
