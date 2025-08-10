@@ -1,6 +1,6 @@
 package studio.trc.bukkit.litecommandeditor.module.function;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +53,7 @@ public class Title
     }
     
     public static List<Title> build(List<Map> maps, String fileName, String configPath) {
-        List<Title> titles = new LinkedList();
+        List<Title> titles = new ArrayList<>();
         maps.stream().forEach(details -> {
             try {
                 double fadein = details.containsKey("Fade-In") ? Double.valueOf(details.get("Fade-In").toString()) : 1;

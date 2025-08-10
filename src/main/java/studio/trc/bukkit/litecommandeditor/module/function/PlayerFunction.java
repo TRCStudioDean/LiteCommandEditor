@@ -1,7 +1,7 @@
 package studio.trc.bukkit.litecommandeditor.module.function;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -215,7 +215,7 @@ public class PlayerFunction
                             if (parameters.length > 6) {
                                 World world = Bukkit.getWorld(parameters[2]);
                                 if (world != null && LiteCommandEditorUtils.isDouble(parameters[3]) && LiteCommandEditorUtils.isDouble(parameters[4]) && LiteCommandEditorUtils.isDouble(parameters[5])) {
-                                    List<String> lines = new LinkedList();
+                                    List<String> lines = new ArrayList<>();
                                     for (int i = 6;i < parameters.length;i++) {
                                         lines.add(parameters[i]);
                                     }

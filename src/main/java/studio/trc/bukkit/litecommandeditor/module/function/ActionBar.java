@@ -1,6 +1,6 @@
 package studio.trc.bukkit.litecommandeditor.module.function;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +49,7 @@ public class ActionBar
     }
     
     public static List<ActionBar> build(List<Map> maps, String fileName, String configPath) {
-        List<ActionBar> actionbars = new LinkedList();
+        List<ActionBar> actionbars = new ArrayList<>();
         maps.stream().forEach(details -> {
             try {
                 long actionBarDelay = details.get("Delay") == null ? 0 : Long.valueOf(details.get("Delay").toString());

@@ -1,7 +1,7 @@
 package studio.trc.bukkit.litecommandeditor.module.function;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +33,7 @@ public class Broadcast
     
     public static Broadcast build(Map map) {
         if (map.get("Broadcast") != null) {
-            List<String> messages = new LinkedList();
+            List<String> messages = new ArrayList<>();
             if (map.get("Broadcast") instanceof Collection) {
                 messages.addAll((Collection<? extends String>) map.get("Broadcast"));
             } else {

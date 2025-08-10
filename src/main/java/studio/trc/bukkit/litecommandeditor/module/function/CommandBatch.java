@@ -1,7 +1,7 @@
 package studio.trc.bukkit.litecommandeditor.module.function;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +31,7 @@ public class CommandBatch
     
     public static CommandBatch build(Map map) {
         if (map.get("Commands") != null) {
-            List<Command> commands = new LinkedList();
+            List<Command> commands = new ArrayList<>();
             if (map.get("Commands") instanceof Collection) {
                 ((Collection<? extends String>) map.get("Commands")).stream().forEach(command -> commands.add(Command.build(command)));
             } else {

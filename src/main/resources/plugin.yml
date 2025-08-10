@@ -1,6 +1,6 @@
 name: LiteCommandEditor
-version: 1.0.2.3
-author: TRCStudio
+version: 1.0.2.4
+author: TRC Studio
 main: studio.trc.bukkit.litecommandeditor.Main
 api-version: 1.13
 folia-supported: true

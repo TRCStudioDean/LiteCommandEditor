@@ -1,9 +1,9 @@
 package studio.trc.bukkit.litecommandeditor.module.command;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +38,7 @@ public class CommandCompoundFunctionList
     @Getter
     private final String configPath;
     @Getter
-    private final List<CommandCompoundFunction> compoundFunctions = new LinkedList();
+    private final List<CommandCompoundFunction> compoundFunctions = new ArrayList<>();
     
     public CommandCompoundFunctionList(CommandFunction function, String fileName, YamlConfiguration config, String configPath) {
         this.function = function;
@@ -164,7 +164,7 @@ public class CommandCompoundFunctionList
                 tick += ((CommandFunctionDelay) compoundFunction).getDelay();
             } else {
                 if (tasks.get(tick) == null) {
-                    tasks.put(tick, new LinkedList());
+                    tasks.put(tick, new ArrayList<>());
                 }
                 List<CommandFunctionTask> taskList = tasks.get(tick);
                 taskList.add((CommandFunctionTask) compoundFunction);

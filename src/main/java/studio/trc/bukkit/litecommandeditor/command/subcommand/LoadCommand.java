@@ -48,7 +48,7 @@ public class LoadCommand
 
     @Override
     public List<String> tabComplete(CommandSender sender, String subCommand, String... args) {
-        return getTabElements(args, args.length, getFilesInFolder(new File("plugins/LiteCommandEditor/Commands"), new LinkedList()));
+        return getTabElements(args, args.length, getFilesInFolder(new File("plugins/LiteCommandEditor/Commands"), new ArrayList<>()));
     }
     
     private List<String> getFilesInFolder(File folder, List<String> folderPath) {

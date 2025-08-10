@@ -235,7 +235,7 @@ public final class CommandFunction
             return false;
         }
         //Conditions match
-        List results = new LinkedList();
+        List results = new ArrayList<>();
         if (!conditions.stream().map(condition -> {
             results.clear();
             for (int i = 0;i < condition.getExpressions().size();i++) {
@@ -323,7 +323,7 @@ public final class CommandFunction
     }
     
     private List<CommandCompoundFunctionType> setSequence(String fileName, YamlConfiguration config, String configPath) {
-        List<CommandCompoundFunctionType> sequence = new LinkedList();
+        List<CommandCompoundFunctionType> sequence = new ArrayList<>();
         config.getStringList(configPath).stream().forEach(task -> {
             try {
                 sequence.add(CommandCompoundFunctionType.valueOf(task.toUpperCase()));
@@ -387,13 +387,13 @@ public final class CommandFunction
     public int compareTo(Sortable sortTarget) {
         if (sortTarget instanceof CommandFunction) {
             CommandFunction target = (CommandFunction) sortTarget;
-            return target.priority < priority ? 1 : -1;
+            return target.priority <= priority ? 1 : -1;
         }
         return -1;
     }
     
     public static List<CommandFunction> build(CommandConfiguration commandConfig, String fileName, YamlConfiguration config, String configPath) {
-        List<CommandFunction> commandFunctions = new LinkedList();
+        List<CommandFunction> commandFunctions = new ArrayList<>();
         ConfigurationSection section = config.getConfigurationSection(configPath);
         if (section == null) return commandFunctions;
         if (section != null) {

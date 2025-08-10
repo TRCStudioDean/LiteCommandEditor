@@ -1,7 +1,7 @@
 package studio.trc.bukkit.litecommandeditor.module.tool;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import lombok.Getter;
@@ -11,7 +11,7 @@ public class Calculator
     public static void splitOperators(List<String> elements) {
         String[] operators = new String[] {"\\+", "-", "\\*", "/"};
         Arrays.stream(operators).forEach(operator -> {
-            List<String> solved = new LinkedList();
+            List<String> solved = new ArrayList<>();
             elements.stream().forEach(textParagraphs -> {
                 String[] splitedText = textParagraphs.split(operator, -1);
                 for (int i = 0;i < splitedText.length;i++) {
@@ -29,7 +29,7 @@ public class Calculator
     }
     
     public static double calculate(String expression) {
-        List<String> elements = new LinkedList();
+        List<String> elements = new ArrayList<>();
         elements.add(expression);
         splitOperators(elements);
         for (int index = 0;index < elements.size();index++) {

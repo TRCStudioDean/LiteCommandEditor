@@ -76,7 +76,7 @@ public final class TabFunction
             return null;
         }
         //Conditions match
-        List results = new LinkedList();
+        List results = new ArrayList<>();
         if (!conditions.stream().map(condition -> {
             results.clear();
             for (int i = 0;i < condition.getExpressions().size();i++) {
@@ -91,7 +91,7 @@ public final class TabFunction
             return null;
         }
         //Recipes
-        List<String> recipes = new LinkedList();
+        List<String> recipes = new ArrayList<>();
         tabRecipes.stream().forEach(recipe -> recipes.addAll(recipe.getRecipes(sender, placeholders)));
         exceptions.stream().forEach(exception -> recipes.removeAll(exception.getRecipes(sender, placeholders)));
         //Inner recipes
@@ -110,7 +110,7 @@ public final class TabFunction
     public List<String> getFunctionRecipesWithDebug(CommandSender sender, Map<String, String> placeholders, List<CommandExecutor.DebugRecord> record) {
         boolean isReturn = false;
         Map<CommandCondition, Boolean> conditionsInfo = new LinkedHashMap();
-        List results = new LinkedList();
+        List results = new ArrayList<>();
         for (CommandCondition.Schedule condition : conditions) {
             for (int i = 0;i < condition.getExpressions().size();i++) {
                 if (condition.getExpressions().get(i) instanceof CommandCondition) {
@@ -126,7 +126,7 @@ public final class TabFunction
         if (isReturn) {
             return null;
         }
-        List<String> recipes = new LinkedList();
+        List<String> recipes = new ArrayList<>();
         tabRecipes.stream().forEach(recipe -> recipes.addAll(recipe.getRecipes(sender, placeholders)));
         exceptions.stream().forEach(exception -> recipes.removeAll(exception.getRecipes(sender, placeholders)));
         for (TabFunction function : functions) {
@@ -145,7 +145,7 @@ public final class TabFunction
     public int compareTo(Sortable sortTarget) {
         if (sortTarget instanceof TabFunction) {
             TabFunction target = (TabFunction) sortTarget;
-            return target.priority < priority ? 1 : -1;
+            return target.priority <= priority ? 1 : -1;
         }
         return -1;
     }
@@ -176,7 +176,7 @@ public final class TabFunction
     }
     
     public static List<TabFunction> build(CommandConfiguration commandConfig, String fileName, YamlConfiguration config, String configPath) {
-        List<TabFunction> tabFunctions = new LinkedList();
+        List<TabFunction> tabFunctions = new ArrayList<>();
         ConfigurationSection section = config.getConfigurationSection(configPath);
         if (section != null) {
             section.getKeys(false).stream().forEach(function -> tabFunctions.add(new TabFunction(commandConfig, fileName, config, configPath + "." + function)));

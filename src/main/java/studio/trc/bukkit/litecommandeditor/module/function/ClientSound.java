@@ -1,6 +1,6 @@
 package studio.trc.bukkit.litecommandeditor.module.function;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +49,7 @@ public class ClientSound
     }
     
     public static List<ClientSound> build(List<Map> maps, String fileName, String configPath) {
-        List<ClientSound> sounds = new LinkedList();
+        List<ClientSound> sounds = new ArrayList<>();
         maps.stream().forEach(details -> {
             try {
                 long soundDelay = details.containsKey("Delay") ? Long.valueOf(details.get("Delay").toString()) : 0;
