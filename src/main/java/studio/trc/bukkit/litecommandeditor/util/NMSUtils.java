@@ -190,28 +190,32 @@ public class NMSUtils
 
         public static void initialize() {
             try {
-                if (Bukkit.getBukkitVersion().startsWith("1.7")) return;
-                if (Bukkit.getBukkitVersion().startsWith("1.8-R0.1")) {
-                    enumTitleAction = Class.forName("net.minecraft.server" + getPackagePath() + "EnumTitleAction");
-                } else if (Bukkit.getBukkitVersion().startsWith("1.8") || Bukkit.getBukkitVersion().startsWith("1.9") || Bukkit.getBukkitVersion().startsWith("1.10") || Bukkit.getBukkitVersion().startsWith("1.11") || Bukkit.getBukkitVersion().startsWith("1.12") || Bukkit.getBukkitVersion().startsWith("1.13") || Bukkit.getBukkitVersion().startsWith("1.14") || Bukkit.getBukkitVersion().startsWith("1.15") || Bukkit.getBukkitVersion().startsWith("1.16")) {
-                    enumTitleAction = Class.forName("net.minecraft.server" + getPackagePath() + "PacketPlayOutTitle$EnumTitleAction");
+                Player.class.getMethod("sendTitle", String.class, String.class, int.class, int.class, int.class);
+            } catch (Exception ex) {
+                try {
+                    if (Bukkit.getBukkitVersion().startsWith("1.7")) return;
+                    if (Bukkit.getBukkitVersion().startsWith("1.8-R0.1")) {
+                        enumTitleAction = Class.forName("net.minecraft.server" + getPackagePath() + "EnumTitleAction");
+                    } else if (Bukkit.getBukkitVersion().startsWith("1.8") || Bukkit.getBukkitVersion().startsWith("1.9") || Bukkit.getBukkitVersion().startsWith("1.10") || Bukkit.getBukkitVersion().startsWith("1.11") || Bukkit.getBukkitVersion().startsWith("1.12") || Bukkit.getBukkitVersion().startsWith("1.13") || Bukkit.getBukkitVersion().startsWith("1.14") || Bukkit.getBukkitVersion().startsWith("1.15") || Bukkit.getBukkitVersion().startsWith("1.16")) {
+                        enumTitleAction = Class.forName("net.minecraft.server" + getPackagePath() + "PacketPlayOutTitle$EnumTitleAction");
+                    }
+                    if (Bukkit.getBukkitVersion().startsWith("1.8") || Bukkit.getBukkitVersion().startsWith("1.9") || Bukkit.getBukkitVersion().startsWith("1.10")
+                     || Bukkit.getBukkitVersion().startsWith("1.11") || Bukkit.getBukkitVersion().startsWith("1.12") || Bukkit.getBukkitVersion().startsWith("1.13") || Bukkit.getBukkitVersion().startsWith("1.14")
+                     || Bukkit.getBukkitVersion().startsWith("1.15") || Bukkit.getBukkitVersion().startsWith("1.16")) {
+                        interfaceChatBaseComponent = Class.forName("net.minecraft.server" + getPackagePath() + "IChatBaseComponent");
+                        packetPlayOutTitle = Class.forName("net.minecraft.server" + getPackagePath() + "PacketPlayOutTitle");
+                        craftChatMessage = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "util.CraftChatMessage");
+                    } else {
+                        interfaceChatBaseComponent = Class.forName("net.minecraft.network.chat.IChatBaseComponent");
+                        craftChatMessage = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "util.CraftChatMessage");
+                    }
+                } catch (Exception exception) {
+                    Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
+                    placeholders.put("{type}", "TitleUtil");
+                    placeholders.put("{error}", exception.getLocalizedMessage() != null ? exception.getLocalizedMessage() : "null");
+                    LiteCommandEditorProperties.sendOperationMessage("NMSInitializeFailed", placeholders);
+                    nmsLoaded = false;
                 }
-                if (Bukkit.getBukkitVersion().startsWith("1.8") || Bukkit.getBukkitVersion().startsWith("1.9") || Bukkit.getBukkitVersion().startsWith("1.10")
-                 || Bukkit.getBukkitVersion().startsWith("1.11") || Bukkit.getBukkitVersion().startsWith("1.12") || Bukkit.getBukkitVersion().startsWith("1.13") || Bukkit.getBukkitVersion().startsWith("1.14")
-                 || Bukkit.getBukkitVersion().startsWith("1.15") || Bukkit.getBukkitVersion().startsWith("1.16")) {
-                    interfaceChatBaseComponent = Class.forName("net.minecraft.server" + getPackagePath() + "IChatBaseComponent");
-                    packetPlayOutTitle = Class.forName("net.minecraft.server" + getPackagePath() + "PacketPlayOutTitle");
-                    craftChatMessage = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "util.CraftChatMessage");
-                } else {
-                    interfaceChatBaseComponent = Class.forName("net.minecraft.network.chat.IChatBaseComponent");
-                    craftChatMessage = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "util.CraftChatMessage");
-                }
-            } catch (Exception exception) {
-                Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
-                placeholders.put("{type}", "TitleUtil");
-                placeholders.put("{error}", exception.getLocalizedMessage() != null ? exception.getLocalizedMessage() : "null");
-                LiteCommandEditorProperties.sendOperationMessage("NMSInitializeFailed", placeholders);
-                nmsLoaded = false;
             }
         }
         
@@ -249,34 +253,43 @@ public class NMSUtils
     public static class ActionBarUtil {
         private static Class<?> chatComponentText;
         private static Class<?> packetPlayOutChat;
-        private static Class<?> interfaceChatBaseComponent;
+        private static Class<?> interfaceChatBaseComponent = null;
+        private static Class<?> component; // 1.21.9+ added
         private static Class<?> chatMessageType;
         private static Class<?> clientboundSetActionBarTextPacket;
         private static Class<?> craftChatMessage;
 
         public static void initialize() {
             try {
-                if (Bukkit.getBukkitVersion().startsWith("1.7")) return;
-                if (Bukkit.getBukkitVersion().startsWith("1.17") || Bukkit.getBukkitVersion().startsWith("1.18") || Bukkit.getBukkitVersion().startsWith("1.19") || Bukkit.getBukkitVersion().startsWith("1.20") || Bukkit.getBukkitVersion().startsWith("1.21")) {
-                    chatMessageType = Class.forName("net.minecraft.network.chat.ChatMessageType");
-                    interfaceChatBaseComponent = Class.forName("net.minecraft.network.chat.IChatBaseComponent");
-                    clientboundSetActionBarTextPacket = Class.forName("net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket");
-                    craftChatMessage = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "util.CraftChatMessage");
-                } else {
-                    interfaceChatBaseComponent = Class.forName("net.minecraft.server" + getPackagePath() + "IChatBaseComponent");
-                    packetPlayOutChat = Class.forName("net.minecraft.server" + getPackagePath() + "PacketPlayOutChat");
-                    chatComponentText = Class.forName("net.minecraft.server" + getPackagePath() + "ChatComponentText"); 
+                Player.class.getMethod("sendActionBar", String.class);
+            } catch (Exception ex) {
+                try {
+                    if (Bukkit.getBukkitVersion().startsWith("1.7")) return;
+                    if (Bukkit.getBukkitVersion().startsWith("1.17") || Bukkit.getBukkitVersion().startsWith("1.18") || Bukkit.getBukkitVersion().startsWith("1.19") || Bukkit.getBukkitVersion().startsWith("1.20") || Bukkit.getBukkitVersion().startsWith("1.21")) {
+                        chatMessageType = Class.forName("net.minecraft.network.chat.ChatMessageType");
+                        clientboundSetActionBarTextPacket = Class.forName("net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket");
+                        craftChatMessage = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "util.CraftChatMessage");
+                        try {
+                            interfaceChatBaseComponent = Class.forName("net.minecraft.network.chat.IChatBaseComponent");
+                        } catch (Exception ex1) {
+                            component = Class.forName("net.minecraft.network.chat.Component");
+                        }
+                    } else {
+                        interfaceChatBaseComponent = Class.forName("net.minecraft.server" + getPackagePath() + "IChatBaseComponent");
+                        packetPlayOutChat = Class.forName("net.minecraft.server" + getPackagePath() + "PacketPlayOutChat");
+                        chatComponentText = Class.forName("net.minecraft.server" + getPackagePath() + "ChatComponentText"); 
+                    }
+                    if (Bukkit.getBukkitVersion().startsWith("1.12") || Bukkit.getBukkitVersion().startsWith("1.13") || Bukkit.getBukkitVersion().startsWith("1.14") || Bukkit.getBukkitVersion().startsWith("1.15") || Bukkit.getBukkitVersion().startsWith("1.16")) {
+                        chatMessageType = Class.forName("net.minecraft.server" + getPackagePath() + "ChatMessageType");
+                    }
+                    craftPlayer = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "entity.CraftPlayer");
+                } catch (Exception exception) {
+                    Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
+                    placeholders.put("{type}", "ActionBarUtil");
+                    placeholders.put("{error}", exception.getLocalizedMessage() != null ? exception.getLocalizedMessage() : "null");
+                    LiteCommandEditorProperties.sendOperationMessage("NMSInitializeFailed", placeholders);
+                    nmsLoaded = false;
                 }
-                if (Bukkit.getBukkitVersion().startsWith("1.12") || Bukkit.getBukkitVersion().startsWith("1.13") || Bukkit.getBukkitVersion().startsWith("1.14") || Bukkit.getBukkitVersion().startsWith("1.15") || Bukkit.getBukkitVersion().startsWith("1.16")) {
-                    chatMessageType = Class.forName("net.minecraft.server" + getPackagePath() + "ChatMessageType");
-                }
-                craftPlayer = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "entity.CraftPlayer");
-            } catch (Exception exception) {
-                Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
-                placeholders.put("{type}", "ActionBarUtil");
-                placeholders.put("{error}", exception.getLocalizedMessage() != null ? exception.getLocalizedMessage() : "null");
-                LiteCommandEditorProperties.sendOperationMessage("NMSInitializeFailed", placeholders);
-                nmsLoaded = false;
             }
         }
         
@@ -314,7 +327,12 @@ public class NMSUtils
                         actionbar = clientboundSetActionBarTextPacket.getConstructor(interfaceChatBaseComponent).newInstance(craftChatMessage.getMethod("fromStringOrNull", String.class).invoke(null, text));
                     // 1.19 +
                     } else {
-                        actionbar = clientboundSetActionBarTextPacket.getConstructor(interfaceChatBaseComponent).newInstance(Array.get(craftChatMessage.getMethod("fromString", String.class).invoke(null, text), 0));
+                        // 1.19 - 1.21.8
+                        if (interfaceChatBaseComponent != null) {
+                            actionbar = clientboundSetActionBarTextPacket.getConstructor(interfaceChatBaseComponent).newInstance(Array.get(craftChatMessage.getMethod("fromString", String.class).invoke(null, text), 0));
+                        } else { // 1.21.9 +
+                            actionbar = clientboundSetActionBarTextPacket.getConstructor(component).newInstance(Array.get(craftChatMessage.getMethod("fromString", String.class).invoke(null, text), 0));
+                        }
                     }
                     sendPacket(player, actionbar);
                 } catch (Exception ex1) {
@@ -328,15 +346,21 @@ public class NMSUtils
     
     public static class JSONItem {
         private static Class<?> craftItemStack;
-        private static Class<?> nbtTagCompound;
-        private static Class<?> itemStack;
+        private static Class<?> nbtTagCompound = null;
+        private static Class<?> itemStack = null;
 
         public static void initialize() {
             try {
                 craftItemStack = Class.forName("org.bukkit.craftbukkit" + getPackagePath() + "inventory.CraftItemStack");
-                if (Bukkit.getBukkitVersion().startsWith("1.17") || Bukkit.getBukkitVersion().startsWith("1.18") || Bukkit.getBukkitVersion().startsWith("1.19") || Bukkit.getBukkitVersion().startsWith("1.20") || Bukkit.getBukkitVersion().startsWith("1.21")) {
-                    nbtTagCompound = Class.forName("net.minecraft.nbt.NBTTagCompound");
-                    itemStack = Class.forName("net.minecraft.world.item.ItemStack");
+                if (!Bukkit.getBukkitVersion().startsWith("1.7") && !Bukkit.getBukkitVersion().startsWith("1.8") && !Bukkit.getBukkitVersion().startsWith("1.9") && !Bukkit.getBukkitVersion().startsWith("1.10")
+                    && !Bukkit.getBukkitVersion().startsWith("1.11") && !Bukkit.getBukkitVersion().startsWith("1.12") && !Bukkit.getBukkitVersion().startsWith("1.13") && !Bukkit.getBukkitVersion().startsWith("1.14")
+                    && !Bukkit.getBukkitVersion().startsWith("1.15") && !Bukkit.getBukkitVersion().startsWith("1.16")) {
+                    try {
+                        nbtTagCompound = Class.forName("net.minecraft.nbt.NBTTagCompound");
+                        itemStack = Class.forName("net.minecraft.world.item.ItemStack");
+                    } catch (ClassNotFoundException ex) {
+                        // 1.21.9+ No longer needed.
+                    }
                 } else {
                     nbtTagCompound = Class.forName("net.minecraft.server" + getPackagePath() + "NBTTagCompound"); 
                     itemStack = Class.forName("net.minecraft.server" + getPackagePath() + "ItemStack");
@@ -359,6 +383,7 @@ public class NMSUtils
                 component.setHoverEvent(new net.md_5.bungee.api.chat.HoverEvent(net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_ITEM, hoverItem));
             } catch (Throwable t) {
                 try {
+                    if (nbtTagCompound == null) return;
                     Object mcStack = craftItemStack.getDeclaredMethod("asNMSCopy", ItemStack.class).invoke(null, item);
                     Object NBTTagCompound = nbtTagCompound.newInstance();
                     Method saveMethod = Arrays.stream(itemStack.getDeclaredMethods()).filter(method -> method.getParameterTypes().length == 1 && method.getParameterTypes()[0].equals(nbtTagCompound) && method.getReturnType().equals(nbtTagCompound)).findFirst().orElse(null);
