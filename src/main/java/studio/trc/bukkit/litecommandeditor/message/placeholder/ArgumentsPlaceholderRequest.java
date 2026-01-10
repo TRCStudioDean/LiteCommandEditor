@@ -23,8 +23,8 @@ public class ArgumentsPlaceholderRequest
             if (rangeParts.length == 1 && LiteCommandEditorUtils.isInteger(rangeParts[0]) && Integer.valueOf(rangeParts[0]) <= arguments.length) {
                 text.add(arguments[Integer.valueOf(rangeParts[0]) - 1]);
             } else if (rangeParts.length == 2) {
-                int start = LiteCommandEditorUtils.isInteger(rangeParts[0]) && Integer.valueOf(rangeParts[0]) <= arguments.length ? Integer.valueOf(rangeParts[0]) : 1;
-                int end = LiteCommandEditorUtils.isInteger(rangeParts[1]) && Integer.valueOf(rangeParts[1]) <= arguments.length ? Integer.valueOf(rangeParts[1]) : arguments.length;
+                int start = LiteCommandEditorUtils.isInteger(rangeParts[0]) && Integer.valueOf(rangeParts[0]) > 0 && Integer.valueOf(rangeParts[0]) <= arguments.length ? Integer.valueOf(rangeParts[0]) : 1;
+                int end = LiteCommandEditorUtils.isInteger(rangeParts[1]) && Integer.valueOf(rangeParts[0]) > 0 && Integer.valueOf(rangeParts[1]) <= arguments.length ? Integer.valueOf(rangeParts[1]) : arguments.length;
                 for (int i = start;i <= end;i++) {
                     text.add(arguments[i - 1]);
                 }
@@ -43,6 +43,10 @@ public class ArgumentsPlaceholderRequest
                 minus = true;
             } else if (chars[i] == ',') {
                 comma = true;
+            } else if (chars[i] == ' ') {
+                // Allow space
+            } else {
+                return false;
             }
         }
         return number && (minus || comma);
