@@ -168,7 +168,7 @@ public class Configurator
                             if (file.exists()) {
                                 try {
                                     tables.put(parameters[2], JSONObject.toJSONObject(file, JSONDataStructure.LINKED));
-                                } catch (JSONParseException ex) {
+                                } catch (JSONParseException | IOException ex) {
                                     try (Reader reader = new InputStreamReader(new FileInputStream(file), LiteCommandEditorProperties.getMessage("Charset"))) {
                                         tables.put(parameters[2], JSONObject.toJSONObject((Map<?,?>) new Yaml().load(YamlConfiguration.loadConfiguration(reader).saveToString()), true, JSONDataStructure.LINKED));
                                     } catch (IOException | JSONParseException ex1) {

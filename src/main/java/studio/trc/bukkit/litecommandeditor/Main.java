@@ -1,21 +1,29 @@
 package studio.trc.bukkit.litecommandeditor;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import lombok.Getter;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import studio.trc.bukkit.litecommandeditor.command.LiteCommandEditorCommand;
 import studio.trc.bukkit.litecommandeditor.command.LiteCommandEditorSubCommandType;
+import studio.trc.bukkit.litecommandeditor.configuration.ConfigurationType;
+import studio.trc.bukkit.litecommandeditor.configuration.RobustConfiguration;
 import studio.trc.bukkit.litecommandeditor.event.listener.PlayerEventManager;
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 import studio.trc.bukkit.litecommandeditor.metrics.Metrics;
 import studio.trc.bukkit.litecommandeditor.metrics.SingleLineChart;
+import studio.trc.bukkit.litecommandeditor.module.CommandConfiguration;
 import studio.trc.bukkit.litecommandeditor.module.CommandLoader;
+import studio.trc.bukkit.litecommandeditor.module.CommandManager;
 import studio.trc.bukkit.litecommandeditor.thread.LiteCommandEditorThread;
 import studio.trc.bukkit.litecommandeditor.module.tool.Updater;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorProperties;
@@ -53,10 +61,26 @@ public class Main
         Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
         placeholders.put("{time}", String.valueOf(endTime - startTime));
         LiteCommandEditorProperties.sendOperationMessage("PluginSuccessfullyEnabled", placeholders);
+        RobustConfiguration config = ConfigurationType.CONFIG.getRobustConfig();
+        CommandSender console = Bukkit.getConsoleSender();
+        List<String> enablingCommands = config.getStringList("Automatic-Execute-Commands.Enabling");
+        if (!enablingCommands.isEmpty()) {
+            CommandManager.executeCommandsDirectly(console, enablingCommands);
+        }
+        List<String> startedCommands = config.getStringList("Automatic-Execute-Commands.Started");
+        if (!startedCommands.isEmpty()) {
+            PluginControl.runBukkitTask(() -> startedCommands.stream().forEach(command -> Bukkit.dispatchCommand(console, command)), 0);
+        }
     }
 
     @Override
     public void onDisable() {
+        RobustConfiguration config = ConfigurationType.CONFIG.getRobustConfig();
+        CommandSender console = Bukkit.getConsoleSender();
+        List<String> enablingCommands = config.getStringList("Automatic-Execute-Commands.Disabling");
+        if (!enablingCommands.isEmpty()) {
+            CommandManager.executeCommandsDirectly(console, enablingCommands);
+        }
         LiteCommandEditorThread.getTaskThread().setRunning(false);
     }
 

@@ -104,6 +104,9 @@ public class CommandConfiguration
         return new LastCommandConfiguration(prefix, commandName, new ArrayList<>(aliases));
     }
     
+    /**
+     * Implementation see: {@link CommandManager#registerCustomCommand}
+     */
     public class LastCommandConfiguration {
         @Getter
         private final String prefix;

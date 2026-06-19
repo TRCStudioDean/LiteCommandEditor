@@ -2,6 +2,7 @@ package studio.trc.bukkit.litecommandeditor.module;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,39 @@ public class CommandManager
     private static final Set<String> registeredAliasCommands = new HashSet();
     private static Set<String> registeredCommandsName = null;
     
+    /**
+     * Execute command's function without command system.
+     * @param sender Command sender
+     * @param commands Commands
+     */
+    public static void executeCommandsDirectly(CommandSender sender, List<String> commands) {
+        Map<String, String[]> preparedCommands = commands.stream().collect(Collectors.toMap(name -> name.toLowerCase(), name -> Arrays.stream(name.split(" ")).skip(1).toArray(String[]::new)));
+        CommandManager.getRegisteredCommands().stream()
+            .filter(CommandConfiguration::isEnabled)
+            .forEach(command -> {
+                String prefix = command.getPrefix().toLowerCase();
+                String name = command.getCommandName().toLowerCase();
+                if (preparedCommands.containsKey(name)) {
+                    command.getExecutor().execute(sender, name, preparedCommands.get(name));
+                } else if (preparedCommands.containsKey(prefix + ":" + name)) {
+                    command.getExecutor().execute(sender, prefix + ":" + name, preparedCommands.get(prefix + ":" + name));
+                } else {
+                    for (String alias : command.getAliases()) {
+                        if (preparedCommands.containsKey(alias.toLowerCase())) {
+                            command.getExecutor().execute(sender, alias.toLowerCase(), preparedCommands.get(alias.toLowerCase()));
+                            break;
+                        } else if (preparedCommands.containsKey(prefix + ":" + alias.toLowerCase())) {
+                            command.getExecutor().execute(sender, prefix + ":" + alias.toLowerCase(), preparedCommands.get(prefix + ":" + alias.toLowerCase()));
+                            break;
+                        }
+                    }
+                }
+            });
+    }
+    
+    /**
+     * Reload/Initialize all command configurations.
+     */
     public static void reloadCommandConfigurations() {
         CommandCondition.resetCommandConditions();
         TabRecipe.resetTabRecipes();
@@ -45,6 +79,9 @@ public class CommandManager
         PluginControl.runBukkitTask(() -> disableCommands(), 1);
     }
     
+    /**
+     * Disable all loaded commands.
+     */
     public static void disableCommands() {
         if (!ConfigurationType.CONFIG.getRobustConfig().getStringList("Disabled-Commands").isEmpty()) {
             if (ConfigurationType.CONFIG.getRobustConfig().getStringList("Disabled-Commands").stream().map(command -> unregisterCommand(null, command)).collect(Collectors.toList()).stream().anyMatch(result -> result)) {
@@ -53,6 +90,12 @@ public class CommandManager
         }
     }
     
+    /**
+     * Unregister a loaded command.
+     * @param sender Message receiver
+     * @param fileName Custom command's configuration file
+     * @return 
+     */
     public static boolean unregisterCustomCommand(CommandSender sender, String fileName) {
         try {
             Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
@@ -104,6 +147,12 @@ public class CommandManager
         return false;
     }
     
+    /**
+     * Unregister a command.
+     * @param sender Message receiver
+     * @param commandInfo Specific command
+     * @return Success or not
+     */
     public static boolean unregisterCommand(CommandSender sender, String commandInfo) {
         try {
             String[] details = commandInfo.split(":", 2);
@@ -163,6 +212,13 @@ public class CommandManager
         return false;
     }
     
+    /**
+     * Register a new custom command from a local file
+     * @param sender Message receiver
+     * @param fileName File name
+     * @param lastConfig Previous config (Context record)
+     * @return Success or not
+     */
     public static boolean registerCustomCommand(CommandSender sender, String fileName, CommandConfiguration.LastCommandConfiguration lastConfig) {
         try {
             Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
@@ -270,6 +326,9 @@ public class CommandManager
         return true;
     }
     
+    /**
+     * Register all custom commands.
+     */
     public static void registerAllCustomCommands() {
         try {
             CommandMap map = getServerCommandMap();
@@ -357,6 +416,9 @@ public class CommandManager
         }
     }
     
+    /**
+     * Send a synchronized packet to all online players.
+     */
     public static void syncCommands() {
         try {
             if (!Bukkit.getBukkitVersion().startsWith("1.7") && !Bukkit.getBukkitVersion().startsWith("1.8") && !Bukkit.getBukkitVersion().startsWith("1.9") && !Bukkit.getBukkitVersion().startsWith("1.10") &&

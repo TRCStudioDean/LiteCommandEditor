@@ -358,7 +358,7 @@ public class ToolsCommand
                                 try {
                                     Configurator.getTables().put(tableName, JSONObject.toJSONObject(file, JSONDataStructure.LINKED));
                                     MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Load.Successfully", placeholders);
-                                } catch (JSONParseException ex) {
+                                } catch (JSONParseException | IOException ex) {
                                     try (Reader reader = new InputStreamReader(new FileInputStream(file), LiteCommandEditorProperties.getMessage("Charset"))) {
                                         Configurator.getTables().put(tableName, JSONObject.toJSONObject((Map<?,?>) new Yaml().load(YamlConfiguration.loadConfiguration(reader).saveToString()), true, JSONDataStructure.LINKED));
                                         MessageUtil.sendCommandMessage(sender, "Tools.Configurator.Load.Successfully", placeholders);

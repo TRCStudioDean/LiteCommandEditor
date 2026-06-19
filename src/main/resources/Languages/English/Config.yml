@@ -19,6 +19,20 @@ Item-Display-Language-Path: English
 #If you want to know the prefix of a command, you can use the "/litecommandeditor info [command]" to view it.
 Disabled-Commands: []
 
+#Automatic execute commands (Execute as a console)
+#This is a convenient feature mainly used to meet functions such as loading and saving configuration files,
+#loading the world, etc. If there are more specific requirements,
+#it is recommended to use event driven plugins that can execute commands.
+Automatic-Execute-Commands:
+    #Commands executed when enabling plugin (only commands implemented by this plugin are valid)
+    #Note: The custom commands filled in cannot include functions driven by the main thread
+    Enabling: []
+    #Commands executed after server startup (all commands are valid)
+    Started: []
+    #Commands executed when disabling plugin (only commands implemented by this plugin are valid)
+    #Note: The custom commands filled in cannot include functions driven by the main thread
+    Disabling: []
+    
 #Commands cooling (unit: seconds)
 #Setup the commands that require adding cooling here can prevent players from frequently executing commands.
 #Note that the logic of this feature is that when a player executed a command that STARTS WITH a command in the list, it will be added as a cooldown
