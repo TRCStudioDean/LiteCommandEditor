@@ -17,6 +17,7 @@ import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.chat.BaseComponent;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -475,6 +476,10 @@ public class MessageUtil
     
     public static String toPlaceholderAPIResult(CommandSender sender, String text) {
         return text != null && isEnabledPAPI() && sender instanceof Player ? PlaceholderAPI.setPlaceholders((Player) sender, text) : text;
+    }
+    
+    public static String toPlaceholderAPIResult(OfflinePlayer offlinePlayer, String text) {
+        return text != null && isEnabledPAPI() ? PlaceholderAPI.setPlaceholders(offlinePlayer, text) : text;
     }
     
     public static String getMessage(String configPath) {

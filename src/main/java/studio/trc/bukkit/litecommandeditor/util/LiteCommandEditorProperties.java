@@ -69,4 +69,16 @@ public class LiteCommandEditorProperties
     public static String getMessage(String configPath, Map<String, String> placeholders) {
         return MessageUtil.replacePlaceholders(propertiesFile.getProperty(configPath), placeholders);
     }
+    
+    public static int getInt(String configPath) {
+        return Integer.valueOf(getMessage(configPath));
+    }
+    
+    public static double getDouble(String configPath) {
+        return Double.valueOf(getMessage(configPath));
+    }
+    
+    public static long getLong(String configPath) {
+        return Long.valueOf(getMessage(configPath));
+    }
 }

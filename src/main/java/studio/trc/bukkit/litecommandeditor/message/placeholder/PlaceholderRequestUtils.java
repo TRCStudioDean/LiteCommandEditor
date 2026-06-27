@@ -48,6 +48,8 @@ public class PlaceholderRequestUtils
             ServerPlaceholderRequest.serverPlaceholderRequest(placeholders, placeholder);
         } else if (placeholder.toLowerCase().startsWith("{calculate:") && placeholder.endsWith("}")) {
             CalculatePlaceholderRequest.calculatePlaceholderRequest(placeholders, placeholder);
+        } else if (placeholder.toLowerCase().startsWith("{papi:") && placeholder.endsWith("}")) {
+            PAPIParsePlaceholderRequest.playerPlaceholderRequest(placeholders, placeholder);
         } else {
             ConfiguratorPlaceholderRequest.configPlaceholderRequest(placeholders, placeholder);
         }

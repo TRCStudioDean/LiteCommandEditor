@@ -1,9 +1,7 @@
 package studio.trc.bukkit.litecommandeditor;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import lombok.Getter;
 
@@ -21,7 +19,6 @@ import studio.trc.bukkit.litecommandeditor.event.listener.PlayerEventManager;
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 import studio.trc.bukkit.litecommandeditor.metrics.Metrics;
 import studio.trc.bukkit.litecommandeditor.metrics.SingleLineChart;
-import studio.trc.bukkit.litecommandeditor.module.CommandConfiguration;
 import studio.trc.bukkit.litecommandeditor.module.CommandLoader;
 import studio.trc.bukkit.litecommandeditor.module.CommandManager;
 import studio.trc.bukkit.litecommandeditor.thread.LiteCommandEditorThread;

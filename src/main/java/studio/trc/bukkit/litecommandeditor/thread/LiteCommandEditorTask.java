@@ -1,50 +1,91 @@
 package studio.trc.bukkit.litecommandeditor.thread;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class LiteCommandEditorTask
 {
-    @Getter
-    private final Runnable task;
+    /**
+     * Identifer for differentiation.
+     */
     @Getter
     private final String identifier;
+    
+    /**
+     * Task function.
+     */
+    @Getter
+    private final Runnable task;
+    
+    /**
+     * Total execute times.
+     */
     @Getter
     private final long totalExecuteTimes;
+    
+    /**
+     * Tick intervals
+     */
     @Getter
     private final long tickInterval;
+    
+    /**
+     * Stack trace (for tracking exceptions)
+     */
     @Getter
+    private final StackTraceElement[] originalStackTrace;
+    
+    /**
+     * Current total executed times.
+     */
+    @Getter
+    @Setter
     private long executeTimes = 0;
+    
+    /**
+     * Current ticked times.
+     */
     @Getter
+    @Setter
     private long tickedTimes = 0;
-
-    public LiteCommandEditorTask(Runnable task, long totalExecuteTimes) {
-        this.task = task;
-        this.totalExecuteTimes = totalExecuteTimes;
-        tickInterval = 0;
-        identifier = null;
-    }
 
     public LiteCommandEditorTask(Runnable task, long totalExecuteTimes, long tickInterval) {
         this.task = task;
         this.totalExecuteTimes = totalExecuteTimes;
         this.tickInterval = tickInterval;
+        originalStackTrace = Thread.currentThread().getStackTrace();
         identifier = null;
     }
 
-    public LiteCommandEditorTask(Runnable task, long totalExecuteTimes, long tickInterval, String identifier) {
+    public LiteCommandEditorTask(String identifier, Runnable task, long totalExecuteTimes, long tickInterval) {
+        this.identifier = identifier;
         this.task = task;
         this.totalExecuteTimes = totalExecuteTimes;
         this.tickInterval = tickInterval;
-        this.identifier = identifier;
+        originalStackTrace = Thread.currentThread().getStackTrace();
     }
     
-    public void run() {
+    /**
+     * 运行任务
+     */
+    public void execute() {
         if (totalExecuteTimes != -1 || tickInterval > 0) {
             tickedTimes++;
         }
         if (tickInterval <= 0 || tickedTimes % tickInterval == 0) {
-            task.run();
-            executeTimes++;
+            try {
+                task.run();
+            } finally {
+                executeTimes++;
+            }
         }
+    }
+    
+    /**
+     * 是否已经执行完毕
+     * @return 
+     */
+    public boolean isFinished() {
+        return totalExecuteTimes != -1 && executeTimes >= totalExecuteTimes;
     }
 }
