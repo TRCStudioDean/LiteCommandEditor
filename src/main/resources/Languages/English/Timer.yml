@@ -1,0 +1,11 @@
+# Timer settings
+Timer:
+    'example_timer':
+        # Whether to enable this timer.
+        Enabled: true
+        # Timer's name. (Use to identifier)
+        Name: 'Default Timer'
+        # Execution interval (unit: seconds, supports decimals)
+        Interval: 10
+        # Command list
+        Commands: []

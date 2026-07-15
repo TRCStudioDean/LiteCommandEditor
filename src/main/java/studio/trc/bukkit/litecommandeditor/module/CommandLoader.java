@@ -11,7 +11,6 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -113,7 +112,7 @@ public class CommandLoader
         if (clearCache) cache.clear();
         File folder = new File(folderPath);
         createDirectory(folder, createDirectory);
-        for (String fileName : getFilesInFolder(folder, new LinkedList<>())) {
+        for (String fileName : getFilesInFolder(folder, new ArrayList<>())) {
             File file = new File(folder, fileName);
             try {
                 if (!file.isDirectory() && file.getName().endsWith(".yml")) {

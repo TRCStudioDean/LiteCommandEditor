@@ -10,9 +10,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+
 import studio.trc.bukkit.litecommandeditor.Main;
 import studio.trc.bukkit.litecommandeditor.configuration.ConfigurationType;
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
+import studio.trc.bukkit.litecommandeditor.thread.task.HeartbeatTask;
+import studio.trc.bukkit.litecommandeditor.thread.task.TimerTask;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorProperties;
 import studio.trc.bukkit.litecommandeditor.util.PluginControl;
 
@@ -30,6 +36,7 @@ public class LiteCommandEditorThread
     @Getter
     private final List<LiteCommandEditorTask> tasks = new CopyOnWriteArrayList<>();
     @Getter
+    @Setter
     private volatile long heartbeat = System.currentTimeMillis();
     
     @Getter
@@ -43,7 +50,6 @@ public class LiteCommandEditorThread
     @Override
     public void run() {
         running = true;
-        addHeartbeatTask();
         List<LiteCommandEditorTask> waitToExecute = new ArrayList<>();
         List<LiteCommandEditorTask> waitToRemove = new ArrayList<>();
         while (running) {
@@ -80,17 +86,6 @@ public class LiteCommandEditorThread
                 ex.printStackTrace();
             }
         }
-    }
-    
-    public void addHeartbeatTask() {
-        tasks.add(new LiteCommandEditorTask("HEARTBEAT", () -> {
-            heartbeat = System.currentTimeMillis();
-        }, -1, 10));
-    }
-    
-    public boolean isBlocked() {
-        if (!running || !isAlive()) return false;
-        return System.currentTimeMillis() - heartbeat >= LiteCommandEditorProperties.getLong("BlockedTime");
     }
     
     public StringBuilder getStackTrace(String text, LiteCommandEditorTask task, Throwable throwable) {
@@ -133,24 +128,17 @@ public class LiteCommandEditorThread
         }
         updaterThread = new LiteCommandEditorThread("LiteCommandEditor-UpdaterThread", 1);
         
-        updaterThread.tasks.add(new LiteCommandEditorTask(() -> {
-            if (taskThread.isBlocked()) {
-                Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
-                if (taskThread.tasks.stream().anyMatch(task -> task.getIdentifier().equals("HEARTBEAT")) && System.currentTimeMillis() - taskThread.heartbeat < LiteCommandEditorProperties.getLong("CrashedTime")) {
-                    placeholders.put("{thread}", taskThread.getName());
-                    placeholders.put("{trace}",  taskThread.getStackTrace("", null, null).toString());
-                    placeholders.put("{blockedTime}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis() - taskThread.heartbeat)));
-                    LiteCommandEditorProperties.sendOperationMessage("ThreadBlocked", placeholders);
-                } else {
-                    placeholders.put("{thread}", taskThread.getName());
-                    placeholders.put("{trace}",  taskThread.getStackTrace("", null, null).toString());
-                    LiteCommandEditorProperties.sendOperationMessage("ThreadCrashed", placeholders);
-                    initialize();
-                }
-            }
-        }, -1, 10));
-        LiteCommandEditorProperties.sendOperationMessage("AsyncThreadStarted", MessageUtil.getDefaultPlaceholders());
+        // Add heartbeat tasks.
+        updaterThread.tasks.add(new HeartbeatTask(taskThread, 2)); // Inspector
+        taskThread.tasks.add(new HeartbeatTask(taskThread, 1)); // Updater
+        
+        // Add timer tasks.
+        taskThread.tasks.addAll(TimerTask.loadAllTimer(taskThread.delay));
+        
         taskThread.start();
+        updaterThread.start();
+        LiteCommandEditorProperties.sendOperationMessage("AsyncThreadStarted", MessageUtil.getDefaultPlaceholders());
+        
     }
     
     public static void runTask(Runnable task) {
@@ -174,5 +162,15 @@ public class LiteCommandEditorThread
     
     public static boolean isRemoveDuplicateDelayedTasks() {
         return ConfigurationType.CONFIG.getRobustConfig().getBoolean("Async-Thread-Settings.Remove-Duplicate-Delayed-Tasks");
+    }
+    
+    public static boolean checkAsync(Object foliaObject) {
+        if (foliaObject instanceof Player) {
+            try {
+                return !(boolean) Bukkit.class.getMethod("isOwnedByCurrentRegion", Entity.class).invoke(null, foliaObject);
+            } catch (Exception ex) {}
+        }
+        Thread current = Thread.currentThread();
+        return current.equals(taskThread) || current.equals(updaterThread);
     }
 }

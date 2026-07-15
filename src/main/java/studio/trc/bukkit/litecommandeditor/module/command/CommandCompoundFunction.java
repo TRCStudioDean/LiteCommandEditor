@@ -1,5 +1,15 @@
 package studio.trc.bukkit.litecommandeditor.module.command;
 
-public interface CommandCompoundFunction {
-    
+/**
+ * Compound Function Description Interface
+ */
+public interface CommandCompoundFunction 
+{
+    /**
+     * Get function identifier
+     * @return 
+     */
+    default String getIdentifier() {
+        return null;
+    }
 }

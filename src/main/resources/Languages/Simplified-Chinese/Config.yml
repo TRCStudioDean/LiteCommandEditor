@@ -10,6 +10,16 @@ Language: Simplified-Chinese
 #参考语言代码缩写: 美式英语 -> en_us, 简体中文 -> zh_cn, 繁体中文 -> zh_tw
 Item-Display-Language-Path: Simplified-Chinese
 
+#安全设置
+Security-Settings:
+    #是否解析来自子命令编号占位符的颜色文本（禁止时等效于无色文本占位符 {colourless:[文本]}）
+    Parse-Color-From-Sub-Command-Placeholder: true
+    #是否解析来自子命令编号占位符的嵌套占位符（禁止时等效于原生文本占位符 {raw:[文本]}）
+    Parse-Placeholder-From-Sub-Command-Placeholder: false
+    #最大占位符嵌套数（填 -1 为无限制）
+    #注：除非功能需求，否则这里一般不需要更改。
+    Maximum-Placeholder-Nestings: -1
+
 #禁用的命令
 #禁用后，命令将无法使用（命令将不存在），直到下次重启服务器才会重新判断。
 #注意：禁用其他插件的命令可能会发生严重的后果，谨慎使用！

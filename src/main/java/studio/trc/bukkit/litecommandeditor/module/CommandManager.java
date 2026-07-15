@@ -27,7 +27,7 @@ import studio.trc.bukkit.litecommandeditor.event.CommandConfigurationsRegistered
 import studio.trc.bukkit.litecommandeditor.message.JSONComponentManager;
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
 import studio.trc.bukkit.litecommandeditor.module.tab.TabRecipe;
-import studio.trc.bukkit.litecommandeditor.util.PluginControl;
+import studio.trc.bukkit.litecommandeditor.util.BukkitSchedulerManager;
 
 public class CommandManager
 {
@@ -76,7 +76,7 @@ public class CommandManager
         CommandLoader.loadCommandConfigurations("plugins/LiteCommandEditor/Commands/", true, true);
         Bukkit.getPluginManager().callEvent(new CommandConfigurationsLoadedEvent(CommandLoader.getCache()));
         registerAllCustomCommands();
-        PluginControl.runBukkitTask(() -> disableCommands(), 1);
+        BukkitSchedulerManager.runBukkitTask(() -> disableCommands(), 1, null);
     }
     
     /**

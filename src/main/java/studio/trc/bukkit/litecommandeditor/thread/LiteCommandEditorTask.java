@@ -66,7 +66,7 @@ public class LiteCommandEditorTask
     }
     
     /**
-     * 运行任务
+     * Execute the task.
      */
     public void execute() {
         if (totalExecuteTimes != -1 || tickInterval > 0) {
@@ -82,8 +82,7 @@ public class LiteCommandEditorTask
     }
     
     /**
-     * 是否已经执行完毕
-     * @return 
+     * @return Is task finished
      */
     public boolean isFinished() {
         return totalExecuteTimes != -1 && executeTimes >= totalExecuteTimes;

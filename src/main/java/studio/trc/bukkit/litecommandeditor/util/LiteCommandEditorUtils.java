@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
@@ -156,9 +156,20 @@ public class LiteCommandEditorUtils
         if (number1 == number2) {
             return number1;
         } else if (number1 > number2) {
-            return new Random().nextInt(number1 - number2 + 1) + number2;
+            return ThreadLocalRandom.current().nextInt(number2, number1);
         } else if (number2 > number1) {
-            return new Random().nextInt(number2 - number1 + 1) + number1;
+            return ThreadLocalRandom.current().nextInt(number1, number2);
+        }
+        return 0;
+    }
+    
+    public static double getRandomDecimal(double decimal1, double decimal2) {
+        if (decimal1 == decimal2) {
+            return decimal1;
+        } else if (decimal1 > decimal2) {
+            return ThreadLocalRandom.current().nextDouble(decimal2, decimal1);
+        } else if (decimal2 > decimal1) {
+            return ThreadLocalRandom.current().nextDouble(decimal1, decimal2);
         }
         return 0;
     }

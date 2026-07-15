@@ -31,6 +31,7 @@ import studio.trc.bukkit.litecommandeditor.itemmanager.ItemUtil;
 import studio.trc.bukkit.litecommandeditor.message.color.ColorUtils;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.ArgumentsPlaceholderRequest;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.PlaceholderRequestUtils;
+import studio.trc.bukkit.litecommandeditor.util.SecuritySettingsManager;
 
 public class MessageUtil
 {
@@ -286,7 +287,7 @@ public class MessageUtil
      * @return 
      */
     public static String replacePlaceholders(String message, Map<String, String> placeholders, boolean toColor) {
-        if (message == null || placeholders.isEmpty()) return ColorUtils.toColor(message);
+        if (message == null || placeholders.isEmpty()) return toColor ? ColorUtils.toColor(message) : message;
         StringBuilder builder = new StringBuilder();
         try {
             //Execute replacements
@@ -321,11 +322,11 @@ public class MessageUtil
      * @param sender Command sender (Optional). Use for PlaceholderAPI hook.
      * @param message Message content.
      * @param placeholders Placeholder's map.
-     * @param loop Whether to cycle replacement.
+     * @param safetyLoop Whether to cycle replacement.
      * @param toColor Whether to coloring.
      * @return 
      */
-    public static String replacePlaceholders(CommandSender sender, String message, Map<String, String> placeholders, boolean loop, boolean toColor) {
+    public static String replacePlaceholders(CommandSender sender, String message, Map<String, String> placeholders, boolean safetyLoop, boolean toColor) {
         if (message == null) return message;
         
         //Preprocess and replace placeholders for all argument.
@@ -345,6 +346,8 @@ public class MessageUtil
         
         //Cycle replacement placeholders
         StringBuilder builder = new StringBuilder();
+        //Record placeholder nestings
+        int nestings = 1;
         do {
             try {
                 //Execute replacements
@@ -369,12 +372,22 @@ public class MessageUtil
                 PlaceholderRequestUtils.findPlaceholders('{', '}', message, placeholder -> PlaceholderRequestUtils.analysisPlaceholderRequest(placeholders, placeholder));
 
                 //Detect placeholder replacement loop and destroy it
-                if (loop) breakPlaceholdersCyclicDependencies(placeholders);
+                if (safetyLoop) breakPlaceholdersCyclicDependencies(placeholders);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 break;
             }
-        } while (loop && placeholders.keySet().stream().map(placeholder -> placeholder.toLowerCase()).anyMatch(placeholder -> builder.toString().toLowerCase().contains(placeholder)));
+            nestings++;
+        } while (
+            (SecuritySettingsManager.MAX_PLACEHOLDER_NESTINGS != -1 ? nestings <= SecuritySettingsManager.MAX_PLACEHOLDER_NESTINGS : true) && 
+            safetyLoop && 
+            placeholders.keySet().stream().map(placeholder -> placeholder.toLowerCase()).anyMatch(placeholder -> builder.toString().toLowerCase().contains(placeholder))
+        );
+        
+        //Restore raw contents
+        if (!rawRetentions.isEmpty()) {
+            message = replacePlaceholders(message, rawRetentions, false); 
+        }
         
         //Create retention for colourless text.
         Map<String, String> colourlessRetentions = new HashMap<>();
@@ -392,11 +405,6 @@ public class MessageUtil
         //Restore colourless contents
         if (!colourlessRetentions.isEmpty()) {
             message = replacePlaceholders(message, colourlessRetentions, false);
-        }
-        
-        //Restore raw contents
-        if (!rawRetentions.isEmpty()) {
-            message = replacePlaceholders(message, rawRetentions); 
         }
         return message;
     }

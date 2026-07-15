@@ -6,31 +6,45 @@ import java.util.List;
 import java.util.Map;
 
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorUtils;
+import studio.trc.bukkit.litecommandeditor.util.SecuritySettingsManager;
 
 public class ArgumentsPlaceholderRequest 
 {
     public static void argumentsPlaceholderRequest(Map<String, String> placeholders, String placeholder) {
-        if (!placeholder.startsWith("[") || !placeholder.endsWith("]") || !formatCheck(placeholder)) return;
+        if (!placeholder.startsWith("[") || !placeholder.endsWith("]")) return;
         String[] arguments = placeholders.entrySet().stream()
             .filter(entry -> LiteCommandEditorUtils.isInteger(entry.getKey().substring(1, entry.getKey().length() - 1)))
             .sorted(Comparator.comparingInt(entry -> Integer.valueOf(entry.getKey().substring(1, entry.getKey().length() - 1))))
             .map(Map.Entry::getValue)
             .toArray(String[]::new);
-        List<String> text = new ArrayList<>();
-        String[] segments = placeholder.substring(1, placeholder.length() - 1).split(",");
-        for (String segment : segments) {
-            String[] rangeParts = segment.split("-", 2);
-            if (rangeParts.length == 1 && LiteCommandEditorUtils.isInteger(rangeParts[0]) && Integer.valueOf(rangeParts[0]) <= arguments.length) {
-                text.add(arguments[Integer.valueOf(rangeParts[0]) - 1]);
-            } else if (rangeParts.length == 2) {
-                int start = LiteCommandEditorUtils.isInteger(rangeParts[0]) && Integer.valueOf(rangeParts[0]) > 0 && Integer.valueOf(rangeParts[0]) <= arguments.length ? Integer.valueOf(rangeParts[0]) : 1;
-                int end = LiteCommandEditorUtils.isInteger(rangeParts[1]) && Integer.valueOf(rangeParts[0]) > 0 && Integer.valueOf(rangeParts[1]) <= arguments.length ? Integer.valueOf(rangeParts[1]) : arguments.length;
-                for (int i = start;i <= end;i++) {
-                    text.add(arguments[i - 1]);
+        String replaced;
+        if (!placeholder.equals("[-]")) {
+            if (!formatCheck(placeholder)) return;
+            List<String> text = new ArrayList<>();
+            String[] segments = placeholder.substring(1, placeholder.length() - 1).split(",");
+            for (String segment : segments) {
+                String[] rangeParts = segment.split("-", 2);
+                if (rangeParts.length == 1 && LiteCommandEditorUtils.isInteger(rangeParts[0]) && Integer.valueOf(rangeParts[0]) <= arguments.length) {
+                    text.add(arguments[Integer.valueOf(rangeParts[0]) - 1]);
+                } else if (rangeParts.length == 2) {
+                    int start = LiteCommandEditorUtils.isInteger(rangeParts[0]) && Integer.valueOf(rangeParts[0]) > 0 && Integer.valueOf(rangeParts[0]) <= arguments.length ? Integer.valueOf(rangeParts[0]) : 1;
+                    int end = LiteCommandEditorUtils.isInteger(rangeParts[1]) && Integer.valueOf(rangeParts[0]) > 0 && Integer.valueOf(rangeParts[1]) <= arguments.length ? Integer.valueOf(rangeParts[1]) : arguments.length;
+                    for (int i = start;i <= end;i++) {
+                        text.add(arguments[i - 1]);
+                    }
                 }
             }
+            replaced = String.join(" ", text);
+        } else {
+            replaced = String.join(" ", arguments);
         }
-        placeholders.put(placeholder, String.join(" ", text));
+        if (!SecuritySettingsManager.PARSE_PLACEHOLDER_FROM_SUB_COMMAND_PLACEHOLDER) {
+            replaced = "{raw:" + replaced + "}";
+        }
+        if (!SecuritySettingsManager.PARSE_COLOR_FROM_SUB_COMMAND_PLACEHOLDER) {
+            replaced = "{colourless:" + replaced + "}";
+        }
+        placeholders.put(placeholder, replaced);
     }
     
     private static boolean formatCheck(String placeholder) {

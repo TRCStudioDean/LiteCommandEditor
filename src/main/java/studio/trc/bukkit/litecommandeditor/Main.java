@@ -23,6 +23,7 @@ import studio.trc.bukkit.litecommandeditor.module.CommandLoader;
 import studio.trc.bukkit.litecommandeditor.module.CommandManager;
 import studio.trc.bukkit.litecommandeditor.thread.LiteCommandEditorThread;
 import studio.trc.bukkit.litecommandeditor.module.tool.Updater;
+import studio.trc.bukkit.litecommandeditor.util.BukkitSchedulerManager;
 import studio.trc.bukkit.litecommandeditor.util.LiteCommandEditorProperties;
 import studio.trc.bukkit.litecommandeditor.util.PluginControl;
 
@@ -54,7 +55,7 @@ public class Main
             metrics.addCustomChart(new SingleLineChart("loaded_custom_commands", () -> CommandLoader.getCache().size()));
         }
         long endTime = System.currentTimeMillis();
-        PluginControl.runBukkitTask(() -> Updater.checkUpdate(), 0);
+        BukkitSchedulerManager.runBukkitTask(() -> Updater.checkUpdate(), 0, null);
         Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
         placeholders.put("{time}", String.valueOf(endTime - startTime));
         LiteCommandEditorProperties.sendOperationMessage("PluginSuccessfullyEnabled", placeholders);
@@ -66,7 +67,7 @@ public class Main
         }
         List<String> startedCommands = config.getStringList("Automatic-Execute-Commands.Started");
         if (!startedCommands.isEmpty()) {
-            PluginControl.runBukkitTask(() -> startedCommands.stream().forEach(command -> Bukkit.dispatchCommand(console, command)), 0);
+            BukkitSchedulerManager.runBukkitTask(() -> startedCommands.stream().forEach(command -> Bukkit.dispatchCommand(console, command)), 0, null);
         }
     }
 

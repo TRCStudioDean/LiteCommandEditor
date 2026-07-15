@@ -1,6 +1,7 @@
 package studio.trc.bukkit.litecommandeditor.module.function;
 
 import java.util.Map;
+
 import lombok.Getter;
 
 import org.bukkit.Bukkit;
@@ -8,6 +9,8 @@ import org.bukkit.command.CommandSender;
 
 import studio.trc.bukkit.litecommandeditor.Main;
 import studio.trc.bukkit.litecommandeditor.message.MessageUtil;
+import studio.trc.bukkit.litecommandeditor.thread.LiteCommandEditorThread;
+import studio.trc.bukkit.litecommandeditor.util.BukkitSchedulerManager;
 
 public class Command
 {
@@ -22,60 +25,42 @@ public class Command
     }
 
     public void executeCommand(CommandSender sender) {
-        Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
-        String command_replaced = MessageUtil.replacePlaceholders(sender, command, placeholders);
-        switch (type) {
-            case PLAYER: {
-                Bukkit.dispatchCommand(sender, command_replaced);
-                break;
-            }
-            case OP: {
-                if (sender.isOp()) {
-                    Bukkit.dispatchCommand(sender, command_replaced);
-                } else {
-                    sender.setOp(true);
-                    try {
-                        Bukkit.dispatchCommand(sender, command_replaced);
-                    } catch (Throwable t) {
-                        t.printStackTrace();
-                    } finally {
-                        sender.setOp(false);
-                    }
-                }
-                break;
-            }
-            case SERVER: {
-                Main.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command_replaced);
-                break;
-            }
-        }
+        executeCommand(sender, MessageUtil.getDefaultPlaceholders());
     }
     
     public void executeCommand(CommandSender sender, Map<String, String> placeholders) {
-        String command_replaced = MessageUtil.replacePlaceholders(sender, command, placeholders);
-        switch (type) {
-            case PLAYER: {
-                Bukkit.dispatchCommand(sender, command_replaced);
-                break;
-            }
-            case OP: {
-                if (sender.isOp()) {
-                    Bukkit.dispatchCommand(sender, command_replaced);
-                } else {
-                    sender.setOp(true);
-                    try {
-                        Bukkit.dispatchCommand(sender, command_replaced);
-                    } catch (Throwable t) {
-                        t.printStackTrace();
-                    }
-                    sender.setOp(false);
+        String commandReplaced = MessageUtil.replacePlaceholders(sender, command, placeholders);
+        Runnable execution = () -> {
+            switch (type) {
+                case PLAYER: {
+                    Bukkit.dispatchCommand(sender, commandReplaced);
+                    break;
                 }
-                break;
+                case OP: {
+                    if (sender.isOp()) {
+                        Bukkit.dispatchCommand(sender, commandReplaced);
+                    } else {
+                        sender.setOp(true);
+                        try {
+                            Bukkit.dispatchCommand(sender, commandReplaced);
+                        } catch (Throwable t) {
+                            t.printStackTrace();
+                        } finally {
+                            sender.setOp(false);
+                        }
+                    }
+                    break;
+                }
+                case SERVER: {
+                    Main.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), commandReplaced);
+                    break;
+                }
             }
-            case SERVER: {
-                Main.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command_replaced);
-                break;
-            }
+        };
+        if (LiteCommandEditorThread.checkAsync(sender)) {
+            BukkitSchedulerManager.runBukkitTask(execution, 0, sender);
+        } else {
+            execution.run();
         }
     }
 

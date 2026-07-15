@@ -1,14 +1,12 @@
 package studio.trc.bukkit.litecommandeditor.util;
 
 import java.util.Map;
-import java.util.function.Consumer;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.Plugin;
 
 import studio.trc.bukkit.litecommandeditor.Main;
 import studio.trc.bukkit.litecommandeditor.configuration.ConfigurationType;
@@ -90,6 +88,7 @@ public class PluginControl
     
     public static Map<String, String> reloadConfig() {
         Map<String, String> placeholders = ConfigurationUtil.reloadConfig();
+        SecuritySettingsManager.reload();
         placeholders.putAll(MessageUtil.getDefaultPlaceholders());
         return placeholders;
     }
@@ -99,29 +98,5 @@ public class PluginControl
         MessageUtil.loadPlaceholders();
         placeholders.putAll(JSONComponentManager.reloadJSONComponents());
         return placeholders;
-    }
-    
-    public static void runBukkitTask(Runnable task, long delay) {
-        try {
-            if (delay == 0) {
-                Bukkit.getScheduler().runTask(Main.getInstance(), task);
-            } else {
-                Bukkit.getScheduler().runTaskLater(Main.getInstance(), task, delay);
-            }
-        } catch (UnsupportedOperationException ex) {
-            //Folia suppport (test)
-            Consumer runnable = run -> task.run();
-            try {
-                Object globalRegionScheduler = Bukkit.class.getMethod("getGlobalRegionScheduler").invoke(null);
-                if (delay == 0) {
-                    globalRegionScheduler.getClass().getMethod("run", Plugin.class, Consumer.class).invoke(globalRegionScheduler, Main.getInstance(), runnable);
-                } else {
-                    globalRegionScheduler.getClass().getMethod("runDelayed", Plugin.class, Consumer.class, long.class).invoke(globalRegionScheduler, Main.getInstance(), runnable, delay);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                task.run();
-            }
-        }
     }
 }

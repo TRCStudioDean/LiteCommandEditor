@@ -2,6 +2,7 @@ package studio.trc.bukkit.litecommandeditor.hook;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 import lombok.Getter;
 
@@ -14,6 +15,7 @@ import studio.trc.bukkit.litecommandeditor.configuration.RobustConfiguration;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.CalculatePlaceholderRequest;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.ConfiguratorPlaceholderRequest;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.PlayerPlaceholderRequest;
+import studio.trc.bukkit.litecommandeditor.message.placeholder.RandomPlaceholderRequest;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.ServerPlaceholderRequest;
 import studio.trc.bukkit.litecommandeditor.message.placeholder.WorldPlaceholderRequest;
 
@@ -39,55 +41,33 @@ public class PlaceholderAPIHook
         if (cacheOfServer.get(lowerIdentifier) != null) {
             return cacheOfServer.get(lowerIdentifier);
         } else {
+            Function<String, String> func = result -> {
+                if (result != null) {
+                    if (cache) {
+                        cacheOfServer.put(lowerIdentifier, result);
+                    }
+                    return result;
+                } else {
+                    return null;
+                }
+            };
             if (lowerIdentifier.startsWith("calculate:")) {
                 String[] splitedIdentifier = identifier.split(":", 2);
                 if (splitedIdentifier.length == 2) {
-                    String result = CalculatePlaceholderRequest.calculateReplace(splitedIdentifier[1]);
-                    if (cache) {
-                        cacheOfServer.put(lowerIdentifier, result);
-                    }
-                    return result;
+                    return func.apply(CalculatePlaceholderRequest.calculateReplace(splitedIdentifier[1]));
                 }
             } else if (lowerIdentifier.startsWith("configurator:")) {
-                String result = ConfiguratorPlaceholderRequest.configPlaceholderRequestPAPI(identifier);
-                if (result != null) {
-                    if (cache) {
-                        cacheOfServer.put(lowerIdentifier, result);
-                    }
-                    return result;
-                }
+                return func.apply(ConfiguratorPlaceholderRequest.configPlaceholderRequestPAPI(identifier));
             } else if (lowerIdentifier.startsWith("world:")) {
-                String result = WorldPlaceholderRequest.worldPlaceholderAPIRequest(identifier);
-                if (result != null) {
-                    if (cache) {
-                        cacheOfServer.put(lowerIdentifier, result);
-                    }
-                    return result;
-                }
+                return func.apply(WorldPlaceholderRequest.worldPlaceholderAPIRequest(identifier));
             } else if (lowerIdentifier.startsWith("server:")) {
-                String result = ServerPlaceholderRequest.serverPlaceholderAPIRequest(identifier);
-                if (result != null) {
-                    if (cache) {
-                        cacheOfServer.put(lowerIdentifier, result);
-                    }
-                    return result;
-                }
+                return func.apply(ServerPlaceholderRequest.serverPlaceholderAPIRequest(identifier));
             } else if (lowerIdentifier.startsWith("player:")) {
-                String result = PlayerPlaceholderRequest.playerPlaceholderAPIRequest(identifier);
-                if (result != null) {
-                    if (cache) {
-                        cacheOfServer.put(lowerIdentifier, result);
-                    }
-                    return result;
-                }
+                return func.apply(PlayerPlaceholderRequest.playerPlaceholderAPIRequest(identifier));
             } else if (lowerIdentifier.startsWith("me:")) {
-                String result = PlayerPlaceholderRequest.playerPlaceholderAPIRequest(player.getPlayer(), identifier);
-                if (result != null) {
-                    if (cache) {
-                        cacheOfServer.put(lowerIdentifier, result);
-                    }
-                    return result;
-                }
+                return func.apply(PlayerPlaceholderRequest.playerPlaceholderAPIRequest(player.getPlayer(), identifier));
+            } else if (lowerIdentifier.startsWith("random:")) {
+                return func.apply(RandomPlaceholderRequest.randomPlaceholderAPIRequest(identifier));
             }
         }
         return null;

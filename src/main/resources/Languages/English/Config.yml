@@ -11,6 +11,18 @@ Language: English
 #Reference language code abbreviation: American English -> en_us, Simplified Chinese -> zh_cn, Traditional Chinese -> zh_tw
 Item-Display-Language-Path: English
 
+#Security settings of custom command configuration files.
+Security-Settings:
+    #Whether to parse colored text from the sub command number placeholder.
+    #(disable equivalent to colourless text placeholder {colourless:[Text]})
+    Parse-Color-From-Sub-Command-Placeholder: true
+    #Whether to parse colored text from the sub command number placeholder.
+    #(disable equivalent to raw text placeholder {raw:[Text]})
+    Parse-Placeholder-From-Sub-Command-Placeholder: false
+    #Maximum limitation of placeholder nestings (-1 for unlimited)
+    #Note: Unless there is a functional requirement, generally no changes are needed.
+    Maximum-Placeholder-Nestings: -1
+    
 #Disabled commands.
 #After disabling, the command will not be available (the command will no longer exist) and will not be re evaluated until the next server restart.
 #Attention: disabling commands from other plugins may have serious consequences, use with caution!

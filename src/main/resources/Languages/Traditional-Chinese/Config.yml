@@ -10,6 +10,16 @@ Language: Traditional-Chinese
 #參考語文代碼縮寫: 美式英文 -> en_us, 簡體中文 -> zh_cn, 繁體中文 -> zh_tw
 Item-Display-Language-Path: Traditional-Chinese
 
+#安全設定
+Security-Settings:
+    #是否解析來自子命令編號佔位符的顏色文字（禁止時等效於無色文字佔位符 {colourless:[文本]}）
+    Parse-Color-From-Sub-Command-Placeholder: true
+    #是否解析來自子指令編號佔位符的巢狀佔位符（禁止時等效於原生文字佔位符 {raw:[文字]}）
+    Parse-Placeholder-From-Sub-Command-Placeholder: false
+    #最大佔位符嵌套數（填 -1 為無限制）
+    #註：除非功能需求，否則這裡一般不需要更改。 
+    Maximum-Placeholder-Nestings: -1
+    
 #禁用的命令
 #禁用後，命令將無法使用（命令將不存在），直到下次重啟伺服器才會重新判斷。
 #注意：禁用其他插件的命令可能會發生嚴重的後果，謹慎使用！

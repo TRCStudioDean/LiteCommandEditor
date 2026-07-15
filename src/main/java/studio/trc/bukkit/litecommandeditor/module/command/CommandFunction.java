@@ -270,9 +270,7 @@ public final class CommandFunction
             executeTasks(sender, placeholders, CommandCompoundFunctionType.COMPOUND_FUNCTION);
             executeTasks(sender, placeholders, CommandCompoundFunctionType.FUNCTION);
         } else {
-            taskSequence.stream().forEach(task -> {
-                executeTasks(sender, placeholders, task);
-            });
+            taskSequence.stream().forEach(task -> executeTasks(sender, placeholders, task));
         }
         return true;
     }

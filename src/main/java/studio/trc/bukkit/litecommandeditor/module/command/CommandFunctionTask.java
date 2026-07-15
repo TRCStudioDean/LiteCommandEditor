@@ -13,12 +13,4 @@ public interface CommandFunctionTask
      * @param placeholders placeholders
      */
     public void executeTask(CommandSender sender, Map<String, String> placeholders);
-    
-    /**
-     * Get function identifier
-     * @return 
-     */
-    default String getIdentifier() {
-        return null;
-    }
 }

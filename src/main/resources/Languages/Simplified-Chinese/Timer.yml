@@ -1,0 +1,11 @@
+# 定时器设置
+Timer:
+    'example_timer':
+        # 是否启用定时器
+        Enabled: true
+        # 定时器名字，用于识别
+        Name: '默认定时器'
+        # 执行间隔（单位: 秒，支持小数）
+        Interval: 10
+        # 命令列表
+        Commands: []

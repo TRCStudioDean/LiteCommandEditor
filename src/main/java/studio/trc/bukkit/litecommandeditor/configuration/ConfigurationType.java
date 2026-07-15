@@ -42,6 +42,11 @@ public enum ConfigurationType
     ALIAS("Alias.yml", "", new YamlConfiguration(), false, true),
     
     /**
+     * Timer.yml
+     */
+    TIMER("Timer.yml", "", new YamlConfiguration(), false, true),
+    
+    /**
      * Items.yml
      */
     ITEMS("Items.yml", "", new YamlConfiguration(), true, false),

@@ -10,7 +10,7 @@ import lombok.Getter;
 import org.bukkit.command.CommandSender;
 
 import studio.trc.bukkit.litecommandeditor.module.command.CommandFunctionTask;
-import studio.trc.bukkit.litecommandeditor.util.PluginControl;
+import studio.trc.bukkit.litecommandeditor.util.BukkitSchedulerManager;
 
 public class CommandBatch
     implements CommandFunctionTask
@@ -26,7 +26,7 @@ public class CommandBatch
 
     @Override
     public void executeTask(CommandSender sender, Map<String, String> placeholders) {
-        PluginControl.runBukkitTask(() -> commands.stream().forEach(command -> command.executeCommand(sender, placeholders)), 0);
+        BukkitSchedulerManager.runBukkitTask(() -> commands.stream().forEach(command -> command.executeCommand(sender, placeholders)), 0, sender);
     }
     
     public static CommandBatch build(Map map) {

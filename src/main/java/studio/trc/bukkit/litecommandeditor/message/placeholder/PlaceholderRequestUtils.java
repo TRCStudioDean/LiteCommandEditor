@@ -50,6 +50,8 @@ public class PlaceholderRequestUtils
             CalculatePlaceholderRequest.calculatePlaceholderRequest(placeholders, placeholder);
         } else if (placeholder.toLowerCase().startsWith("{papi:") && placeholder.endsWith("}")) {
             PAPIParsePlaceholderRequest.playerPlaceholderRequest(placeholders, placeholder);
+        } else if (placeholder.toLowerCase().startsWith("{random:") && placeholder.endsWith("}")) {
+            RandomPlaceholderRequest.randomPlaceholderRequest(placeholders, placeholder);
         } else {
             ConfiguratorPlaceholderRequest.configPlaceholderRequest(placeholders, placeholder);
         }
